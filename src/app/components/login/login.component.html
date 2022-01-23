@@ -1,0 +1,95 @@
+<div *ngIf="status == ''; else message"></div>
+<ng-template #message>
+    <div class="fail feedback" *ngIf="status == 'loginError'">Error al ingresar, revise los datos nuevamente</div>
+    <div class="fail feedback" *ngIf="status == 'registerError'">Error al registrarse</div>
+	<div class="fail feedback" *ngIf="status == 'registerInvalid'">Datos incorrectos, el nick o el email probablemente ya existen</div>
+	<div class="success feedback" *ngIf="status == 'resetSuccess'">Se ha reseteado la contrase&ntilde;a</div>
+	
+</ng-template>
+<div class="wrapper">
+	<div id="login" class="access consumerForm">
+		<h2>Acceder</h2>
+		<form class="col-md-5 ml-0 pl-0" #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
+			
+			<label for="email">Email</label>
+			<input type="email" name="email" class="form-control" #emailLogin="ngModel" [(ngModel)]="userLogin.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+			<small *ngIf="!emailLogin.valid && emailLogin.touched" class="invalid-field">
+				El email no es válido, favor de usar minúsculas
+			</small>			
+		
+		
+			<label for="password">Contrase&ntilde;a</label>
+			<input type="password" name="password" class="form-control" #passwordLogin="ngModel" [(ngModel)]="userLogin.password" required>
+
+			<small *ngIf="!passwordLogin.valid && passwordLogin.touched" class="invalid-field">
+				La contrase&ntilde;a no es válida
+			</small>			
+			<div class="clear-fix"></div>
+			
+			<button type="button" id="forgotten" (click)="forgotten()" class="supplement">¿Contrase&ntilde;a olvidada?</button>
+			
+			<input type="submit" value="Identificarse" class="button" [disabled]="loginForm.invalid">
+		</form>
+			
+	</div>
+</div>
+<div class="wrapper">
+	<div id="register" class="access consumerForm">
+		<h2>Registrarse</h2>
+		<form class="col-md-5 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)" id="registerForm">
+			
+			<label for="email">Email</label>
+			<input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="userRegister.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+			<small *ngIf="!email.valid && email.touched" class="invalid-field">
+				El email no es válido, favor de usar minúsculas
+			</small>			
+		
+		
+			<label for="password">Contraseña</label>
+			<input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="userRegister.password" required>
+
+			<small *ngIf="!password.valid && password.touched" class="invalid-field">
+				La contraseña no es válida
+			</small>			
+
+			<label for="confirmPassword">Verificación de contraseña</label>
+			<input type="password" name="confirmPassword" class="form-control" #confirmPassword="ngModel" [(ngModel)]="confirmPwd" required>
+
+			<small *ngIf="!confirmPassword.valid && confirmPassword.touched || confirmPassword.touched && confirmPwd!= userRegister.password" class="invalid-field">
+				La contraseña no es válida
+			</small>		
+			
+			<label for="name">Nombre</label>
+			<input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="userRegister.name" required>
+
+			<small *ngIf="!name.valid && name.touched" class="invalid-field">
+				El nombre no es válido
+			</small>			
+
+			<label for="nick">Nick</label>
+			<input type="text" name="nick" class="form-control" #nick="ngModel" [(ngModel)]="userRegister.nick" required>
+
+			<small *ngIf="!nick.valid && nick.touched" class="invalid-field">
+				El nick no es válido
+			</small>			
+			
+			<label for="lastName">Apellidos</label>
+			<input type="text" name="lastName" class="form-control" #lastName="ngModel" [(ngModel)]="userRegister.lastName" required>
+
+			<small *ngIf="!lastName.valid && lastName.touched" class="invalid-field">
+				Los apellidos no son válidos
+			</small>
+
+			<input type="submit" value="Registrarse" class="button" [disabled]="registerForm.invalid || confirmPwd != userRegister.password">
+
+		</form>
+
+
+	</div>
+</div>
+<div class="clear-fix"></div>
+
+
+

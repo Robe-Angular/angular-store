@@ -1,1 +1,344 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto-Light;
+  src: url(assets/fonts/Roboto/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: Web-Symbols;
+  src: url(assets/fonts/web_symbols2/WebSymbols-Regular.otf);
+}
+body {
+  background-color: #FAFAFA;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 6fr 1fr;
+}
+body mat-progress-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+body .feedback {
+  display: block;
+  font-family: sans-serif, Helvetica, Arial;
+  padding: 5px;
+  border-radius: 5px;
+  color: #F7F7DE;
+  font-weight: bold;
+}
+body .feedback .link {
+  font-size: 18px;
+  text-decoration: underline;
+}
+body .success {
+  background-color: #2e8d61;
+}
+body .fail {
+  background-color: #d63547;
+}
+body .symbol {
+  border: none;
+  font: inherit;
+  outline: inherit;
+  font-family: Web-Symbols;
+  font-weight: lighter;
+}
+body .unicode-close {
+  border: none;
+  font: inherit;
+  outline: inherit;
+}
+body .clear-fix {
+  float: none;
+  clear: both;
+}
+body input {
+  outline: none;
+}
+body a {
+  color: inherit;
+  text-decoration: inherit;
+}
+body .button {
+  cursor: pointer;
+}
+body .consumerForm {
+  font-family: "Roboto", sans-serif;
+  margin-top: 85px;
+  display: block;
+  float: left;
+  width: 35%;
+  background-color: #f7f7f7;
+  border-top: 2px solid #d3d3d3;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body .consumerForm {
+    width: 50%;
+  }
+}
+@media (min-width: 0px) and (max-width: 960px) {
+  body .consumerForm {
+    width: 70%;
+  }
+}
+body .consumerForm h2 {
+  color: #555555;
+  font-weight: 700;
+  font-size: 25px;
+  margin-left: 7%;
+  margin-top: 1.7%;
+  margin-bottom: 2.2%;
+}
+body .consumerForm input, body .consumerForm label, body .consumerForm p {
+  display: block;
+  margin-left: 30px;
+}
+body .consumerForm label {
+  color: #939393;
+  font-family: Roboto-Light, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+body .consumerForm .invalid-field {
+  color: red;
+  margin-left: 30px;
+}
+body .consumerForm input[type=text],
+body .consumerForm input[type=email],
+body .consumerForm input[type=password] {
+  font-family: "Calibri", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  color: #333333;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  height: 30px;
+  line-height: 30px;
+}
+body .consumerForm input[type=text]:focus,
+body .consumerForm input[type=email]:focus,
+body .consumerForm input[type=password]:focus {
+  border: 3px solid #cccccc;
+}
+body .consumerForm input[type=submit] {
+  margin-top: 30px;
+  background: #db7b1c;
+  color: #FFFFFF;
+  border: none;
+  font: inherit;
+  outline: inherit;
+  padding: 0px 32px;
+  height: 38px;
+  font-weight: 400;
+  line-height: 38px;
+  border-radius: 5px;
+}
+body .consumerForm input[type=submit]:hover {
+  background: #FD9A3A;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
+}
+body .consumerForm input[type=submit]:disabled {
+  background: #bdbdbd;
+  box-shadow: none;
+  cursor: default;
+}
+body .consumerForm .supplement {
+  border: none;
+  font: inherit;
+  outline: inherit;
+  background: none;
+  color: #db7b1c;
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+body .consumerForm .supplement:hover {
+  color: #FD9A3A;
+  cursor: pointer;
+}
+body #header {
+  grid-area: 1/1/2/5;
+}
+body #header #navbar {
+  display: block;
+  overflow: hidden;
+  background-color: #EEEEEE;
+  background-repeat: no-repeat;
+  background-size: 1350px 100px;
+}
+body #header #navbar #logo {
+  display: block;
+  float: left;
+  font-family: sans-serif, Helvetica, Arial;
+  color: #DB7A1B;
+  padding: 5px;
+  padding-left: 40px;
+  letter-spacing: 20px;
+  font-size: 50px;
+  font-weight: 900;
+  display: block;
+  margin-top: 12px;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body #header #navbar #logo {
+    width: 100%;
+    text-align: center;
+    clear: both;
+  }
+}
+body #header #navbar #search {
+  display: block;
+  float: left;
+  padding: 20px;
+  margin-top: 8px;
+  margin-left: 100px;
+  display: block;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body #header #navbar #search {
+    margin-left: auto;
+    width: 100%;
+    text-align: center;
+    clear: both;
+  }
+  body #header #navbar #search > * {
+    display: inline-block;
+  }
+}
+body #header #navbar #search input {
+  border: none;
+  font: inherit;
+  outline: inherit;
+  background: inherit;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  width: 432px;
+  color: #323232;
+}
+@media (min-width: 0px) and (max-width: 960px) {
+  body #header #navbar #search input {
+    width: 250px;
+  }
+}
+@media (min-width: 0px) and (max-width: 480px) {
+  body #header #navbar #search input {
+    width: 50%;
+  }
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body #header #navbar #search input {
+    background: #e2e2e2;
+    line-height: 40px;
+    border-radius: 10px;
+    padding: 0px 26px;
+  }
+}
+body #header #navbar #search .symbol {
+  color: #A3ABB8;
+  font-size: 28px;
+}
+body #header #navbar #search .unicode-close {
+  color: #A3ABB8;
+  font-size: 26px;
+}
+body #header #navbar #identity {
+  color: #545454;
+  line-height: 57px;
+  display: block;
+  overflow: hidden;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body #header #navbar #identity {
+    clear: both;
+  }
+}
+body #header #navbar #identity div div {
+  display: block;
+  float: right;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: initial;
+  font-style: normal;
+  letter-spacing: normal;
+  margin-top: 15px;
+  margin-right: 8%;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body #header #navbar #identity div div {
+    float: none;
+    text-align: center;
+    margin: auto;
+  }
+}
+body #header #navbar #identity #logout {
+  transition: all 500ms;
+}
+body #header #navbar #identity #logout:hover {
+  color: #CC0000;
+}
+body main {
+  grid-area: 2/1/3/5;
+}
+body main .unique-wrapper {
+  text-align: center;
+}
+body main .unique-wrapper .unique {
+  margin-left: auto;
+  display: inline-block;
+  text-align: initial;
+  float: none;
+  height: 357px;
+}
+@media (min-width: 1320px) {
+  body main #login {
+    margin-left: 14%;
+    height: 400px;
+  }
+  body main #register {
+    margin-left: 2%;
+    height: 650px;
+  }
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body main .feedback {
+    text-align: unset;
+  }
+  body main > * > * {
+    margin-left: auto;
+    display: block;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    overflow: hidden;
+  }
+  body main > * > * #login {
+    margin-left: 14%;
+    margin-left: auto;
+    display: inline-block;
+    text-align: initial;
+    float: none;
+    height: 400px;
+  }
+  body main > * > * #register {
+    margin-left: 2%;
+    margin-left: auto;
+    display: inline-block;
+    text-align: initial;
+    float: none;
+    height: 650px;
+  }
+}
+body #footer {
+  grid-area: 3/1/4/5;
+}
+
+/*# sourceMappingURL=styles.css.map */

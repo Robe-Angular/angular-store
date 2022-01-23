@@ -1,0 +1,40 @@
+<div *ngIf="status == ''; else message"></div>
+<ng-template #message>
+    <div class="fail feedback" *ngIf="status == 'errorSendingAfterSaving'">El usuario se ha guardado, pero hubo un problema al mandar el e-mail, por favor ingrese su email nuevamente y de click en "Reenviar email"</div>
+    <div class="fail feedback" *ngIf="status == 'errorSending'">Hubo un problema al mandar el e-mail, por favor ingrese su email correctamente y de click en "Reenviar email"</div>
+    <div class="fail feedback" *ngIf="status == 'error'">El código de verificación es incorrecto</div>
+    <div class="success feedback" *ngIf="status == 'sendingSuccess'">Se ha enviado el email sin problemas</div>
+    <div class="success feedback" *ngIf="status == 'success'">Se ha verificado el email correctamente, puedes logearte 
+        <a class="link" [routerLink] = "['/login']">aquí</a></div>
+    
+
+</ng-template>
+
+<div class="wrapper unique-wrapper" id="verify-wrapper">
+    <div id="verify" class="consumerForm unique">
+        <h2>Verificar</h2>
+        <form class="col-md-5 ml-0 pl-0" #verify="ngForm" (ngSubmit)="onSubmit(verify)">
+            
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="verifyRequest.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+            <small *ngIf="!email.valid && email.touched" class="invalid-field">
+                El email no es válido, favor de usar minúsculas
+            </small>			
+        
+        
+            <label for="verificationCode">Código de verificación</label>
+            <input type="text" name="verificationCode" class="form-control" #verificationCode="ngModel" [(ngModel)]="verifyRequest.confirmationCode" required>
+
+            <small *ngIf="!verificationCode.valid && verificationCode.touched" class="invalid-field">
+                El código no es válido
+            </small>			
+            <div class="clear-fix"></div>
+
+            <button type="button" id="notReceived" class="supplement" (click)="sendEmail()">Reenviar e-mail</button>
+
+            <input type="submit" value="Verificar" class="button" [disabled]="verify.invalid">
+        </form>
+            
+    </div>
+</div>
