@@ -16,11 +16,13 @@ body {
   grid-template-columns: auto;
   grid-template-rows: 1fr 6fr 1fr;
 }
+body .mat-progress-spinner circle, body .mat-spinner circle {
+  stroke: #db7b1c !important;
+}
 body mat-progress-spinner {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 5;
 }
 body .feedback {

@@ -62,12 +62,17 @@ export class UserService{
 		return this._http.post(this.url + 'reset', params, {headers: headers});
 	}
 
-	update(token:string, user:any):Observable<any>{
-		let json = JSON.stringify(user);
-		let params = "json="+ encodeURIComponent(json);
-		
+	getConsumerData(consumerId: string,token:string):Observable<any>{
+		let params = consumerId;
+		let headers = new HttpHeaders().set('content-Type','application/json')
+			.set('Authorization', token);
+		return this._http.get(this.url + 'user/' + params, {headers: headers});
+	}
 
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+	update(token:string, user:any):Observable<any>{
+		let params = JSON.stringify(user);		
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
 			.set('Authorization', token);
 
 		return this._http.put(this.url + 'user/update', params, {headers: headers});

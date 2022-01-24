@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { User } from '../../models/user';
 import {UserService} from '../../services/user.service';
 
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit{
     this.status = '';
     this.token = null;
     this.identity = null;
-    this.userLogin = new User(1, '', '','', '', '','ROLE-USER', '',null);
-    this.userRegister = new User(1, '', '', '', '', '', 'ROLE-USER','',null);
+    this.userLogin = new User('', '', '','', '', '','ROLE-USER', '',null);
+    this.userRegister = new User('', '', '', '', '', '', 'ROLE-USER','',null);
     this.confirmPwd = '';
   }
 
