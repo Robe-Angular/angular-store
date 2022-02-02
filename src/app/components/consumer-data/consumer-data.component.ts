@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { UserService } from '../../services/user.service';
 import{ User } from '../../models/user'
+import{ ConfirmationCodeUpdate } from '../../models/confirmationCodeUpdate'
 
 @Component({
   selector: 'app-consumer-data',
@@ -11,34 +12,79 @@ import{ User } from '../../models/user'
 })
 export class ConsumerDataComponent implements OnInit {
   public consumer: User;
-  public token: string;
+  public confirmationCode: ConfirmationCodeUpdate;
+  public token: any;
   public status: string;
+  public isEdit: boolean;
+
   constructor(
     private _userService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute    
   ) {
     this.consumer = new User('', '', '', '', '', '', 'ROLE-USER','',null);
-    this.token = this._userService.getToken();
+    this.confirmationCode = new ConfirmationCodeUpdate('', '');
+    this.token = this._userService.getToken ();
     this.status = '';
-   }
-
-  ngOnInit(): void {
-
+    this.isEdit = false;
   }
+  ngOnInit(): void {
+    this.getParamsId();    
+  }
+
   getConsumerData(){
-    this._userService.getConsumerData(this.consumer.id, this.token).subscribe(
+    this._userService.getConsumerData(this.consumer._id, this.token.token).subscribe(
       response => {
-        //identity        
+        //identity
         if(response.status != Error){
-          this.status = 'success';
+          console.log(response);
+          this.consumer = response.user;
+          this.status = 'dataSuccess';
         }else{
-          this.status = 'error';
+          this.status = 'dataError';
         }
       },
       error => {
+
+        console.log(error);
         this.status = 'error';
       }
     );
+  }
+  getParamsId(){
+    this._route.params.subscribe(params => {
+      let consumerId = params['consumerId'];
+      this.consumer._id = consumerId;
+      this.getConsumerData();
+    });
+  }
+  editView(){
+    this.isEdit = true;
+  }
+
+  onSubmitUpdate(form:any){
+   this._userService.update(this.token.token, this.consumer, this.consumer._id).subscribe(
+     response =>{
+      if(response.confirmationUpdateEmailStored){
+        this.status = "emailSuccess";
+      }else{
+        this.status = response.status != Error ? 'success':'error';
+        this.consumer = response.userUpdated;
+        this.isEdit = false;
+      }
+      
+      
+     },
+     error => {
+      this.status = 'errorUserTaken'
+      if(error.error.status != 409){
+        this.status = 'error';
+      }
+    }
+   );
+  }
+
+  onSubmitConfirmation(form:any){
+
   }
 }

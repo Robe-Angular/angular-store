@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { ForgottenPassword } from '../models/forgottenPassword';
 import { VerifyRequest } from '../models/verifyRequest';
+import{ ConfirmationCodeUpdate } from '../models/confirmationCodeUpdate'
 import { global } from './global';
 
 @Injectable()
@@ -63,19 +64,30 @@ export class UserService{
 	}
 
 	getConsumerData(consumerId: string,token:string):Observable<any>{
+		
 		let params = consumerId;
 		let headers = new HttpHeaders().set('content-Type','application/json')
 			.set('Authorization', token);
 		return this._http.get(this.url + 'user/' + params, {headers: headers});
 	}
 
-	update(token:string, user:any):Observable<any>{
+	update(token:string, user:any, userId:string):Observable<any>{
 		let params = JSON.stringify(user);		
-
+		
 		let headers = new HttpHeaders().set('content-Type', 'application/json')
 			.set('Authorization', token);
 
-		return this._http.put(this.url + 'user/update', params, {headers: headers});
+		return this._http.put(this.url + 'update/' + userId , params, {headers: headers});
+	}
+
+	confirmEmailUpdate(token:string, confirmationCode:ConfirmationCodeUpdate){
+		let params = JSON.stringify(confirmationCode);
+		
+		
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+			.set('Authorization', token);
+
+		return this._http.put(this.url + 'changeEmail', params, {headers: headers});
 	}
 
 

@@ -1,1 +1,97 @@
-<p>consumer-data works!</p>
+<div *ngIf="status == ''; else message"></div>
+<ng-template #message>
+    <div class="fail feedback" *ngIf="status == 'error'">Error al actualizar al usuario</div>
+    <div class="fail feedback" *ngIf="status == 'dataError'">Error al cargar datos</div>
+    <div class="fail feedback" *ngIf="status == 'errorUserTaken'">El usuario ya existe</div>
+    <div class="success feedback" *ngIf="status == 'success'">Se ha actualizado al usuario</div>
+    <div class="success feedback" *ngIf="status == 'emailSuccess'">Se ha enviado un correo de confirmación de email</div>
+
+</ng-template>
+
+<div class="wrapper unique-wrapper">
+    <div class="consumerInfo unique" id="consumer-data" *ngIf="consumer && !isEdit">
+        <h2>Datos de usuario</h2>
+        <label>Nombre</label>
+        <p>{{consumer.name}}</p>
+        <label>Apellidos</label>
+        <p>{{consumer.lastName}}</p>
+        <label>Nick</label>
+        <p>{{consumer.nick}}</p>
+        <label>Email</label>
+        <p>{{consumer.email}}</p>
+        <label>Teléfono</label>
+        <p>{{consumer.telephone}}</p>
+
+        <button type="button" id="notReceived" class="supplement" (click)="editView()">Editar</button>
+    </div>
+    <div id="update" class="consumerForm unique" *ngIf="isEdit && status != 'emailSuccess'">
+        <h2>Actualizar</h2>
+        <form class="col-md-5 ml-0 pl-0" #update="ngForm" (ngSubmit)="onSubmitUpdate(update)">
+            
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="consumer.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+            <small *ngIf="!email.valid && email.touched" class="invalid-field">
+                El email no es válido, favor de usar minúsculas
+            </small>
+
+            <label for="nick">Nick</label>
+            <input type="text" name="nick" class="form-control" #nick="ngModel" [(ngModel)]="consumer.nick" required>
+
+            <small *ngIf="!nick.valid && nick.touched" class="invalid-field">
+                El nick no es válido
+            </small>	
+            
+            <label for="name">Nombre</label>
+            <input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="consumer.name" required>
+
+            <small *ngIf="!name.valid && name.touched" class="invalid-field">
+                El nombre no es válido
+            </small>			
+
+            <label for="lastName">Apellidos</label>
+            <input type="text" name="lastName" class="form-control" #lastName="ngModel" [(ngModel)]="consumer.lastName" required>
+
+            <small *ngIf="!lastName.valid && lastName.touched" class="invalid-field">
+                Los apellidos no son válidos
+            </small>
+
+            <label for="telephone">Teléfono</label>
+            <input type="text" name="telephone" class="form-control" #telephone="ngModel" [(ngModel)]="consumer.telephone" required>
+
+            <small *ngIf="!telephone.valid && telephone.touched" class="invalid-field">
+                El teléfono no es válido
+            </small>
+
+            <div class="clear-fix"></div>            
+
+            <input type="submit" value="Guardar" class="button" [disabled]="update.invalid">
+        </form>
+            
+    </div>
+
+    <div id="update" class="consumerForm unique" *ngIf="isEdit && status == 'emailSuccess'">
+        <h2>Actualizar</h2>
+        <form class="col-md-5 ml-0 pl-0" #update="ngForm" (ngSubmit)="onSubmitConfirmation(update)">
+        
+
+            <label for="confirmationCode">Código</label>
+            <input type="text" name="confirmationCode" class="form-control" #code="ngModel" [(ngModel)]="confirmationCode.confirmationCode" required>
+
+            <small *ngIf="!code.valid && code.touched" class="invalid-field">
+                El código no es válido
+            </small>
+
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="confirmationCode.password" required>
+
+            <small *ngIf="!password.valid && password.touched" class="invalid-field">
+                La contraseña no es válida
+            </small>
+
+            <div class="clear-fix"></div>            
+
+            <input type="submit" value="Guardar" class="button" [disabled]="update.invalid">
+        </form>        
+    </div>
+</div>

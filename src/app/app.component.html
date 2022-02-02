@@ -27,7 +27,7 @@
           </div>
 
           <div id="logged-identity">
-            Hola, {{identity.user.nick | dotdotdot: 10}}
+            Hola, <a [routerLink]="['/consumer',identity.user._id]">{{identity.user.nick | dotdotdot: 10}}</a>
           </div>
         </div>
         

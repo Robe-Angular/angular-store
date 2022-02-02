@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { ChangeDetectorRef,Component, OnInit, DoCheck, AfterViewChecked } from '@angular/core';
 import { UserService } from './services/user.service';
 import { LoadingService } from './services/loading.service';
 
@@ -10,7 +10,7 @@ import { global } from  './services/global';
   styleUrls: ['./app.component.css'],
   providers: [UserService]
 })
-export class AppComponent implements OnInit, DoCheck{
+export class AppComponent implements OnInit, DoCheck, AfterViewChecked{
   
   	public identity:any;
   	public token:any;
@@ -20,14 +20,17 @@ export class AppComponent implements OnInit, DoCheck{
 
   	constructor(
 		private _userService: UserService,
-		public loader: LoadingService
+		public loader: LoadingService,
+		private _changeDetector: ChangeDetectorRef
 	){
 		this.loadUser();
 		this.url = global.url;
 	}
-
+	ngAfterViewChecked(): void {  
+		this._changeDetector.detectChanges();
+	}
 	ngOnInit(){
-		console.log('Webapp Cargada correctamente');
+		
 	}
 
 	ngDoCheck(){

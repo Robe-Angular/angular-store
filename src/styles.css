@@ -69,7 +69,7 @@ body a {
 body .button {
   cursor: pointer;
 }
-body .consumerForm {
+body .consumerForm, body .consumerInfo {
   font-family: "Roboto", sans-serif;
   margin-top: 85px;
   display: block;
@@ -79,16 +79,16 @@ body .consumerForm {
   border-top: 2px solid #d3d3d3;
 }
 @media (min-width: 0px) and (max-width: 1320px) {
-  body .consumerForm {
+  body .consumerForm, body .consumerInfo {
     width: 50%;
   }
 }
 @media (min-width: 0px) and (max-width: 960px) {
-  body .consumerForm {
+  body .consumerForm, body .consumerInfo {
     width: 70%;
   }
 }
-body .consumerForm h2 {
+body .consumerForm h2, body .consumerInfo h2 {
   color: #555555;
   font-weight: 700;
   font-size: 25px;
@@ -96,11 +96,11 @@ body .consumerForm h2 {
   margin-top: 1.7%;
   margin-bottom: 2.2%;
 }
-body .consumerForm input, body .consumerForm label, body .consumerForm p {
+body .consumerForm input, body .consumerForm label, body .consumerForm p, body .consumerInfo input, body .consumerInfo label, body .consumerInfo p {
   display: block;
   margin-left: 30px;
 }
-body .consumerForm label {
+body .consumerForm label, body .consumerInfo label {
   color: #939393;
   font-family: Roboto-Light, sans-serif;
   font-weight: bold;
@@ -108,13 +108,15 @@ body .consumerForm label {
   margin-bottom: 5px;
   margin-top: 15px;
 }
-body .consumerForm .invalid-field {
+body .consumerForm .invalid-field, body .consumerInfo .invalid-field {
   color: red;
   margin-left: 30px;
 }
 body .consumerForm input[type=text],
 body .consumerForm input[type=email],
-body .consumerForm input[type=password] {
+body .consumerForm input[type=password], body .consumerInfo input[type=text],
+body .consumerInfo input[type=email],
+body .consumerInfo input[type=password] {
   font-family: "Calibri", Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   color: #333333;
@@ -126,10 +128,12 @@ body .consumerForm input[type=password] {
 }
 body .consumerForm input[type=text]:focus,
 body .consumerForm input[type=email]:focus,
-body .consumerForm input[type=password]:focus {
+body .consumerForm input[type=password]:focus, body .consumerInfo input[type=text]:focus,
+body .consumerInfo input[type=email]:focus,
+body .consumerInfo input[type=password]:focus {
   border: 3px solid #cccccc;
 }
-body .consumerForm input[type=submit] {
+body .consumerForm input[type=submit], body .consumerInfo input[type=submit] {
   margin-top: 30px;
   background: #db7b1c;
   color: #FFFFFF;
@@ -141,17 +145,18 @@ body .consumerForm input[type=submit] {
   font-weight: 400;
   line-height: 38px;
   border-radius: 5px;
+  margin-bottom: 30px;
 }
-body .consumerForm input[type=submit]:hover {
+body .consumerForm input[type=submit]:hover, body .consumerInfo input[type=submit]:hover {
   background: #FD9A3A;
   box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
 }
-body .consumerForm input[type=submit]:disabled {
+body .consumerForm input[type=submit]:disabled, body .consumerInfo input[type=submit]:disabled {
   background: #bdbdbd;
   box-shadow: none;
   cursor: default;
 }
-body .consumerForm .supplement {
+body .consumerForm .supplement, body .consumerInfo .supplement {
   border: none;
   font: inherit;
   outline: inherit;
@@ -160,8 +165,9 @@ body .consumerForm .supplement {
   padding: 0;
   margin-left: 30px;
   margin-top: 15px;
+  margin-bottom: 30px;
 }
-body .consumerForm .supplement:hover {
+body .consumerForm .supplement:hover, body .consumerInfo .supplement:hover {
   color: #FD9A3A;
   cursor: pointer;
 }
@@ -298,7 +304,7 @@ body main .unique-wrapper .unique {
   display: inline-block;
   text-align: initial;
   float: none;
-  height: 357px;
+  height: auto;
 }
 @media (min-width: 1320px) {
   body main #login {
