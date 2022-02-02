@@ -85,6 +85,14 @@ export class ConsumerDataComponent implements OnInit {
   }
 
   onSubmitConfirmation(form:any){
-
+    this._userService.confirmEmailUpdate(this.token.token, this.confirmationCode).subscribe(
+      response => {
+        this.consumer = response.userUpdated;
+        this.status = "success"
+        this.isEdit = false;
+      }, err => {
+        this.status = "noMatchCodeError"
+      }
+    )
   }
 }

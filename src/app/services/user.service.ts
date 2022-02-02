@@ -80,14 +80,14 @@ export class UserService{
 		return this._http.put(this.url + 'update/' + userId , params, {headers: headers});
 	}
 
-	confirmEmailUpdate(token:string, confirmationCode:ConfirmationCodeUpdate){
+	confirmEmailUpdate(token:string, confirmationCode:ConfirmationCodeUpdate):Observable<any>{
 		let params = JSON.stringify(confirmationCode);
 		
 		
 		let headers = new HttpHeaders().set('content-Type', 'application/json')
 			.set('Authorization', token);
 
-		return this._http.put(this.url + 'changeEmail', params, {headers: headers});
+		return this._http.post(this.url + 'changeEmail', params, {headers: headers});
 	}
 
 
