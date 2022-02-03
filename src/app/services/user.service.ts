@@ -118,4 +118,9 @@ export class UserService{
 		let headers = new HttpHeaders().set('content-Type', 'application/x-www-form-urlencoded');
 		return this._http.get(this.url + 'user/detail/' + id, {headers: headers});
 	}
+
+	getUsers(page:string,sort:string):Observable<any>{
+		let headers = new HttpHeaders().set('content-Type', 'application/x-www-form-urlencoded');
+		return this._http.get(this.url + 'users/' + page + '/' + sort, {headers: headers});
+	}
 }

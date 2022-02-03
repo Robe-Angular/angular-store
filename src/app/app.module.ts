@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NetworkInterceptor } from './interceptors/network.interceptor';
 import { DotdotdotPipe } from './pipes/dotdotdot.pipe';
 import { ConsumerDataComponent } from './components/consumer-data/consumer-data.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ConsumerDataComponent } from './components/consumer-data/consumer-data.
     VerifyEmailComponent,
     ForgottenPasswordComponent,
     DotdotdotPipe,
-    ConsumerDataComponent
+    ConsumerDataComponent,
+    ListUsersComponent
   ],
   imports: [
     routing,
