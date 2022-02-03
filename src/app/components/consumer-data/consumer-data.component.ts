@@ -45,7 +45,6 @@ export class ConsumerDataComponent implements OnInit {
         }
       },
       error => {
-
         console.log(error);
         this.status = 'error';
       }
@@ -62,15 +61,21 @@ export class ConsumerDataComponent implements OnInit {
     this.isEdit = true;
   }
 
+  consumerUpdated(response:any){
+    this.status = response.status != Error ? 'success':'error';
+    this.consumer = response.userUpdated;
+    localStorage.setItem('token',JSON.stringify({token:response.token}));
+    this.token = this._userService.getToken ();
+    this.isEdit = false;
+  }
+
   onSubmitUpdate(form:any){
    this._userService.update(this.token.token, this.consumer, this.consumer._id).subscribe(
      response =>{
       if(response.confirmationUpdateEmailStored){
         this.status = "emailSuccess";
       }else{
-        this.status = response.status != Error ? 'success':'error';
-        this.consumer = response.userUpdated;
-        this.isEdit = false;
+        this.consumerUpdated(response);
       }
       
       
@@ -87,9 +92,7 @@ export class ConsumerDataComponent implements OnInit {
   onSubmitConfirmation(form:any){
     this._userService.confirmEmailUpdate(this.token.token, this.confirmationCode).subscribe(
       response => {
-        this.consumer = response.userUpdated;
-        this.status = "success"
-        this.isEdit = false;
+        this.consumerUpdated(response);
       }, err => {
         this.status = "noMatchCodeError"
       }
