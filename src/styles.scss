@@ -107,7 +107,7 @@ body{
     .mat-progress-spinner circle, .mat-spinner circle {
         stroke: $access-buttons-color !important;
     }
-    mat-progress-spinner{
+    .mat-progress-spinner{
         position: absolute;
         top: 50%;
         left: 50%;
@@ -257,12 +257,15 @@ body{
             cursor:pointer;
         }
     }
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 1fr 6fr 1fr;
+    #content{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 6fr 1fr;
+    }
+    
     #header{
         
-        grid-area: 1 / 1 / 2 / 5;
+        grid-area: 1 / auto / 2 / auto;
         #navbar{
             display: block;
             overflow: hidden;
@@ -386,7 +389,7 @@ body{
 
     main{
         
-        grid-area: 2 / 1 / 3 / 5;
+        grid-area: 2 / auto / 3 / auto;
         @mixin customer-form-custom-media-desktop {
                 margin-left: auto;
                 display: inline-block;
@@ -444,7 +447,7 @@ body{
     }
 
     #footer{           
-        grid-area: 3 / 1 / 4 / 5;
+        grid-area: 3 / auto / 4 / auto;
     }
 
 

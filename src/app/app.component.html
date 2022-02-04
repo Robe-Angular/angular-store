@@ -1,51 +1,52 @@
 <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async" ></mat-progress-spinner>
-<mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
-<header id="header">    
-  <div id="navbar">
+<div id="content">
+  <header id="header">    
+    <div id="navbar">
 
-    <div id="logo">Tienda</div>
+      <div id="logo">Tienda</div>
 
-    <div id="search" role="search">
-      <input type="text"/>
-      <button class="unicode-close">&#10006;</button>
-      <button class="symbol">L</button>
+      <div id="search" role="search">
+        <input type="text"/>
+        <button class="unicode-close">&#10006;</button>
+        <button class="symbol">L</button>
 
-    </div>
-
-    
-    <div id="identity">
-
-      <div *ngIf='!identity; else logged'>
-        <div id="login">
-          <a [routerLink]="['/login']">Ingresar</a>
-        </div>
       </div>
-      <ng-template #logged>
-        
-        <div id="logged">
-          <div id="logout">
-            <a [routerLink]="['/logout/logout']">Salir</a>              
-          </div>
 
-          <div id="logged-identity">
-            Hola, <a [routerLink]="['/consumer',identity.user._id]">{{identity.user.nick | dotdotdot: 10}}</a>
+      
+      <div id="identity">
+
+        <div *ngIf='!identity; else logged'>
+          <div id="login">
+            <a [routerLink]="['/login']">Ingresar</a>
           </div>
         </div>
-        
-        
-      </ng-template>
+        <ng-template #logged>
+          
+          <div id="logged">
+            <div id="logout">
+              <a [routerLink]="['/logout/logout']">Salir</a>              
+            </div>
 
-    </div>   
+            <div id="logged-identity">
+              Hola, <a [routerLink]="['/consumer',identity.user._id]">{{identity.user.nick | dotdotdot: 10}}</a>
+            </div>
+          </div>
+          
+          
+        </ng-template>
+
+      </div>   
+      
+    </div>
     
-  </div>
-  
-</header>
+  </header>
 
-<main id="main">
-  
-  <router-outlet></router-outlet>
-</main>
+  <main id="main">
+    
+    <router-outlet></router-outlet>
+  </main>
 
-<footer id="footer">
-  Footer
-</footer>
+  <footer id="footer">
+    Footer
+  </footer>
+</div>
