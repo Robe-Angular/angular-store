@@ -1,19 +1,22 @@
-<table>
-    <tr>
-        <th>Nick</th>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Correo</th>
-    </tr>
-    <tr *ngFor="let consumer of consumers">
-        <td>{{consumer.nick}}</td>
-        <td>{{consumer.name}}</td>
-        <td>{{consumer.lastName}}</td>
-        <td>{{consumer.email}}</td>
+<div class="unique-wrapper">
+    <table class="unique">
+        <tr>
+            <th>Nick</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+        </tr>
+        <tr *ngFor="let consumer of consumers">
+            <td>{{consumer.nick}}</td>
+            <td>{{consumer.name}}</td>
+            <td>{{consumer.lastName}}</td>
+            <td>{{consumer.email}}</td>
+    
+        </tr>
+        <tr>
+            <td colspan="2" class="direction-left"><span class="symbol">< </span>Anterior</td>
+            <td colspan="2" class="direction-right">Siguiente <span class="symbol">></span></td>
+        </tr>
+    </table>
+</div>
 
-    </tr>
-    <tr>
-        <td colspan="2" class="direction-left"><span class="symbol"><</span>Anterior</td>
-        <td colspan="2" class="direction-right">Siguiente<span class="symbol">></span></td>
-    </tr>
-</table>

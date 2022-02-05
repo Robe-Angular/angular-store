@@ -156,6 +156,9 @@ body{
         text-decoration: inherit;
     } 
     table{
+        th{
+            color: #555555;
+        }
         .direction-right{
           text-align: right;  
         }
@@ -169,7 +172,6 @@ body{
     
     .consumerForm, .consumerInfo{
         font-family: 'Roboto',sans-serif;
-        margin-top: 85px;
         display: block;
         float: left;
         width: 35%;
@@ -407,6 +409,7 @@ body{
         .unique-wrapper {
             text-align: center;
             .unique{
+                margin-top: 85px;
                 margin-left: auto;
                 display: inline-block;
                 text-align: initial;

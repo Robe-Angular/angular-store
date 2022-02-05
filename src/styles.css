@@ -63,6 +63,9 @@ body a {
   color: inherit;
   text-decoration: inherit;
 }
+body table th {
+  color: #555555;
+}
 body table .direction-right {
   text-align: right;
 }
@@ -74,7 +77,6 @@ body .button {
 }
 body .consumerForm, body .consumerInfo {
   font-family: "Roboto", sans-serif;
-  margin-top: 85px;
   display: block;
   float: left;
   width: 35%;
@@ -308,6 +310,7 @@ body main .unique-wrapper {
   text-align: center;
 }
 body main .unique-wrapper .unique {
+  margin-top: 85px;
   margin-left: auto;
   display: inline-block;
   text-align: initial;
