@@ -155,7 +155,14 @@ body{
         color: inherit; 
         text-decoration: inherit;
     } 
-    
+    table{
+        .direction-right{
+          text-align: right;  
+        }
+        .direction-left{
+            text-align: left;  
+          }
+    }
     .button{
         cursor: pointer;
     }

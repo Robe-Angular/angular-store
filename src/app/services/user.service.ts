@@ -90,6 +90,12 @@ export class UserService{
 		return this._http.post(this.url + 'changeEmail', params, {headers: headers});
 	}
 
+	getUsers(page:number,sort:string, token:string):Observable<any>{
+		let headers = new HttpHeaders().set('content-Type', 'application/x-www-form-urlencoded')
+			.set('Authorization', token);
+		return this._http.get(this.url + 'users/' + page + '/' + sort, {headers: headers});
+	}
+
 
 	getIdentity(){
 		let identity = JSON.parse(localStorage.getItem('identity') as string);
@@ -113,14 +119,6 @@ export class UserService{
 
 		return this.token;
 	}
-	
-	getUser(id:any):Observable<any>{
-		let headers = new HttpHeaders().set('content-Type', 'application/x-www-form-urlencoded');
-		return this._http.get(this.url + 'user/detail/' + id, {headers: headers});
-	}
 
-	getUsers(page:string,sort:string):Observable<any>{
-		let headers = new HttpHeaders().set('content-Type', 'application/x-www-form-urlencoded');
-		return this._http.get(this.url + 'users/' + page + '/' + sort, {headers: headers});
-	}
+	
 }

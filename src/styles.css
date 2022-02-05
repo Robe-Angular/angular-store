@@ -63,6 +63,12 @@ body a {
   color: inherit;
   text-decoration: inherit;
 }
+body table .direction-right {
+  text-align: right;
+}
+body table .direction-left {
+  text-align: left;
+}
 body .button {
   cursor: pointer;
 }
