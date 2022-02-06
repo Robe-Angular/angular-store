@@ -162,12 +162,46 @@ body{
         .direction-right{
           text-align: right;  
         }
+
         .direction-left{
             text-align: left;  
-          }
+        }
+        .supplement{
+            margin: 0px auto;
+        }
+
+        span.pages{
+            color: $primary-color;
+        }
+        .pages{
+            margin-left: 15px;
+        }
+        
+    }
+    .pagination{
+        #pages{
+            width: 260px;
+            text-align: center;
+        }
+        
+
     }
     .button{
         cursor: pointer;
+    }
+
+    .supplement{
+        @include remove-input-default();
+        background: none;
+        color: $access-buttons-color;                    
+        padding: 0;                    
+        margin-left: $access-margin-left;
+        margin-top: $field-login-margin-top;
+        margin-bottom: 30px;
+    }
+    .supplement:hover{
+        color: $access-buttons-color-hover;
+        cursor:pointer;
     }
     
     .consumerForm, .consumerInfo{
@@ -252,19 +286,6 @@ body{
             box-shadow: none;
             cursor: default;
         }                
-        .supplement{
-            @include remove-input-default();
-            background: none;
-            color: $access-buttons-color;                    
-            padding: 0;                    
-            margin-left: $access-margin-left;
-            margin-top: $field-login-margin-top;
-            margin-bottom: 30px;
-        }
-        .supplement:hover{
-            color: $access-buttons-color-hover;
-            cursor:pointer;
-        }
     }
     #content{
         display: grid;

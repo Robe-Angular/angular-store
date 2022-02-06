@@ -72,7 +72,35 @@ body table .direction-right {
 body table .direction-left {
   text-align: left;
 }
+body table .supplement {
+  margin: 0px auto;
+}
+body table span.pages {
+  color: #323232;
+}
+body table .pages {
+  margin-left: 15px;
+}
+body .pagination #pages {
+  width: 260px;
+  text-align: center;
+}
 body .button {
+  cursor: pointer;
+}
+body .supplement {
+  border: none;
+  font: inherit;
+  outline: inherit;
+  background: none;
+  color: #db7b1c;
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+body .supplement:hover {
+  color: #FD9A3A;
   cursor: pointer;
 }
 body .consumerForm, body .consumerInfo {
@@ -160,21 +188,6 @@ body .consumerForm input[type=submit]:disabled, body .consumerInfo input[type=su
   background: #bdbdbd;
   box-shadow: none;
   cursor: default;
-}
-body .consumerForm .supplement, body .consumerInfo .supplement {
-  border: none;
-  font: inherit;
-  outline: inherit;
-  background: none;
-  color: #db7b1c;
-  padding: 0;
-  margin-left: 30px;
-  margin-top: 15px;
-  margin-bottom: 30px;
-}
-body .consumerForm .supplement:hover, body .consumerInfo .supplement:hover {
-  color: #FD9A3A;
-  cursor: pointer;
 }
 body #content {
   display: grid;

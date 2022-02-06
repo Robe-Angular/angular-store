@@ -93,7 +93,12 @@ export class UserService{
 	getUsers(page:number,sort:string, token:string):Observable<any>{
 		let headers = new HttpHeaders().set('content-Type', 'application/x-www-form-urlencoded')
 			.set('Authorization', token);
-		return this._http.get(this.url + 'users/' + page + '/' + sort, {headers: headers});
+
+		
+		let pageString = page.toString()
+		let requestString = '';
+		requestString = sort == '' ? this.url + 'users/' + pageString : this.url + 'users/' + pageString + '/' + sort;
+		return this._http.get(requestString, {headers: headers});
 	}
 
 

@@ -1,22 +1,50 @@
 <div class="unique-wrapper">
-    <table class="unique">
-        <tr>
-            <th>Nick</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Correo</th>
-        </tr>
-        <tr *ngFor="let consumer of consumers">
-            <td>{{consumer.nick}}</td>
-            <td>{{consumer.name}}</td>
-            <td>{{consumer.lastName}}</td>
-            <td>{{consumer.email}}</td>
+    <div class="unique">
+        <table>
+            <tr>
+                <th>Nick</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+            </tr>
+            <tr *ngFor="let consumer of consumers">
+                <td>{{consumer.nick}}</td>
+                <td>{{consumer.name}}</td>
+                <td>{{consumer.lastName}}</td>
+                <td>{{consumer.email}}</td>
+        
+            </tr>
+            
+        </table>
+        <table class="pagination">
+            <tr>
+                <td class="direction-left">
+                    <button type="button" class="supplement" (click)="goPage(page-1)" *ngIf="page!=1">
+                        <span class="symbol">< </span>Anterior
+                    </button>
+                    
+                </td>
+                <td id="pages">
+                    
+                    <button type="button" class="supplement pages" (click)="goPage(1)" *ngIf="page!=1">1</button>
+                    <span class="supplement pages" *ngIf="ellipses[1]">...</span>
+                    <button type="button" class="supplement pages" (click)="goPage(pageInitHalf)" *ngIf="page!=pageInitHalf && 1 != pageInitHalf">{{pageInitHalf}}</button>
+                    <span class="supplement pages" *ngIf="ellipses[2]">...</span>
+                    <span class="supplement pages">{{page}}</span>
+                    <span class="supplement pages" *ngIf="ellipses[3]">...</span>
+                    <button type="button" class="supplement pages" (click)="goPage(pageFinalHalf)" *ngIf="page!=pageFinalHalf && pages != pageFinalHalf">{{pageFinalHalf}}</button>
+                    <span class="supplement pages" *ngIf="ellipses[4]">...</span>
+                    <button type="button" class="supplement pages" (click)="goPage(pages)" *ngIf="page!=pages">{{pages}}</button>
+                </td>
+                <td class="direction-right">
+                    <button type="button" class="supplement" (click)="goPage(page + 1)" *ngIf="page!=pages">
+                        Siguiente <span class="symbol">></span>
+                    </button>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
     
-        </tr>
-        <tr>
-            <td colspan="2" class="direction-left"><span class="symbol">< </span>Anterior</td>
-            <td colspan="2" class="direction-right">Siguiente <span class="symbol">></span></td>
-        </tr>
-    </table>
 </div>
 

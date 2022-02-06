@@ -23,7 +23,7 @@
         <label>Teléfono</label>
         <p>{{consumer.telephone}}</p>
 
-        <button type="button" id="notReceived" class="supplement" (click)="editView()">Editar</button>
+        <button type="button" class="supplement" (click)="editView()">Editar</button>
     </div>
     <div id="update" class="consumerForm unique" *ngIf="isEdit && !(status == 'emailSuccess' || status == 'noMatchCodeError')">
         <h2>Actualizar</h2>
