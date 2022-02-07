@@ -88,6 +88,11 @@ body .wrapper-table {
 body .wrapper-table table {
   display: inline-block;
 }
+@media (min-width: 0px) and (max-width: 480px) {
+  body .pagination .direction-text {
+    font-size: 0px;
+  }
+}
 body .pagination #pages {
   width: 260px;
   text-align: center;

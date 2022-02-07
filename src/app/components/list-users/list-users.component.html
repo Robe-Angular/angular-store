@@ -26,7 +26,7 @@
             <tr>
                 <td class="direction-left">
                     <button type="button" class="supplement" (click)="goPage(page-1)" *ngIf="page!=1">
-                        <span class="symbol">< </span>Anterior
+                        <span class="symbol">< </span><span class="direction-text">Anterior</span>
                     </button>
                     
                 </td>
@@ -44,7 +44,7 @@
                 </td>
                 <td class="direction-right">
                     <button type="button" class="supplement" (click)="goPage(page + 1)" *ngIf="page!=pages">
-                        Siguiente <span class="symbol">></span>
+                        <span class="direction-text">Siguiente</span> <span class="symbol"> ></span>
                     </button>
                     
                 </td>

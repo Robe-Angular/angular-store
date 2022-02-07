@@ -187,6 +187,11 @@ body{
         }
     }
     .pagination{
+        .direction-text{
+            @include custom-media(0px,$lg-phone){
+                font-size: 0px;
+            }
+        }
         #pages{
             width: 260px;
             text-align: center;
