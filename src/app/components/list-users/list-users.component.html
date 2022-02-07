@@ -1,21 +1,27 @@
 <div class="unique-wrapper">
     <div class="unique">
-        <table>
-            <tr>
-                <th>Nick</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Correo</th>
-            </tr>
-            <tr *ngFor="let consumer of consumers">
-                <td>{{consumer.nick}}</td>
-                <td>{{consumer.name}}</td>
-                <td>{{consumer.lastName}}</td>
-                <td>{{consumer.email}}</td>
-        
-            </tr>
+        <div class="wrapper-table">
             
-        </table>
+            <table>
+                <tr>
+                    <th>Nick</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                </tr>
+                <tr *ngFor="let consumer of consumers">
+                    <td><a [routerLink]="['/consumer',consumer._id]" class="supplement">{{consumer.nick}}</a></td>
+                    <td>{{consumer.name}}</td>
+                    <td>{{consumer.lastName}}</td>
+                    <td>{{consumer.email}}</td>
+            
+                </tr>
+                
+        
+            </table>
+            
+        </div>
+        
         <table class="pagination">
             <tr>
                 <td class="direction-left">

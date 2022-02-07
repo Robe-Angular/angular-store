@@ -155,6 +155,7 @@ body{
         color: inherit; 
         text-decoration: inherit;
     } 
+    
     table{
         th{
             color: #555555;
@@ -177,6 +178,13 @@ body{
             margin-left: 15px;
         }
         
+    }
+    .wrapper-table{
+        width: 100%;
+        text-align: center;
+        table{
+            display: inline-block;
+        }
     }
     .pagination{
         #pages{

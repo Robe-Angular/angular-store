@@ -81,6 +81,13 @@ body table span.pages {
 body table .pages {
   margin-left: 15px;
 }
+body .wrapper-table {
+  width: 100%;
+  text-align: center;
+}
+body .wrapper-table table {
+  display: inline-block;
+}
 body .pagination #pages {
   width: 260px;
   text-align: center;

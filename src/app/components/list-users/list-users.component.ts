@@ -79,28 +79,22 @@ export class ListUsersComponent implements OnInit {
     };
     let pagesTargeted = [firstVisible, initHalfVisible, page ,finalHalfVisible, lastPageVisible];
     this.ellipses = [false,false,false,false]; // ellipses are ...
-    console.log(this.ellipses);
     let count = 0;//Count for index Ellipses array
     let firstValue = 0; //To compare between loops on forEach
     let secondValue = 0; //Íbidem
 
     pagesTargeted.forEach( target => {
-      console.log(target);
-      
       if(target.visible && firstValue == 0){
         firstValue = target.value;
       }else if(target.visible && firstValue != 0){
         secondValue = target.value;
         if(secondValue - 1 != firstValue){
-          console.log('true');
-          console.log(secondValue, firstValue, count);
           this.ellipses[count] = true;
         }
         firstValue = secondValue;
       }
       count += 1;     
     } );
-    console.log(this.ellipses);
   } //check consequence of numbers for ellipses
 
 }

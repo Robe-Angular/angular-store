@@ -14,6 +14,7 @@ export class ConsumerDataComponent implements OnInit {
   public consumer: User;
   public confirmationCode: ConfirmationCodeUpdate;
   public token: any;
+  public identity: any;
   public status: string;
   public isEdit: boolean;
 
@@ -24,12 +25,14 @@ export class ConsumerDataComponent implements OnInit {
   ) {
     this.consumer = new User('', '', '', '', '', '', 'ROLE-USER','',null);
     this.confirmationCode = new ConfirmationCodeUpdate('', '');
-    this.token = this._userService.getToken ();
+    this.token = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
     this.status = '';
     this.isEdit = false;
   }
   ngOnInit(): void {
     this.getParamsId();    
+    console.log(this.identity.user)
   }
 
   getConsumerData(){
