@@ -4,16 +4,18 @@
             
             <table>
                 <tr>
-                    <th>Nick</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
+                    <th><button class="supplement column-name" (click)="pageSort('nick')">Nick</button></th>
+                    <th><button class="supplement column-name" (click)="pageSort('name')">Nombre</button></th>
+                    <th><button class="supplement column-name" (click)="pageSort('lastName')">Apellidos</button></th>
+                    <th><button class="supplement column-name" (click)="pageSort('email')">Correo</button></th>
+                    <th><button class="supplement column-name" (click)="pageSort('createdAt')">Fecha de registro</button></th>
                 </tr>
                 <tr *ngFor="let consumer of consumers">
                     <td><a [routerLink]="['/consumer',consumer._id]" class="supplement">{{consumer.nick}}</a></td>
                     <td>{{consumer.name}}</td>
                     <td>{{consumer.lastName}}</td>
                     <td>{{consumer.email}}</td>
+                    <td>{{consumer.createdAt}}</td>
             
                 </tr>
                 

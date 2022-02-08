@@ -8,6 +8,7 @@ export class User{
         public password: string,
 		public role: string,	
 		public telephone: string,
+		public createdAt: string,
 		public gettoken: any
 	){}
 }

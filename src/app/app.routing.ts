@@ -8,19 +8,20 @@ import { ForgottenPasswordComponent } from './components/forgotten-password/forg
 import { ConsumerDataComponent } from './components/consumer-data/consumer-data.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 
-
-
+import { UserGuard } from './services/user.guard';
+import { NoUserGuard } from './services/no-user.guard';
+import { AdminGuard } from './services/admin.guard';
 
 //Definning Routes
 const appRoutes: Routes = [	
     {path: 'inicio', component: LoginComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'login/:action', component: LoginComponent},
+    {path: 'login', component: LoginComponent,canActivate:[NoUserGuard]},
+    {path: 'login/:action', component: LoginComponent,canActivate:[NoUserGuard]},
     {path: 'logout/:action', component: LoginComponent},
-    {path: 'verify-email/:errorSending', component: VerifyEmailComponent},
-    {path: 'forgotten', component: ForgottenPasswordComponent},
-    {path: 'consumer/:consumerId', component: ConsumerDataComponent},
-    {path: 'users', component: ListUsersComponent},
+    {path: 'verify-email/:errorSending', component: VerifyEmailComponent,canActivate:[NoUserGuard]},
+    {path: 'forgotten', component: ForgottenPasswordComponent,canActivate:[NoUserGuard]},
+    {path: 'consumer/:consumerId', component: ConsumerDataComponent,canActivate:[UserGuard]},
+    {path: 'users', component: ListUsersComponent,canActivate:[AdminGuard]},
 ];
 
 //Export configuration

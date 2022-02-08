@@ -11,7 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserService } from './services/user.service';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ForgottenPasswordComponent } from './components/forgotten-password/forgotten-password.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +18,11 @@ import { NetworkInterceptor } from './interceptors/network.interceptor';
 import { DotdotdotPipe } from './pipes/dotdotdot.pipe';
 import { ConsumerDataComponent } from './components/consumer-data/consumer-data.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
+
+import { UserGuard } from './services/user.guard';
+import { NoUserGuard } from './services/no-user.guard';
+import { AdminGuard } from './services/admin.guard';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,9 @@ import { ListUsersComponent } from './components/list-users/list-users.component
   providers: [
     appRoutingProviders,
     UserService,
+    UserGuard,
+    NoUserGuard,
+    AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: NetworkInterceptor,

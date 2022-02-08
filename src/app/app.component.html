@@ -14,7 +14,7 @@
 
       
       <div id="identity">
-
+        
         <div *ngIf='!identity; else logged'>
           <div id="login">
             <a [routerLink]="['/login']">Ingresar</a>
@@ -23,6 +23,7 @@
         <ng-template #logged>
           
           <div id="logged">
+            
             <div id="logout">
               <a [routerLink]="['/logout/logout']">Salir</a>              
             </div>
@@ -30,15 +31,24 @@
             <div id="logged-identity">
               Hola, <a [routerLink]="['/consumer',identity.user._id]">{{identity.user.nick | dotdotdot: 10}}</a>
             </div>
+            <div *ngIf="identity && identity.user.role == 'ROLE_ADMIN'">
+              <a [routerLink]="['/users']">Usuarios</a>
+            </div>
           </div>
-          
-          
         </ng-template>
 
       </div>   
       
     </div>
-    
+    <div id="admin-panel">
+      <ul>
+        <li>Modelo de Bota</li>
+        <li>Órdenes de compra</li>
+        <li>Carros activos</li>
+        <li>Pesos predefinidos</li>
+        <li>Palabras clave</li>
+      </ul> 
+    </div>
   </header>
 
   <main id="main">

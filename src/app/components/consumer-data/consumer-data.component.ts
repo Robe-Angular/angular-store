@@ -23,7 +23,7 @@ export class ConsumerDataComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute    
   ) {
-    this.consumer = new User('', '', '', '', '', '', 'ROLE-USER','',null);
+    this.consumer = new User('', '', '', '', '', '', 'ROLE-USER','','',null);
     this.confirmationCode = new ConfirmationCodeUpdate('', '');
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();

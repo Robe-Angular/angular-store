@@ -39,6 +39,11 @@ export class ListUsersComponent implements OnInit {
     this.goPage(this.page);
   }
   
+  pageSort(sort:string){
+    this.sort =  sort;
+    this.goPage(this.page);
+  }
+
   goPage(page:number){
     this._userService.getUsers(page, this.sort, this.token.token).subscribe(
       response => {

@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit{
     this.status = '';
     this.token = null;
     this.identity = null;
-    this.userLogin = new User('', '', '','', '', '','ROLE-USER', '',null);
-    this.userRegister = new User('', '', '', '', '', '', 'ROLE-USER','',null);
+    this.userLogin = new User('', '', '','', '', '','ROLE-USER', '','',null);
+    this.userRegister = new User('', '', '', '', '', '', 'ROLE-USER','','',null);
     this.confirmPwd = '';
   }
 
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit{
               localStorage.setItem('identity',JSON.stringify(this.identity));
               
               //Redirección
-              //this._router.navigate([]);
+              this._router.navigate(['/consumer',this.identity.user._id]);
             },
             error => {              
               this.status = 'loginError';
