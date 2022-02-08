@@ -328,6 +328,26 @@ body #header #navbar #identity #logout {
 body #header #navbar #identity #logout:hover {
   color: #CC0000;
 }
+body #header #admin-panel {
+  margin-top: 0px;
+  background-color: #EEEEEE;
+  display: block;
+  overflow: hidden;
+}
+body #header #admin-panel li {
+  color: #db7b1c;
+  margin-left: 5%;
+  display: block;
+  float: left;
+}
+body #header #admin-panel li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+body #header #admin-panel li:hover {
+  color: #FD9A3A;
+}
 body main {
   grid-area: 2/auto/3/auto;
 }

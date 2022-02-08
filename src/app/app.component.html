@@ -31,24 +31,21 @@
             <div id="logged-identity">
               Hola, <a [routerLink]="['/consumer',identity.user._id]">{{identity.user.nick | dotdotdot: 10}}</a>
             </div>
-            <div *ngIf="identity && identity.user.role == 'ROLE_ADMIN'">
-              <a [routerLink]="['/users']">Usuarios</a>
-            </div>
           </div>
         </ng-template>
 
       </div>   
       
     </div>
-    <div id="admin-panel">
-      <ul>
-        <li>Modelo de Bota</li>
-        <li>Órdenes de compra</li>
-        <li>Carros activos</li>
-        <li>Pesos predefinidos</li>
-        <li>Palabras clave</li>
-      </ul> 
-    </div>
+    <ul id="admin-panel" *ngIf="identity && identity.user.role == 'ROLE_ADMIN'">
+        <li><a [routerLink]="['/users']">Usuarios</a></li>
+        <li><a [routerLink]="['/users']">Modelo de Bota</a></li>
+        <li><a [routerLink]="['/inicio']">Órdenes de compra</a></li>
+        <li><a [routerLink]="['/users']">Carros activos</a></li>
+        <li><a [routerLink]="['/inicio']">Pesos predefinidos</a></li>
+        <li><a [routerLink]="['/users']">Palabras clave</a></li>
+      
+    </ul>
   </header>
 
   <main id="main">
