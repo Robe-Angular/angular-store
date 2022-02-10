@@ -22,8 +22,10 @@ $font-weight-identity: 700;
 
 $primary-color: #323232;
 $search-color:$primary-color;
+$identity-color: #545454;
 $unicode-close-color: #A3ABB8;
 
+$background-menus: #EEEEEE;
 $access-buttons-color: #db7b1c;
 $access-buttons-color-hover: #FD9A3A;
 $access-margin-left: 30px;
@@ -312,7 +314,7 @@ body{
         #navbar{
             display: block;
             overflow: hidden;
-            background-color: #EEEEEE;
+            background-color: $background-menus;
             background-repeat: no-repeat;
             background-size: 1350px 100px;
             
@@ -389,7 +391,7 @@ body{
                 }
             }
             #identity{
-                color: #545454;
+                color: $identity-color;
                 line-height: 57px;
                 //background: inherit;
                 display: block;
@@ -430,7 +432,7 @@ body{
         }
         #admin-panel{
             margin-top: 0px;
-            background-color: #EEEEEE;
+            background-color: $background-menus;
             display: block;
             overflow: hidden;                
             li{
@@ -471,6 +473,26 @@ body{
                 float: none;
                 height: auto;
             }     
+            #admin-models-boot{
+                background-color: inherit;
+                margin: 123px auto;
+                padding: 0px;
+                li{
+                    line-height: 46px;
+                    margin: 0px 5px;
+                    font-size: 30px;
+                    list-style: none;
+                  a{
+                      display: block;
+                      width: 100%;
+                      height: 100%;
+                      color: $identity-color;
+                  }  
+                  a:hover{
+                    color: $access-buttons-color-hover;
+                  }
+                }
+            }
         }
         @include max-desktop(){
             #login{

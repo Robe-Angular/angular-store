@@ -23,6 +23,9 @@ import { UserGuard } from './services/user.guard';
 import { NoUserGuard } from './services/no-user.guard';
 import { AdminGuard } from './services/admin.guard';
 import { UserService } from './services/user.service';
+import { ModelsBootComponent } from './components/models-boot/models-boot.component';
+import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
+import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { UserService } from './services/user.service';
     ForgottenPasswordComponent,
     DotdotdotPipe,
     ConsumerDataComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ModelsBootComponent,
+    ModelsBootAdminComponent,
+    CreateModelBootComponent
   ],
   imports: [
     routing,

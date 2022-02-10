@@ -362,6 +362,26 @@ body main .unique-wrapper .unique {
   float: none;
   height: auto;
 }
+body main .unique-wrapper #admin-models-boot {
+  background-color: inherit;
+  margin: 123px auto;
+  padding: 0px;
+}
+body main .unique-wrapper #admin-models-boot li {
+  line-height: 46px;
+  margin: 0px 5px;
+  font-size: 30px;
+  list-style: none;
+}
+body main .unique-wrapper #admin-models-boot li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #545454;
+}
+body main .unique-wrapper #admin-models-boot li a:hover {
+  color: #FD9A3A;
+}
 @media (min-width: 1320px) {
   body main #login {
     margin-left: 14%;
