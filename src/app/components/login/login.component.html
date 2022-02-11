@@ -9,7 +9,7 @@
 <div class="wrapper">
 	<div id="login" class="access consumerForm">
 		<h2>Acceder</h2>
-		<form class="col-md-5 ml-0 pl-0" #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
+		<form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
 			
 			<label for="email">Email</label>
 			<input type="email" name="email" class="form-control" #emailLogin="ngModel" [(ngModel)]="userLogin.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
@@ -37,7 +37,7 @@
 <div class="wrapper">
 	<div id="register" class="access consumerForm">
 		<h2>Registrarse</h2>
-		<form class="col-md-5 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)" id="registerForm">
+		<form #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)" id="registerForm">
 			
 			<label for="email">Email</label>
 			<input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="userRegister.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">

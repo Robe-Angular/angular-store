@@ -18,14 +18,16 @@ import { NetworkInterceptor } from './interceptors/network.interceptor';
 import { DotdotdotPipe } from './pipes/dotdotdot.pipe';
 import { ConsumerDataComponent } from './components/consumer-data/consumer-data.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
+import { ModelsBootComponent } from './components/models-boot/models-boot.component';
+import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
+import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
 
 import { UserGuard } from './services/user.guard';
 import { NoUserGuard } from './services/no-user.guard';
 import { AdminGuard } from './services/admin.guard';
 import { UserService } from './services/user.service';
-import { ModelsBootComponent } from './components/models-boot/models-boot.component';
-import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
-import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
+import { ModelBootService } from './services/modelBoot.service';
+
 
 @NgModule({
   declarations: [
@@ -55,9 +57,11 @@ import { CreateModelBootComponent } from './components/create-model-boot/create-
   providers: [
     appRoutingProviders,
     UserService,
+    ModelBootService,
     UserGuard,
     NoUserGuard,
     AdminGuard,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: NetworkInterceptor,

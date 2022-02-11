@@ -24,7 +24,7 @@ export class ModelBootService{
 		let params = JSON.stringify(modelBoot);
 
 		let headers = new HttpHeaders().set('content-Type', 'application/json')
-            .set('Authorization', this.token);
+            .set('Authorization', this.token.token);
 
 		return this._http.post(this.url+'saveModel', params, {headers: headers});
 	}

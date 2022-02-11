@@ -27,7 +27,7 @@ export class CreateModelBootComponent implements OnInit {
         
   }
 
-  onSubmitRegister(form:any):void{
+  onSubmit(form:any):void{
     
     this._modelBootService.newModel(this.newModel).subscribe(
       response => {
@@ -40,11 +40,8 @@ export class CreateModelBootComponent implements OnInit {
         }
       },
       error => {
-        this.status = error.error.status == 300 ? 'registerInvalid':'registerError'       
-
-        if(error.error.userStored){
-          this._router.navigate(['verify-email','1']);
-        }        
+        console.log(error);
+        this.status = error.error && error.error.status == 300 ? 'createInvalid':'createError'       
       }
     );
   }
