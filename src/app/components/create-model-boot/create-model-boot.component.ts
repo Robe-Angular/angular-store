@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output ,EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { ModelBoot } from '../../models/modelBoot';
 import { ModelBootService } from '../../services/modelBoot.service';
@@ -10,6 +10,7 @@ import { ModelBootService } from '../../services/modelBoot.service';
 })
 export class CreateModelBootComponent implements OnInit {
   
+  messageEvent = new EventEmitter<string>();
   public newModel: ModelBoot;
   public status:string;
   constructor(
@@ -34,6 +35,7 @@ export class CreateModelBootComponent implements OnInit {
         //identity        
         if(response.status != Error){
           this.status = 'success';
+          this.messageEvent.emit('create-model-boot-success');
           this._router.navigate(['/models-boot']);
         }else{
           this.status = 'error';

@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./models-boot.component.css']
 })
 export class ModelsBootComponent implements OnInit {
-
-  constructor() { }
+  public createModelStatus: string;
+  constructor() { 
+    this.createModelStatus = '';
+  }
 
   ngOnInit(): void {
+  }
+
+  parentFeedback(feedback: string){
+    if(feedback = 'create-model-boot-success'){
+      this.createModelStatus = 'success';
+    }
   }
 
 }

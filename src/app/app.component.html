@@ -50,7 +50,7 @@
 
   <main id="main">
     
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="receiveMessage($event)" (deactivate)="reset($event)"></router-outlet>
   </main>
 
   <footer id="footer">
