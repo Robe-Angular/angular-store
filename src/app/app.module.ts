@@ -27,6 +27,7 @@ import { NoUserGuard } from './services/no-user.guard';
 import { AdminGuard } from './services/admin.guard';
 import { UserService } from './services/user.service';
 import { ModelBootService } from './services/modelBoot.service';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ModelBootService } from './services/modelBoot.service';
     ListUsersComponent,
     ModelsBootComponent,
     ModelsBootAdminComponent,
-    CreateModelBootComponent
+    CreateModelBootComponent,
+    PaginationComponent
   ],
   imports: [
     routing,

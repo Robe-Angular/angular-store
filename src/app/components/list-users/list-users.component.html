@@ -23,7 +23,8 @@
             </table>
             
         </div>
-        
+        <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
+
         <table class="pagination">
             <tr>
                 <td class="direction-left">
@@ -40,12 +41,12 @@
                     <span class="supplement pages" *ngIf="ellipses[2]">...</span>
                     <span class="supplement pages">{{page}}</span>
                     <span class="supplement pages" *ngIf="ellipses[3]">...</span>
-                    <button type="button" class="supplement pages" (click)="goPage(pageFinalHalf)" *ngIf="page!=pageFinalHalf && pages != pageFinalHalf">{{pageFinalHalf}}</button>
+                    <button type="button" class="supplement pages" (click)="goPage(pageFinalHalf)" *ngIf="page!=pageFinalHalf && pagesParent != pageFinalHalf">{{pageFinalHalf}}</button>
                     <span class="supplement pages" *ngIf="ellipses[4]">...</span>
-                    <button type="button" class="supplement pages" (click)="goPage(pages)" *ngIf="page!=pages">{{pages}}</button>
+                    <button type="button" class="supplement pages" (click)="goPage(pagesParent)" *ngIf="page!=pagesParent">{{pagesParent}}</button>
                 </td>
                 <td class="direction-right">
-                    <button type="button" class="supplement" (click)="goPage(page + 1)" *ngIf="page!=pages">
+                    <button type="button" class="supplement" (click)="goPage(page + 1)" *ngIf="page!=pagesParent">
                         <span class="direction-text">Siguiente</span> <span class="symbol"> ></span>
                     </button>
                     

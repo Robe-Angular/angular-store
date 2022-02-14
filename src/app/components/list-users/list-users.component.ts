@@ -7,12 +7,12 @@ import{ User } from '../../models/user'
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.css']
 })
-export class ListUsersComponent implements OnInit {
+export class ListUsersComponent implements OnInit{
   public consumers: Array<User>;
   public ellipses: Array<Boolean>;
   public page: number;
   public total: number;
-  public pages: number;
+  public pagesParent: number;
   public pageInitHalf: number;
   public pageFinalHalf: number;
   public sort: string;
@@ -28,13 +28,13 @@ export class ListUsersComponent implements OnInit {
     this.pageInitHalf = 0;
     this.pageFinalHalf = 0;
     this.total = 0;
-    this.pages = 0;
+    this.pagesParent = 0;
     this.sort = '';
     this.status = '';
     this.ellipses = [];
     this.token = this._userService.getToken ();
   }
-
+  
   ngOnInit(): void {
     this.goPage(this.page);
   }
@@ -45,14 +45,14 @@ export class ListUsersComponent implements OnInit {
   }
 
   goPage(page:number){
-    this._userService.getUsers(page, this.sort, this.token.token).subscribe(
+      this._userService.getUsers(page, this.sort, this.token.token).subscribe(
       response => {
         this.consumers = response.users;
         this.total = response.total;
         this.page = parseInt(response.page);
-        this.pages = response.pages;
+        this.pagesParent = response.pages;
         this.pageInitHalf = Math.ceil(this.page/2);
-        this.pageFinalHalf = Math.ceil(this.page + (this.pages - this.page)/2);
+        this.pageFinalHalf = Math.ceil(this.page + (this.pagesParent - this.page)/2);
         this.checkSequence();
         this.status = 'success'
       }, error => {
@@ -60,7 +60,9 @@ export class ListUsersComponent implements OnInit {
       }
     );
   }
-
+  getPage($event:any){
+    this.goPage($event);
+  }
   checkSequence(){
     let firstVisible = {
       visible: this.page != 1,
@@ -75,12 +77,12 @@ export class ListUsersComponent implements OnInit {
       value: this.page
     };
     let finalHalfVisible = {
-      visible: this.page != this.pageFinalHalf && this.pages != this.pageFinalHalf,
+      visible: this.page != this.pageFinalHalf && this.pagesParent != this.pageFinalHalf,
       value: this.pageFinalHalf
     };
     let lastPageVisible = {
-      visible: this.page != this.pages,
-      value: this.pages
+      visible: this.page != this.pagesParent,
+      value: this.pagesParent
     };
     let pagesTargeted = [firstVisible, initHalfVisible, page ,finalHalfVisible, lastPageVisible];
     this.ellipses = [false,false,false,false]; // ellipses are ...

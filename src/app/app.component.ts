@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, DoCheck, AfterViewChecked{
 
   	loadUser(){
 		this.identity = this._userService.getIdentity();
-		this.token = this._userService.getToken();		
+		this.token = this._userService.getToken();
 	}
 
 	receiveMessage($event:any){

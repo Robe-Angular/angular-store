@@ -28,4 +28,13 @@ export class ModelBootService{
 
 		return this._http.post(this.url+'saveModel', params, {headers: headers});
 	}
+
+	getModels(page:number = 1, sort:string = ''):Observable<any>{
+		let reqUrlSuffix = sort != '' ? page.toString() : page.toString() + '/' + sort;
+		console.log(reqUrlSuffix);
+		let headers = new HttpHeaders().set('content-Type', 'application/json');
+		return this._http.get(this.url + 'getModels/' + reqUrlSuffix, {headers: headers});
+	}
+
+
 }
