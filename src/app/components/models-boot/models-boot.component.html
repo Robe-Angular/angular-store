@@ -3,3 +3,5 @@
     {{modelBoot.title}}
     <img alt="{{modelBoot.description}}{{i}}" src="{{url}}getImageModelBoot/{{modelBoot.mainImage}}" />
 </article>
+
+<app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>

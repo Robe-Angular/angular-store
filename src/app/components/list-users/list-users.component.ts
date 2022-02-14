@@ -9,7 +9,7 @@ import{ User } from '../../models/user'
 })
 export class ListUsersComponent implements OnInit{
   public consumers: Array<User>;
-  public ellipses: Array<Boolean>;
+  //public ellipses: Array<Boolean>;
   public page: number;
   public total: number;
   public pagesParent: number;
@@ -31,7 +31,7 @@ export class ListUsersComponent implements OnInit{
     this.pagesParent = 0;
     this.sort = '';
     this.status = '';
-    this.ellipses = [];
+    //this.ellipses = [];
     this.token = this._userService.getToken ();
   }
   
@@ -53,7 +53,7 @@ export class ListUsersComponent implements OnInit{
         this.pagesParent = response.pages;
         this.pageInitHalf = Math.ceil(this.page/2);
         this.pageFinalHalf = Math.ceil(this.page + (this.pagesParent - this.page)/2);
-        this.checkSequence();
+        //this.checkSequence();
         this.status = 'success'
       }, error => {
         this.status = 'error'
@@ -63,6 +63,8 @@ export class ListUsersComponent implements OnInit{
   getPage($event:any){
     this.goPage($event);
   }
+
+  /*
   checkSequence(){
     let firstVisible = {
       visible: this.page != 1,
@@ -103,6 +105,7 @@ export class ListUsersComponent implements OnInit{
       count += 1;     
     } );
   } //check consequence of numbers for ellipses
+  */
 
 }
 
