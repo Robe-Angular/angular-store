@@ -1,7 +1,7 @@
 <div class="success feedback" *ngIf="createModelStatus == 'success'">Modelo creado exitosamente</div>
 <article *ngFor="let modelBoot of modelsBoot; index as i">
     {{modelBoot.title}}
-    <img alt="{{modelBoot.description}}{{i}}" src="{{url}}getImageModelBoot/{{modelBoot.mainImage}}" />
+    <img alt="{{modelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + modelBoot.mainImage + '/' + modelBoot.description | imageName}}" />
 </article>
 
 <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>

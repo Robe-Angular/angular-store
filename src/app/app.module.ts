@@ -28,6 +28,7 @@ import { AdminGuard } from './services/admin.guard';
 import { UserService } from './services/user.service';
 import { ModelBootService } from './services/modelBoot.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ImageNamePipe } from './pipes/image-name.pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ModelsBootComponent,
     ModelsBootAdminComponent,
     CreateModelBootComponent,
-    PaginationComponent
+    PaginationComponent,
+    ImageNamePipe
   ],
   imports: [
     routing,

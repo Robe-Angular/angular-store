@@ -38,13 +38,7 @@ export class ModelsBootComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._modelBootService.getModels().subscribe(
-      response => {
-        this.modelsBoot = response.modelBoots;//modelBoots many modelsBoot :P Sorry
-      },error => {
-
-      }
-    );
+    this.goPage(this.page);
   }
   getPage(page:number){
     this.goPage(page);
