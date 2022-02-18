@@ -24,36 +24,7 @@
             
         </div>
         <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
-        <!--
-            <table class="pagination">
-                <tr>
-                    <td class="direction-left">
-                        <button type="button" class="supplement" (click)="goPage(page-1)" *ngIf="page!=1">
-                            <span class="symbol">< </span><span class="direction-text">Anterior</span>
-                        </button>
-                        
-                    </td>
-                    <td id="pages">
-                        
-                        <button type="button" class="supplement pages" (click)="goPage(1)" *ngIf="page!=1">1</button>
-                        <span class="supplement pages" *ngIf="ellipses[1]">...</span>
-                        <button type="button" class="supplement pages" (click)="goPage(pageInitHalf)" *ngIf="page!=pageInitHalf && 1 != pageInitHalf">{{pageInitHalf}}</button>
-                        <span class="supplement pages" *ngIf="ellipses[2]">...</span>
-                        <span class="supplement pages">{{page}}</span>
-                        <span class="supplement pages" *ngIf="ellipses[3]">...</span>
-                        <button type="button" class="supplement pages" (click)="goPage(pageFinalHalf)" *ngIf="page!=pageFinalHalf && pagesParent != pageFinalHalf">{{pageFinalHalf}}</button>
-                        <span class="supplement pages" *ngIf="ellipses[4]">...</span>
-                        <button type="button" class="supplement pages" (click)="goPage(pagesParent)" *ngIf="page!=pagesParent">{{pagesParent}}</button>
-                    </td>
-                    <td class="direction-right">
-                        <button type="button" class="supplement" (click)="goPage(page + 1)" *ngIf="page!=pagesParent">
-                            <span class="direction-text">Siguiente</span> <span class="symbol"> ></span>
-                        </button>
-                        
-                    </td>
-                </tr>
-            </table>
-        -->
+        
     </div>
     
 </div>

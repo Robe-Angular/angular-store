@@ -15,6 +15,7 @@ export class ImageNamePipe implements PipeTransform {
       .replaceAll('í','i')
       .replaceAll('ó','o')
       .replaceAll('ú','u')
+      .replaceAll(',','');
 
     console.log(noConflictiveCharakters);
     valueSplitDash[6] =  noConflictiveCharakters + '.' +getMime[1];

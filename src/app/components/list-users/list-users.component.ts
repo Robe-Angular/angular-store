@@ -9,7 +9,7 @@ import{ User } from '../../models/user'
 })
 export class ListUsersComponent implements OnInit{
   public consumers: Array<User>;
-  //public ellipses: Array<Boolean>;
+  
   public page: number;
   public total: number;
   public pagesParent: number;
@@ -31,7 +31,7 @@ export class ListUsersComponent implements OnInit{
     this.pagesParent = 0;
     this.sort = '';
     this.status = '';
-    //this.ellipses = [];
+    
     this.token = this._userService.getToken ();
   }
   
@@ -63,49 +63,5 @@ export class ListUsersComponent implements OnInit{
   getPage($event:any){
     this.goPage($event);
   }
-
-  /*
-  checkSequence(){
-    let firstVisible = {
-      visible: this.page != 1,
-      value: 1
-    };
-    let initHalfVisible = {
-      visible: this.page != this.pageInitHalf && 1 != this.pageInitHalf,
-      value: this.pageInitHalf
-    };
-    let page = {
-      visible: true,
-      value: this.page
-    };
-    let finalHalfVisible = {
-      visible: this.page != this.pageFinalHalf && this.pagesParent != this.pageFinalHalf,
-      value: this.pageFinalHalf
-    };
-    let lastPageVisible = {
-      visible: this.page != this.pagesParent,
-      value: this.pagesParent
-    };
-    let pagesTargeted = [firstVisible, initHalfVisible, page ,finalHalfVisible, lastPageVisible];
-    this.ellipses = [false,false,false,false]; // ellipses are ...
-    let count = 0;//Count for index Ellipses array
-    let firstValue = 0; //To compare between loops on forEach
-    let secondValue = 0; //Íbidem
-
-    pagesTargeted.forEach( target => {
-      if(target.visible && firstValue == 0){
-        firstValue = target.value;
-      }else if(target.visible && firstValue != 0){
-        secondValue = target.value;
-        if(secondValue - 1 != firstValue){
-          this.ellipses[count] = true;
-        }
-        firstValue = secondValue;
-      }
-      count += 1;     
-    } );
-  } //check consequence of numbers for ellipses
-  */
-
 }
 
