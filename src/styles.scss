@@ -31,6 +31,8 @@ $access-buttons-color-hover: #FD9A3A;
 $access-margin-left: 30px;
 $field-login-margin-top: 15px;
 
+$border-main: 2px solid #d3d3d3;
+
 
 
 @mixin display-block-float($direction: left) {
@@ -231,7 +233,7 @@ body{
             width: 70%;
         }
         background-color: #f7f7f7;
-        border-top: 2px solid #d3d3d3;
+        border-top: $border-main;
     
         h2{
             color: #555555;                    
@@ -531,6 +533,35 @@ body{
                 
             }
         }
+        #list-models{
+            width: 70%;
+            display: block;
+
+            article{
+                display: block;
+                width: 100%;
+                overflow: hidden;
+
+                .image-wrapper{
+                    overflow: hidden;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                    height: 254px;
+                    width: 254px;
+                    display: block;
+                    float: left;
+                    border-bottom: $border-main;
+                }
+
+                .title{
+                    display: block;
+                    float: left;
+                }
+            }
+        }
+
     }
 
     #footer{           

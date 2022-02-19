@@ -421,6 +421,31 @@ body main .unique-wrapper #admin-models-boot li a:hover {
     height: 650px;
   }
 }
+body main #list-models {
+  width: 70%;
+  display: block;
+}
+body main #list-models article {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+body main #list-models article .image-wrapper {
+  overflow: hidden;
+  height: 254px;
+  width: 254px;
+  display: block;
+  float: left;
+  border-bottom: 2px solid #d3d3d3;
+}
+body main #list-models article .image-wrapper img {
+  height: 100%;
+  width: 100%;
+}
+body main #list-models article .title {
+  display: block;
+  float: left;
+}
 body #footer {
   grid-area: 3/auto/4/auto;
 }
