@@ -9,13 +9,13 @@
         <td id="pages">
             
             <button type="button" class="supplement pages" (click)="sendPage(1)" *ngIf="page!=1">1</button>
-            <span class="supplement pages" *ngIf="ellipses[1]">...</span>
+            <span class="supplement pages ellipses" *ngIf="ellipses[1]">...</span>
             <button type="button" class="supplement pages" (click)="sendPage(pageInitHalfChild)" *ngIf="page!=pageInitHalfChild && 1 != pageInitHalfChild">{{pageInitHalfChild}}</button>
-            <span class="supplement pages" *ngIf="ellipses[2]">...</span>
+            <span class="supplement pages ellipses" *ngIf="ellipses[2]">...</span>
             <span class="supplement pages">{{page}}</span>
-            <span class="supplement pages" *ngIf="ellipses[3]">...</span>
+            <span class="supplement pages ellipses" *ngIf="ellipses[3]">...</span>
             <button type="button" class="supplement pages" (click)="sendPage(pageFinalHalfChild)" *ngIf="page!=pageFinalHalfChild && pagesChild != pageFinalHalfChild">{{pageFinalHalfChild}}</button>
-            <span class="supplement pages" *ngIf="ellipses[4]">...</span>
+            <span class="supplement pages ellipses" *ngIf="ellipses[4]">...</span>
             <button type="button" class="supplement pages" (click)="sendPage(pagesChild)" *ngIf="page!=pagesChild">{{pagesChild}}</button>
         </td>
         <td class="direction-right">

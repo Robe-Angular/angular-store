@@ -8,6 +8,7 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -29,6 +30,7 @@ import { UserService } from './services/user.service';
 import { ModelBootService } from './services/modelBoot.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ImageNamePipe } from './pipes/image-name.pipe';
+import { ModelBootBuyComponent } from './components/model-boot-buy/model-boot-buy.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
     ModelsBootAdminComponent,
     CreateModelBootComponent,
     PaginationComponent,
-    ImageNamePipe
+    ImageNamePipe,
+    ModelBootBuyComponent
   ],
   imports: [
     routing,
@@ -56,6 +59,7 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatButtonModule,
+    MatFormFieldModule,
     HttpClientModule
   ],
   providers: [

@@ -181,6 +181,10 @@ body{
         .pages{
             margin-left: 15px;
         }
+        .ellipses:hover{
+            cursor:default;
+            color: black;
+        }
         
     }
     .wrapper-table{
@@ -307,7 +311,7 @@ body{
     #content{
         display: grid;
         grid-template-columns: auto;
-        grid-template-rows: 1fr 6fr 1fr;
+        grid-template-rows: auto 6fr 1fr;       
     }
     
     #header{
@@ -468,7 +472,7 @@ body{
         .unique-wrapper {
             text-align: center;
             .unique{
-                margin-top: 85px;
+                margin-top: 4%;
                 margin-left: auto;
                 display: inline-block;
                 text-align: initial;
@@ -498,12 +502,14 @@ body{
         }
         @include max-desktop(){
             #login{
+                margin-top: 4%;
                 margin-left: 14%;
                 height: 400px;
             }
             #register{
                 margin-left: 2%;
                 height: 650px;
+                margin-top: 4%;
             }
             
         }
@@ -536,6 +542,7 @@ body{
         #list-models{
             width: 70%;
             display: block;
+            margin-top: 10px;
 
             article{
                 display: block;
@@ -544,6 +551,7 @@ body{
 
                 .image-wrapper{
                     overflow: hidden;
+                    padding: 10px;
                     img{
                         height: 100%;
                         width: 100%;
@@ -555,9 +563,31 @@ body{
                     border-bottom: $border-main;
                 }
 
-                .title{
-                    display: block;
-                    float: left;
+                .modelBootContent{
+                    margin-left: 20px;
+                    margin-top: 20px;
+                    & {
+                        display: block;
+                        float: left;
+                        font:400 14px/7px Roboto, "Helvetica Neue", sans-serif;
+                        
+                    }
+
+                    h1{
+                        margin-bottom: 0px;
+                    }
+                    .description{
+                        margin-bottom: 10px;
+                    }
+                    .price{
+                        font: 400 24px/1.25 Roboto, "Helvetica Neue", sans-serif;
+                        margin-bottom: 10px;
+                    }
+                    .disponibility{
+                        font-family: 'Roboto',sans-serif;
+                        font-weight: 300;
+                        font-size: 16px;
+                    }
                 }
             }
         }

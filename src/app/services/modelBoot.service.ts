@@ -36,5 +36,9 @@ export class ModelBootService{
 		return this._http.get(this.url + 'getModels/' + reqUrlSuffix, {headers: headers});
 	}
 
+	getModelBootSizes(modelBootId:string):Observable<any>{
+		let headers = new HttpHeaders().set('content-Type', 'application/json');
+		return this._http.get(this.url + 'getModel/' + modelBootId , {headers: headers});
+	}
 
 }

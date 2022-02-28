@@ -81,6 +81,10 @@ body table span.pages {
 body table .pages {
   margin-left: 15px;
 }
+body table .ellipses:hover {
+  cursor: default;
+  color: black;
+}
 body .wrapper-table {
   width: 100%;
   text-align: center;
@@ -204,7 +208,7 @@ body .consumerForm input[type=submit]:disabled, body .consumerInfo input[type=su
 body #content {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 1fr 6fr 1fr;
+  grid-template-rows: auto 6fr 1fr;
 }
 body #header {
   grid-area: 1/auto/2/auto;
@@ -355,7 +359,7 @@ body main .unique-wrapper {
   text-align: center;
 }
 body main .unique-wrapper .unique {
-  margin-top: 85px;
+  margin-top: 4%;
   margin-left: auto;
   display: inline-block;
   text-align: initial;
@@ -384,12 +388,14 @@ body main .unique-wrapper #admin-models-boot li a:hover {
 }
 @media (min-width: 1320px) {
   body main #login {
+    margin-top: 4%;
     margin-left: 14%;
     height: 400px;
   }
   body main #register {
     margin-left: 2%;
     height: 650px;
+    margin-top: 4%;
   }
 }
 @media (min-width: 0px) and (max-width: 1320px) {
@@ -424,6 +430,7 @@ body main .unique-wrapper #admin-models-boot li a:hover {
 body main #list-models {
   width: 70%;
   display: block;
+  margin-top: 10px;
 }
 body main #list-models article {
   display: block;
@@ -432,6 +439,7 @@ body main #list-models article {
 }
 body main #list-models article .image-wrapper {
   overflow: hidden;
+  padding: 10px;
   height: 254px;
   width: 254px;
   display: block;
@@ -442,9 +450,29 @@ body main #list-models article .image-wrapper img {
   height: 100%;
   width: 100%;
 }
-body main #list-models article .title {
+body main #list-models article .modelBootContent {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+body main #list-models article .modelBootContent {
   display: block;
   float: left;
+  font: 400 14px/7px Roboto, "Helvetica Neue", sans-serif;
+}
+body main #list-models article .modelBootContent h1 {
+  margin-bottom: 0px;
+}
+body main #list-models article .modelBootContent .description {
+  margin-bottom: 10px;
+}
+body main #list-models article .modelBootContent .price {
+  font: 400 24px/1.25 Roboto, "Helvetica Neue", sans-serif;
+  margin-bottom: 10px;
+}
+body main #list-models article .modelBootContent .disponibility {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
 }
 body #footer {
   grid-area: 3/auto/4/auto;

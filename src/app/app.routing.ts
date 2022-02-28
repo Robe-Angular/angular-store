@@ -10,6 +10,7 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { ModelsBootComponent } from './components/models-boot/models-boot.component';
 import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
 import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
+import { ModelBootBuyComponent } from './components/model-boot-buy/model-boot-buy.component';
 
 import { UserGuard } from './services/user.guard';
 import { NoUserGuard } from './services/no-user.guard';
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     {path: 'users', component: ListUsersComponent,canActivate:[AdminGuard]},
     {path: 'models-boot-admin', component: ModelsBootAdminComponent,canActivate:[AdminGuard]},
     {path: 'create-model-boot', component: CreateModelBootComponent,canActivate:[AdminGuard]},
-    {path: 'models-boot', component: ModelsBootComponent}
+    {path: 'models-boot', component: ModelsBootComponent},
+    {path: 'model-boot-buy', component: ModelBootBuyComponent}
 ];
 
 //Export configuration
