@@ -540,15 +540,16 @@ body{
             }
         }
         #list-models{
-            width: 70%;
-            display: block;
+            width: 40%;
+            display: inline-block;
             margin-top: 10px;
+            
 
             article{
                 display: block;
                 width: 100%;
                 overflow: hidden;
-
+                border: 1px solid black;
                 .image-wrapper{
                     overflow: hidden;
                     padding: 10px;
@@ -566,17 +567,18 @@ body{
                 .modelBootContent{
                     margin-left: 20px;
                     margin-top: 20px;
+                    width: 38%;
                     & {
                         display: block;
                         float: left;
-                        font:400 14px/7px Roboto, "Helvetica Neue", sans-serif;
-                        
+                        font:400 14px/14px Roboto, "Helvetica Neue", sans-serif;
                     }
 
                     h1{
                         margin-bottom: 0px;
                     }
                     .description{
+                        font: 400 14px/16px Roboto, "Helvetica Neue", sans-serif;
                         margin-bottom: 10px;
                     }
                     .price{
@@ -589,6 +591,10 @@ body{
                         font-size: 16px;
                     }
                 }
+            }
+
+            .pagination{
+                margin-top: 24px;
             }
         }
 

@@ -428,14 +428,15 @@ body main .unique-wrapper #admin-models-boot li a:hover {
   }
 }
 body main #list-models {
-  width: 70%;
-  display: block;
+  width: 40%;
+  display: inline-block;
   margin-top: 10px;
 }
 body main #list-models article {
   display: block;
   width: 100%;
   overflow: hidden;
+  border: 1px solid black;
 }
 body main #list-models article .image-wrapper {
   overflow: hidden;
@@ -453,16 +454,18 @@ body main #list-models article .image-wrapper img {
 body main #list-models article .modelBootContent {
   margin-left: 20px;
   margin-top: 20px;
+  width: 38%;
 }
 body main #list-models article .modelBootContent {
   display: block;
   float: left;
-  font: 400 14px/7px Roboto, "Helvetica Neue", sans-serif;
+  font: 400 14px/14px Roboto, "Helvetica Neue", sans-serif;
 }
 body main #list-models article .modelBootContent h1 {
   margin-bottom: 0px;
 }
 body main #list-models article .modelBootContent .description {
+  font: 400 14px/16px Roboto, "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
 }
 body main #list-models article .modelBootContent .price {
@@ -473,6 +476,9 @@ body main #list-models article .modelBootContent .disponibility {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 16px;
+}
+body main #list-models .pagination {
+  margin-top: 24px;
 }
 body #footer {
   grid-area: 3/auto/4/auto;

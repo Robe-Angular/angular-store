@@ -29,7 +29,9 @@
 
             </article>
         </a>
-
-        <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
+        <div class="pagination">
+            <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
+        </div>
+        
     </div>
 </div>
