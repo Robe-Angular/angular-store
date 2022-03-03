@@ -436,11 +436,12 @@ body{
 
             }
         }
-        #admin-panel{
+        #admin-wrapper{
             margin-top: 0px;
             background-color: $background-menus;
             display: block;
-            overflow: hidden;                
+            overflow: hidden;    
+            
             li{
                 color: $access-buttons-color;
                 margin-left: 5%;
@@ -455,6 +456,23 @@ body{
             li:hover{
                 color: $access-buttons-color-hover;
             }
+
+            @include custom-media(0px,$tablet){
+                text-align: center;
+                #admin-panel{
+                    display: inline-block;
+                    width: 50%;
+                    text-align: center;
+                    padding: 0%;
+                    li{
+                        font: 400 22px/28px Roboto, "Helvetica Neue", sans-serif;
+                        margin-left: 0%;
+                        width: 100%;
+                        overflow: hidden;
+                    }
+                }
+                
+            }   
             
         }
     }
@@ -475,7 +493,7 @@ body{
                 margin-top: 4%;
                 margin-left: auto;
                 display: inline-block;
-                text-align: initial;
+                text-align: center;
                 float: none;
                 height: auto;
             }     
@@ -498,6 +516,13 @@ body{
                     color: $access-buttons-color-hover;
                   }
                 }
+            }
+            #list-users{
+                text-align: left;
+            }
+
+            #pagination{
+                display: inline-block;
             }
         }
         @include max-desktop(){
@@ -543,13 +568,15 @@ body{
             width: 40%;
             display: inline-block;
             margin-top: 10px;
-            
-
+            text-align: center;
+            .pagination{
+                display:inline-block;
+            }
             article{
                 display: block;
                 width: 100%;
                 overflow: hidden;
-                border: 1px solid black;
+                text-align: left;
                 .image-wrapper{
                     overflow: hidden;
                     padding: 10px;
@@ -590,9 +617,36 @@ body{
                         font-weight: 300;
                         font-size: 16px;
                     }
+                    @include custom-media(0px, $tablet){
+                        width: 28%;
+                        h1{
+                            font: 400 18px/18px Roboto, "Helvetica Neue", sans-serif;
+                        }
+                        .description{
+                            font: 400 12px/12px Roboto, "Helvetica Neue", sans-serif;
+                            margin-bottom: 10px;
+                        }
+                        .price{
+                            font: 400 18px/1 Roboto, "Helvetica Neue", sans-serif;
+                            margin-bottom: 5px;
+                        }
+                        .disponibility{
+                            font-family: 'Roboto',sans-serif;
+                            font-weight: 300;
+                            font-size: 14px;
+                        }
+                    }
                 }
+                
             }
+            @include custom-media(0px, $desktop){
+                width: 56%;
 
+            }
+            @include custom-media(0px, $tablet){
+                width: 80%;
+
+            }
             .pagination{
                 margin-top: 24px;
             }

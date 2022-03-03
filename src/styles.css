@@ -332,25 +332,42 @@ body #header #navbar #identity #logout {
 body #header #navbar #identity #logout:hover {
   color: #CC0000;
 }
-body #header #admin-panel {
+body #header #admin-wrapper {
   margin-top: 0px;
   background-color: #EEEEEE;
   display: block;
   overflow: hidden;
 }
-body #header #admin-panel li {
+body #header #admin-wrapper li {
   color: #db7b1c;
   margin-left: 5%;
   display: block;
   float: left;
 }
-body #header #admin-panel li a {
+body #header #admin-wrapper li a {
   display: block;
   width: 100%;
   height: 100%;
 }
-body #header #admin-panel li:hover {
+body #header #admin-wrapper li:hover {
   color: #FD9A3A;
+}
+@media (min-width: 0px) and (max-width: 960px) {
+  body #header #admin-wrapper {
+    text-align: center;
+  }
+  body #header #admin-wrapper #admin-panel {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    padding: 0%;
+  }
+  body #header #admin-wrapper #admin-panel li {
+    font: 400 22px/28px Roboto, "Helvetica Neue", sans-serif;
+    margin-left: 0%;
+    width: 100%;
+    overflow: hidden;
+  }
 }
 body main {
   grid-area: 2/auto/3/auto;
@@ -362,7 +379,7 @@ body main .unique-wrapper .unique {
   margin-top: 4%;
   margin-left: auto;
   display: inline-block;
-  text-align: initial;
+  text-align: center;
   float: none;
   height: auto;
 }
@@ -385,6 +402,12 @@ body main .unique-wrapper #admin-models-boot li a {
 }
 body main .unique-wrapper #admin-models-boot li a:hover {
   color: #FD9A3A;
+}
+body main .unique-wrapper #list-users {
+  text-align: left;
+}
+body main .unique-wrapper #pagination {
+  display: inline-block;
 }
 @media (min-width: 1320px) {
   body main #login {
@@ -431,12 +454,16 @@ body main #list-models {
   width: 40%;
   display: inline-block;
   margin-top: 10px;
+  text-align: center;
+}
+body main #list-models .pagination {
+  display: inline-block;
 }
 body main #list-models article {
   display: block;
   width: 100%;
   overflow: hidden;
-  border: 1px solid black;
+  text-align: left;
 }
 body main #list-models article .image-wrapper {
   overflow: hidden;
@@ -476,6 +503,37 @@ body main #list-models article .modelBootContent .disponibility {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 16px;
+}
+@media (min-width: 0px) and (max-width: 960px) {
+  body main #list-models article .modelBootContent {
+    width: 28%;
+  }
+  body main #list-models article .modelBootContent h1 {
+    font: 400 18px/18px Roboto, "Helvetica Neue", sans-serif;
+  }
+  body main #list-models article .modelBootContent .description {
+    font: 400 12px/12px Roboto, "Helvetica Neue", sans-serif;
+    margin-bottom: 10px;
+  }
+  body main #list-models article .modelBootContent .price {
+    font: 400 18px/1 Roboto, "Helvetica Neue", sans-serif;
+    margin-bottom: 5px;
+  }
+  body main #list-models article .modelBootContent .disponibility {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+  }
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body main #list-models {
+    width: 56%;
+  }
+}
+@media (min-width: 0px) and (max-width: 960px) {
+  body main #list-models {
+    width: 80%;
+  }
 }
 body main #list-models .pagination {
   margin-top: 24px;

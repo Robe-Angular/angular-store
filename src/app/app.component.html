@@ -37,7 +37,8 @@
       </div>   
       
     </div>
-    <ul id="admin-panel" *ngIf="identity && identity.user.role == 'ROLE_ADMIN'">
+    <div id="admin-wrapper">
+      <ul id="admin-panel" *ngIf="identity && identity.user.role == 'ROLE_ADMIN'">
         <li><a [routerLink]="['/users']">Usuarios</a></li>
         <li><a [routerLink]="['/models-boot-admin']">Modelos de Bota</a></li>
         <li><a [routerLink]="['/inicio']">Órdenes de compra</a></li>
@@ -45,7 +46,9 @@
         <li><a [routerLink]="['/inicio']">Pesos predefinidos</a></li>
         <li><a [routerLink]="['/users']">Palabras clave</a></li>
       
-    </ul>
+      </ul>
+    </div>
+    
   </header>
 
   <main id="main">
