@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
@@ -15,7 +15,7 @@ export interface DialogData {
   templateUrl: './model-boot-buy.component.html',
   styleUrls: ['./model-boot-buy.component.css']
 })
-export class ModelBootBuyComponent {
+export class ModelBootBuyComponent implements OnInit,OnDestroy{
   animal: string;
   name: string;
 
@@ -23,7 +23,12 @@ export class ModelBootBuyComponent {
     this.animal = "";
     this.name = "";
   }
-
+  ngOnInit(): void {
+    console.log("on init");
+  }
+  ngOnDestroy(): void {
+    console.log("modelBootbuy destroy");
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
@@ -41,6 +46,7 @@ export class ModelBootBuyComponent {
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
+
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,

@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
 import { ModelBoot } from 'src/app/models/modelBoot';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { global } from 'src/app/services/global';
-import { subscribeOn } from 'rxjs';
+import { Component, OnInit, Inject,OnDestroy } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
+export interface DialogData {
+  model_Id:string;
+  modelBootTitle:string;
+}
+
+/**
+ * @title Dialog Overview
+ */
 
 @Component({
   selector: 'app-models-boot',
   templateUrl: './models-boot.component.html',
   styleUrls: ['./models-boot.component.css']
 })
-export class ModelsBootComponent implements OnInit {
+export class ModelsBootComponent implements OnInit,OnDestroy {
   
   public createModelStatus: string;
   public modelsBoot : Array<ModelBoot>;
@@ -26,8 +36,8 @@ export class ModelsBootComponent implements OnInit {
 
 
   constructor(
-    private _modelBootService: ModelBootService
-
+    private _modelBootService: ModelBootService,
+    public dialog: MatDialog
   ) { 
     this.createModelStatus = '';
     this.modelsBoot = [];
@@ -45,6 +55,10 @@ export class ModelsBootComponent implements OnInit {
 
   ngOnInit(): void {
     this.goPage(this.page);
+  }
+
+  ngOnDestroy(): void {
+    console.log("models-boot-destroy");
   }
   getPage(page:number){
     this.goPage(page);
@@ -104,6 +118,37 @@ export class ModelsBootComponent implements OnInit {
     if(feedback == 'create-model-boot-success'){
       this.createModelStatus = 'success';
     }
+  }
+
+  openDialog(modelBoot_id:string,modelBoot_title:string): void {
+    const dialogRef = this.dialog.open(DialogDeleteModel, {
+      width: '250px',
+      restoreFocus:false,
+      data: {model_id: modelBoot_id, modelBootTitle: modelBoot_title}
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+  trackByFn(index:any, item:any){
+    return index;
+  }
+}
+
+@Component({
+  selector: 'dialog-delete-model',
+  templateUrl: 'dialog-delete-model.html',
+})
+
+export class DialogDeleteModel {
+  constructor(
+    public dialogRef: MatDialogRef<DialogDeleteModel>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

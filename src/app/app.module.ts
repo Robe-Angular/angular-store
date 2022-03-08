@@ -22,7 +22,7 @@ import { NetworkInterceptor } from './interceptors/network.interceptor';
 import { DotdotdotPipe } from './pipes/dotdotdot.pipe';
 import { ConsumerDataComponent } from './components/consumer-data/consumer-data.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
-import { ModelsBootComponent } from './components/models-boot/models-boot.component';
+import { ModelsBootComponent,DialogDeleteModel } from './components/models-boot/models-boot.component';
 import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
 import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
 import { ModelBootBuyComponent, DialogOverviewExampleDialog } from './components/model-boot-buy/model-boot-buy.component';
@@ -52,7 +52,8 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
     PaginationComponent,
     ImageNamePipe,
     ModelBootBuyComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DialogDeleteModel
   ],
   imports: [
     routing,
@@ -85,7 +86,7 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
 
 
   ],
-  entryComponents:[DialogOverviewExampleDialog],
+  entryComponents:[DialogOverviewExampleDialog,DialogDeleteModel],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

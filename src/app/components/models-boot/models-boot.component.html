@@ -1,37 +1,58 @@
+
 <div class="success feedback" *ngIf="createModelStatus == 'success'">Modelo creado exitosamente</div>
 <div class="unique-wrapper">
-    <div class="unique" id="list-models">
-        <a [routerLink]="['/inicio']">
-            <article *ngFor="let modelBoot of modelsBoot; index as i">
-                <div class="image-wrapper">
-                    <img alt="{{modelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + modelBoot.mainImage + '/' + modelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
-                </div>
-                <div class="modelBootContent">
-                    <h1 class="title">{{modelBoot.title}}</h1><br>
-                    <p class="description">{{modelBoot.description}}</p>
-                    <p class="price" >&#36;{{modelBoot.price}}</p>
-                    <div class="disponibility">
-                        <p *ngIf="capableSizesOfListModels[i] && capableSizesOfListModels[i].length > 0;">
-                            Tallas disponibles:
-                        </p>
-                        <p *ngIf="capableSizesOfListModels[i] && capableSizesOfListModels[i].length > 0; else noSizes">
+    <div class="unique">
+        <div id="list-models-wrapper">
+            
+            <div id="list-models">
+                
+            
+                
+                    
+                <article *ngFor="let modelBoot of modelsBoot; index as i; trackBy: trackByFn ">
+                    <a [routerLink]="['/inicio']" >
+                        <div class="image-wrapper">
+                            <img alt="{{modelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + modelBoot.mainImage + '/' + modelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+                        </div>
+                    </a>
+                    <div class="modelBootContent">
+                        <h1 class="title">{{modelBoot.title}}</h1><br>
+                        <p class="description">{{modelBoot.description}}</p>
+                        <p class="price" >&#36;{{modelBoot.price}}</p>
+                        <div class="disponibility">
+                            <p *ngIf="capableSizesOfListModels[i] && capableSizesOfListModels[i].length > 0;">
+                                Tallas disponibles:
+                            </p>
+                            <p *ngIf="capableSizesOfListModels[i] && capableSizesOfListModels[i].length > 0; else noSizes">
+                                
+                                <span *ngFor="let capableSize of capableSizesOfListModels[i]">
+                                    {{capableSize}}
+                                    <ng-content *ngIf="i != capableSizesOfListModels[i].length"> </ng-content><!--space-->
+                                </span>
+                            </p>
+                            <ng-template #noSizes>
+                                <p>No hay tallas disponibles</p>
+                            </ng-template>
+                        </div>
+                        
+                        <div class="admin-models-options">
+                            <button type="button" class="edit-model-boot">Editar</button>
+                            <button type="button" class="delete-model-boot" (click)="openDialog(modelBoot._id,modelBoot.title)">Eliminar</button>                                
+                            <button mat-raised-button (click)="openDialog(modelBoot._id,modelBoot.title)">Pick one</button>
                             
-                            <span *ngFor="let capableSize of capableSizesOfListModels[i]">
-                                {{capableSize}}
-                                <ng-content *ngIf="i != capableSizesOfListModels[i].length"> </ng-content><!--space-->
-                            </span>
-                        </p>
-                        <ng-template #noSizes>
-                            <p>No hay tallas disponibles</p>
-                        </ng-template>
+                        </div>
                     </div>
-                </div>
-
-            </article>
-        </a>
-        <div class="pagination">
-            <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
+                        
+                    
+                </article>
+        
+            </div>
         </div>
         
+        
+        <div class="pagination">
+            <app-pagination (pageEmitt)="getPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
+        </div>    
     </div>
+    
 </div>

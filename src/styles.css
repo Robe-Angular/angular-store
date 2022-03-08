@@ -97,6 +97,11 @@ body .wrapper-table table {
     font-size: 0px;
   }
 }
+@media (min-width: 0px) and (max-width: 480px) {
+  body .pagination .symbol {
+    font-size: 50px;
+  }
+}
 body .pagination #pages {
   width: 260px;
   text-align: center;
@@ -124,6 +129,7 @@ body .consumerForm, body .consumerInfo {
   display: block;
   float: left;
   width: 35%;
+  text-align: left !important;
   background-color: #f7f7f7;
   border-top: 2px solid #d3d3d3;
 }
@@ -440,6 +446,7 @@ body main .unique-wrapper #pagination {
     text-align: initial;
     float: none;
     height: 400px;
+    margin-top: 4%;
   }
   body main > * > * #register {
     margin-left: 2%;
@@ -448,24 +455,35 @@ body main .unique-wrapper #pagination {
     text-align: initial;
     float: none;
     height: 650px;
+    margin-top: 4%;
   }
 }
-body main #list-models {
-  width: 40%;
+body main #list-models-wrapper {
+  width: 100%;
+}
+body main #list-models-wrapper #list-models {
+  width: 100%;
   display: inline-block;
   margin-top: 10px;
   text-align: center;
+  clear: both;
 }
-body main #list-models .pagination {
-  display: inline-block;
+body main #list-models-wrapper #list-models a {
+  overflow: hidden;
 }
-body main #list-models article {
+body main #list-models-wrapper #list-models a article {
   display: block;
   width: 100%;
   overflow: hidden;
   text-align: left;
 }
-body main #list-models article .image-wrapper {
+@media (min-width: 0px) and (max-width: 1320px) {
+  body main #list-models-wrapper #list-models a article {
+    border-left: 2px solid #d3d3d3;
+    margin-top: 49px;
+  }
+}
+body main #list-models-wrapper #list-models a article .image-wrapper {
   overflow: hidden;
   padding: 10px;
   height: 254px;
@@ -474,68 +492,86 @@ body main #list-models article .image-wrapper {
   float: left;
   border-bottom: 2px solid #d3d3d3;
 }
-body main #list-models article .image-wrapper img {
+body main #list-models-wrapper #list-models a article .image-wrapper img {
   height: 100%;
   width: 100%;
 }
-body main #list-models article .modelBootContent {
+@media (min-width: 0px) and (max-width: 1320px) {
+  body main #list-models-wrapper #list-models a article .image-wrapper {
+    border-bottom: none;
+  }
+}
+body main #list-models-wrapper #list-models a article .modelBootContent {
   margin-left: 20px;
   margin-top: 20px;
   width: 38%;
 }
-body main #list-models article .modelBootContent {
+body main #list-models-wrapper #list-models a article .modelBootContent {
   display: block;
   float: left;
   font: 400 14px/14px Roboto, "Helvetica Neue", sans-serif;
 }
-body main #list-models article .modelBootContent h1 {
+body main #list-models-wrapper #list-models a article .modelBootContent h1 {
   margin-bottom: 0px;
 }
-body main #list-models article .modelBootContent .description {
+body main #list-models-wrapper #list-models a article .modelBootContent .description {
   font: 400 14px/16px Roboto, "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
 }
-body main #list-models article .modelBootContent .price {
+body main #list-models-wrapper #list-models a article .modelBootContent .price {
   font: 400 24px/1.25 Roboto, "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
 }
-body main #list-models article .modelBootContent .disponibility {
+body main #list-models-wrapper #list-models a article .modelBootContent .disponibility {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 16px;
 }
-@media (min-width: 0px) and (max-width: 960px) {
-  body main #list-models article .modelBootContent {
-    width: 28%;
+body main #list-models-wrapper #list-models a article .modelBootContent .admin-models-options > button {
+  border: none;
+  font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+body main #list-models-wrapper #list-models a article .modelBootContent .admin-models-options .edit-model-boot {
+  background: #00A3E2;
+  color: #DFEDF3;
+}
+body main #list-models-wrapper #list-models a article .modelBootContent .admin-models-options .delete-model-boot {
+  margin-left: 5px;
+  background: #E73E33;
+  color: #DFEDF3;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body main #list-models-wrapper #list-models a article .modelBootContent {
+    margin-top: 0px;
+    width: 100%;
   }
-  body main #list-models article .modelBootContent h1 {
+  body main #list-models-wrapper #list-models a article .modelBootContent h1 {
     font: 400 18px/18px Roboto, "Helvetica Neue", sans-serif;
   }
-  body main #list-models article .modelBootContent .description {
+  body main #list-models-wrapper #list-models a article .modelBootContent .description {
     font: 400 12px/12px Roboto, "Helvetica Neue", sans-serif;
     margin-bottom: 10px;
   }
-  body main #list-models article .modelBootContent .price {
+  body main #list-models-wrapper #list-models a article .modelBootContent .price {
     font: 400 18px/1 Roboto, "Helvetica Neue", sans-serif;
     margin-bottom: 5px;
   }
-  body main #list-models article .modelBootContent .disponibility {
+  body main #list-models-wrapper #list-models a article .modelBootContent .disponibility {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-size: 14px;
   }
 }
 @media (min-width: 0px) and (max-width: 1320px) {
-  body main #list-models {
-    width: 56%;
+  body main #list-models-wrapper #list-models {
+    width: 270px;
   }
 }
-@media (min-width: 0px) and (max-width: 960px) {
-  body main #list-models {
-    width: 80%;
-  }
-}
-body main #list-models .pagination {
+body main .pagination {
+  display: inline-block;
   margin-top: 24px;
 }
 body #footer {

@@ -19,7 +19,7 @@ import { AdminGuard } from './services/admin.guard';
 
 //Definning Routes
 const appRoutes: Routes = [	
-    {path: 'inicio', component: LoginComponent},
+    {path: 'inicio', component: LoginComponent, canActivate:[NoUserGuard]},
     {path: 'login', component: LoginComponent,canActivate:[NoUserGuard]},
     {path: 'login/:action', component: LoginComponent,canActivate:[NoUserGuard]},
     {path: 'logout/:action', component: LoginComponent},
