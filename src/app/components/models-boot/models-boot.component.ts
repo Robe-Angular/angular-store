@@ -6,7 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 
 export interface DialogData {
-  model_Id:string;
+  model_id:string;
   modelBootTitle:string;
 }
 
@@ -120,7 +120,7 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
     }
   }
 
-  openDialog(modelBoot_id:string,modelBoot_title:string): void {
+  openDialogDelete(modelBoot_id:string,modelBoot_title:string): void {
     const dialogRef = this.dialog.open(DialogDeleteModel, {
       width: '250px',
       restoreFocus:false,
@@ -150,5 +150,36 @@ export class DialogDeleteModel {
   onNoClick(): void {
     this.dialogRef.close();
   }
+}
 
+@Component({
+  selector: 'dialog-delete-model',
+  templateUrl: 'dialog-delete-model.html',
+})
+
+export class DialogDeleteSuccess {
+  constructor(
+    public dialogRef: MatDialogRef<DialogDeleteModel>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'dialog-delete-model',
+  templateUrl: 'dialog-delete-model.html',
+})
+
+export class DialogDeleteError {
+  constructor(
+    public dialogRef: MatDialogRef<DialogDeleteModel>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

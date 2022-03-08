@@ -580,17 +580,17 @@ body{
                 margin-top: 10px;
                 text-align: center;
                 clear: both;
-                a {
+                .model-element {
                     overflow: hidden;
-                    article{
-                        @include custom-media(0px,$desktop){
-                            border-left: $border-main;
-                            margin-top: 49px;
-                        }
-                        display: block;
-                        width: 100%;
-                        overflow: hidden;
-                        text-align: left;
+                    @include custom-media(0px,$desktop){
+                        border-left: $border-main;
+                        margin-top: 49px;
+                    }
+                    display: block;
+                    width: 100%;
+                    overflow: hidden;
+                    text-align: left;
+                    .image-model{
                         .image-wrapper{
                             overflow: hidden;
                             padding: 10px;
@@ -607,74 +607,76 @@ body{
                                 border-bottom: none;
                             }
                         }
-                        .modelBootContent{
-                            margin-left: 20px;
-                            margin-top: 20px;
-                            width: 38%;
-                            & {
-                                display: block;
-                                float: left;
-                                font:400 14px/14px Roboto, "Helvetica Neue", sans-serif;
+                    }
+                    
+                    .modelBootContent{
+                        margin-left: 20px;
+                        margin-top: 20px;
+                        width: 38%;
+                        & {
+                            display: block;
+                            float: left;
+                            font:400 14px/14px Roboto, "Helvetica Neue", sans-serif;
+                        }
+    
+                        h1{
+                            margin-bottom: 0px;
+                        }
+                        .description{
+                            font: 400 14px/16px Roboto, "Helvetica Neue", sans-serif;
+                            margin-bottom: 10px;
+                        }
+                        .price{
+                            font: 400 24px/1.25 Roboto, "Helvetica Neue", sans-serif;
+                            margin-bottom: 10px;
+                        }
+                        .disponibility{
+                            font-family: 'Roboto',sans-serif;
+                            font-weight: 300;
+                            font-size: 16px;
+                        }
+                        .admin-models-options{
+                            > button{
+                                border: none;
+                                font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
+                                padding: 5px;
+                                border: none;
+                                border-radius: 5px;
                             }
-        
+                            .edit-model-boot{
+                                background: #00A3E2;
+                                color: #DFEDF3;
+                                
+                            }
+                            .delete-model-boot{
+                                margin-left: 5px;
+                                background: #E73E33;
+                                color: #DFEDF3;
+                            }
+                        }
+                        @include custom-media(0px, $desktop){
+                            margin-top: 0px;
+                            width: 100%;
                             h1{
-                                margin-bottom: 0px;
+                                font: 400 18px/18px Roboto, "Helvetica Neue", sans-serif;
                             }
                             .description{
-                                font: 400 14px/16px Roboto, "Helvetica Neue", sans-serif;
+                                font: 400 12px/12px Roboto, "Helvetica Neue", sans-serif;
                                 margin-bottom: 10px;
                             }
                             .price{
-                                font: 400 24px/1.25 Roboto, "Helvetica Neue", sans-serif;
-                                margin-bottom: 10px;
+                                font: 400 18px/1 Roboto, "Helvetica Neue", sans-serif;
+                                margin-bottom: 5px;
                             }
                             .disponibility{
                                 font-family: 'Roboto',sans-serif;
                                 font-weight: 300;
-                                font-size: 16px;
+                                font-size: 14px;
                             }
-                            .admin-models-options{
-                                > button{
-                                    border: none;
-                                    font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
-                                    padding: 5px;
-                                    border: none;
-                                    border-radius: 5px;
-                                }
-                                .edit-model-boot{
-                                    background: #00A3E2;
-                                    color: #DFEDF3;
-                                    
-                                }
-                                .delete-model-boot{
-                                    margin-left: 5px;
-                                    background: #E73E33;
-                                    color: #DFEDF3;
-                                }
-                            }
-                            @include custom-media(0px, $desktop){
-                                margin-top: 0px;
-                                width: 100%;
-                                h1{
-                                    font: 400 18px/18px Roboto, "Helvetica Neue", sans-serif;
-                                }
-                                .description{
-                                    font: 400 12px/12px Roboto, "Helvetica Neue", sans-serif;
-                                    margin-bottom: 10px;
-                                }
-                                .price{
-                                    font: 400 18px/1 Roboto, "Helvetica Neue", sans-serif;
-                                    margin-bottom: 5px;
-                                }
-                                .disponibility{
-                                    font-family: 'Roboto',sans-serif;
-                                    font-weight: 300;
-                                    font-size: 14px;
-                                }
-                                
-                            }
+                            
                         }
                     }
+                    
                 }
                 @include custom-media(0px, $desktop){
                     width: 270px;

@@ -468,22 +468,20 @@ body main #list-models-wrapper #list-models {
   text-align: center;
   clear: both;
 }
-body main #list-models-wrapper #list-models a {
+body main #list-models-wrapper #list-models .model-element {
   overflow: hidden;
-}
-body main #list-models-wrapper #list-models a article {
   display: block;
   width: 100%;
   overflow: hidden;
   text-align: left;
 }
 @media (min-width: 0px) and (max-width: 1320px) {
-  body main #list-models-wrapper #list-models a article {
+  body main #list-models-wrapper #list-models .model-element {
     border-left: 2px solid #d3d3d3;
     margin-top: 49px;
   }
 }
-body main #list-models-wrapper #list-models a article .image-wrapper {
+body main #list-models-wrapper #list-models .model-element .image-model .image-wrapper {
   overflow: hidden;
   padding: 10px;
   height: 254px;
@@ -492,74 +490,74 @@ body main #list-models-wrapper #list-models a article .image-wrapper {
   float: left;
   border-bottom: 2px solid #d3d3d3;
 }
-body main #list-models-wrapper #list-models a article .image-wrapper img {
+body main #list-models-wrapper #list-models .model-element .image-model .image-wrapper img {
   height: 100%;
   width: 100%;
 }
 @media (min-width: 0px) and (max-width: 1320px) {
-  body main #list-models-wrapper #list-models a article .image-wrapper {
+  body main #list-models-wrapper #list-models .model-element .image-model .image-wrapper {
     border-bottom: none;
   }
 }
-body main #list-models-wrapper #list-models a article .modelBootContent {
+body main #list-models-wrapper #list-models .model-element .modelBootContent {
   margin-left: 20px;
   margin-top: 20px;
   width: 38%;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent {
+body main #list-models-wrapper #list-models .model-element .modelBootContent {
   display: block;
   float: left;
   font: 400 14px/14px Roboto, "Helvetica Neue", sans-serif;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent h1 {
+body main #list-models-wrapper #list-models .model-element .modelBootContent h1 {
   margin-bottom: 0px;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent .description {
+body main #list-models-wrapper #list-models .model-element .modelBootContent .description {
   font: 400 14px/16px Roboto, "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent .price {
+body main #list-models-wrapper #list-models .model-element .modelBootContent .price {
   font: 400 24px/1.25 Roboto, "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent .disponibility {
+body main #list-models-wrapper #list-models .model-element .modelBootContent .disponibility {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 16px;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent .admin-models-options > button {
+body main #list-models-wrapper #list-models .model-element .modelBootContent .admin-models-options > button {
   border: none;
   font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
   padding: 5px;
   border: none;
   border-radius: 5px;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent .admin-models-options .edit-model-boot {
+body main #list-models-wrapper #list-models .model-element .modelBootContent .admin-models-options .edit-model-boot {
   background: #00A3E2;
   color: #DFEDF3;
 }
-body main #list-models-wrapper #list-models a article .modelBootContent .admin-models-options .delete-model-boot {
+body main #list-models-wrapper #list-models .model-element .modelBootContent .admin-models-options .delete-model-boot {
   margin-left: 5px;
   background: #E73E33;
   color: #DFEDF3;
 }
 @media (min-width: 0px) and (max-width: 1320px) {
-  body main #list-models-wrapper #list-models a article .modelBootContent {
+  body main #list-models-wrapper #list-models .model-element .modelBootContent {
     margin-top: 0px;
     width: 100%;
   }
-  body main #list-models-wrapper #list-models a article .modelBootContent h1 {
+  body main #list-models-wrapper #list-models .model-element .modelBootContent h1 {
     font: 400 18px/18px Roboto, "Helvetica Neue", sans-serif;
   }
-  body main #list-models-wrapper #list-models a article .modelBootContent .description {
+  body main #list-models-wrapper #list-models .model-element .modelBootContent .description {
     font: 400 12px/12px Roboto, "Helvetica Neue", sans-serif;
     margin-bottom: 10px;
   }
-  body main #list-models-wrapper #list-models a article .modelBootContent .price {
+  body main #list-models-wrapper #list-models .model-element .modelBootContent .price {
     font: 400 18px/1 Roboto, "Helvetica Neue", sans-serif;
     margin-bottom: 5px;
   }
-  body main #list-models-wrapper #list-models a article .modelBootContent .disponibility {
+  body main #list-models-wrapper #list-models .model-element .modelBootContent .disponibility {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-size: 14px;

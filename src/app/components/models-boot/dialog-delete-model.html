@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Hi {{data.model_Id}}</h1>
+<h1 mat-dialog-title>Delete {{data.modelBootTitle}}</h1>
 <div mat-dialog-content>
   <p>What's your favorite animal?</p>
   <mat-form-field appearance="fill">
     <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.modelBootTitle" />
+    <input matInput [(ngModel)]="data.model_id" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

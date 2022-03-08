@@ -5,12 +5,8 @@
         <div id="list-models-wrapper">
             
             <div id="list-models">
-                
-            
-                
-                    
-                <article *ngFor="let modelBoot of modelsBoot; index as i; trackBy: trackByFn ">
-                    <a [routerLink]="['/inicio']" >
+                <article class="model-element" *ngFor="let modelBoot of modelsBoot; index as i; trackBy: trackByFn ">
+                    <a class="image-model" [routerLink]="['/inicio']" >
                         <div class="image-wrapper">
                             <img alt="{{modelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + modelBoot.mainImage + '/' + modelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
                         </div>
@@ -37,8 +33,7 @@
                         
                         <div class="admin-models-options">
                             <button type="button" class="edit-model-boot">Editar</button>
-                            <button type="button" class="delete-model-boot" (click)="openDialog(modelBoot._id,modelBoot.title)">Eliminar</button>                                
-                            <button mat-raised-button (click)="openDialog(modelBoot._id,modelBoot.title)">Pick one</button>
+                            <button type="button" class="delete-model-boot" (click)="openDialogDelete(modelBoot._id,modelBoot.title)">Eliminar</button>
                             
                         </div>
                     </div>
