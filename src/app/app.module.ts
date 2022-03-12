@@ -26,6 +26,7 @@ import { ModelsBootComponent,DialogDeleteModel } from './components/models-boot/
 import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
 import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
 import { ModelBootBuyComponent, DialogOverviewExampleDialog } from './components/model-boot-buy/model-boot-buy.component';
+import { DialogSuccess,DialogError } from './components/dialog-success-error/dialog-success-error.component';
 
 import { UserGuard } from './services/user.guard';
 import { NoUserGuard } from './services/no-user.guard';
@@ -34,6 +35,7 @@ import { UserService } from './services/user.service';
 import { ModelBootService } from './services/modelBoot.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ImageNamePipe } from './pipes/image-name.pipe';
+
 
 
 
@@ -53,7 +55,9 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
     ImageNamePipe,
     ModelBootBuyComponent,
     DialogOverviewExampleDialog,
-    DialogDeleteModel
+    DialogDeleteModel,
+    DialogSuccess,
+    DialogError
   ],
   imports: [
     routing,
@@ -86,8 +90,10 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
 
 
   ],
-  entryComponents:[DialogOverviewExampleDialog,DialogDeleteModel],
+  entryComponents:[DialogOverviewExampleDialog,DialogDeleteModel, DialogError, DialogSuccess],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
+
+

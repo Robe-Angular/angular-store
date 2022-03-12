@@ -3,6 +3,7 @@ import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { global } from 'src/app/services/global';
 import { Component, OnInit, Inject,OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogError } from '../dialog-success-error/dialog-success-error.component';
 
 
 export interface DialogData {
@@ -122,7 +123,7 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
 
   openDialogDelete(modelBoot_id:string,modelBoot_title:string): void {
     const dialogRef = this.dialog.open(DialogDeleteModel, {
-      width: '250px',
+      width: '30%',
       restoreFocus:false,
       data: {model_id: modelBoot_id, modelBootTitle: modelBoot_title}
     });
@@ -144,42 +145,21 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
 export class DialogDeleteModel {
   constructor(
     public dialogRef: MatDialogRef<DialogDeleteModel>,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-}
+    const dialogError = this.dialog.open(DialogError, {
+      width: '500px',
+      restoreFocus:false,
+      data: {title: "Error", message: "Error message"}
+    });
+    
+    dialogError.afterClosed().subscribe(result => {
 
-@Component({
-  selector: 'dialog-delete-model',
-  templateUrl: 'dialog-delete-model.html',
-})
+    });
 
-export class DialogDeleteSuccess {
-  constructor(
-    public dialogRef: MatDialogRef<DialogDeleteModel>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-
-@Component({
-  selector: 'dialog-delete-model',
-  templateUrl: 'dialog-delete-model.html',
-})
-
-export class DialogDeleteError {
-  constructor(
-    public dialogRef: MatDialogRef<DialogDeleteModel>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }

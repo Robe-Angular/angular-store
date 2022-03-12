@@ -28,8 +28,16 @@ $unicode-close-color: #A3ABB8;
 $background-menus: #EEEEEE;
 $access-buttons-color: #db7b1c;
 $access-buttons-color-hover: #FD9A3A;
+$logo-color: #DB7A1B;
 $access-margin-left: 30px;
 $field-login-margin-top: 15px;
+
+$default-background: #00A3E2;
+$default-color: #ffffff;
+$default-background-hover: #9ac0cf;
+$default-color-hover: #074f6e;
+
+$danger-color: #E73E33;
 
 $border-main: 2px solid #d3d3d3;
 
@@ -43,6 +51,16 @@ $border-main: 2px solid #d3d3d3;
     border: none;
     font: inherit;
     outline: inherit;
+}
+
+@mixin default-button(){
+    background-color:$default-background;
+    color: $default-color;
+    transition: all 300ms;
+    &:hover{
+        background-color: $default-background-hover;
+        color: $default-color-hover;
+    }
 }
 
 $lg-screen: 1920px;
@@ -108,6 +126,34 @@ $sm-phone: 320px;
 
 body{
     background-color: $background;
+    .error-img-wrapper{
+        width: 100%;
+        text-align: center;
+        #error-img{
+            display: inline-block;
+            width: 30%;
+        }
+    }
+    
+    #delete-model-dialog{
+        .model-delete-title{
+            color: $logo-color;
+        }
+        .model-title-question{
+            color: $logo-color;
+        }
+        .no-thanks{
+            @include default-button();
+        }
+        .delete-confirm{
+            color: #939393;
+            transition: all 300ms;
+            &:hover{
+                color: $danger-color;
+                background-color: inherit;
+            }
+        }
+    }
     .mat-progress-spinner circle, .mat-spinner circle {
         stroke: $access-buttons-color !important;
     }
@@ -295,7 +341,7 @@ body{
         input[type="submit"]{
             margin-top:30px;
             background: $access-buttons-color;
-            color: #FFFFFF;
+            color: $default-color;
             @include remove-input-default();
             padding: 0px 32px;                    
             height: 38px;
@@ -334,7 +380,7 @@ body{
             #logo{
                 @include display-block-float();
                 font-family: $logo-font-family;
-                color: #DB7A1B;
+                color: $logo-color;
                 padding: 5px;
                 padding-left: 40px;
                 letter-spacing: 20px;
@@ -642,16 +688,23 @@ body{
                                 padding: 5px;
                                 border: none;
                                 border-radius: 5px;
+                                transition: all 300ms;
+                                &:hover{
+                                    cursor: pointer;
+                                }
                             }
                             .edit-model-boot{
-                                background: #00A3E2;
-                                color: #DFEDF3;
-                                
+                                @include default-button();
                             }
+                            
                             .delete-model-boot{
                                 margin-left: 5px;
-                                background: #E73E33;
+                                background: $danger-color;
                                 color: #DFEDF3;
+                                &:hover{                                    
+                                    background: #864c48;
+                                    color: #1b4953;
+                                }
                             }
                         }
                         @include custom-media(0px, $desktop){

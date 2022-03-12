@@ -1,12 +1,10 @@
-<h1 mat-dialog-title>Delete {{data.modelBootTitle}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.model_id" />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.modelBootTitle" cdkFocusInitial>Ok</button>
+<div id="delete-model-dialog">
+  <h1 mat-dialog-title>Eliminar <span class="model-delete-title">{{data.modelBootTitle}}</span></h1>
+  <div mat-dialog-content>
+    <p>¿Estás seguro que quieres borrar el modelo <span class="model-title-question">{{data.modelBootTitle}}?</span></p>  
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="no-thanks" (click)="onNoClick()">No Thanks</button>
+    <button mat-button class="delete-confirm" [mat-dialog-close]="data.modelBootTitle" >Eliminar</button>
+  </div>
 </div>
