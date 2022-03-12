@@ -41,4 +41,13 @@ export class ModelBootService{
 		return this._http.get(this.url + 'getModel/' + modelBootId , {headers: headers});
 	}
 
+	deleteModel(modelId:string):Observable<any>{
+		
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+            .set('Authorization', this.token.token);
+
+		return this._http.delete(this.url+ 'deleteModel/' + modelId , {headers: headers});
+	}
+
 }

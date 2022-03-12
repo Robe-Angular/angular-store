@@ -129,7 +129,18 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
     });
     
     dialogRef.afterClosed().subscribe(result => {
-
+      this._modelBootService.deleteModel(result).subscribe(
+        response => {
+          console.log(response);
+        },error => {
+          console.log(error.error.error);
+          const dialogError = this.dialog.open(DialogError, {
+            width: '500px',
+            restoreFocus:false,
+            data: {title: "Error", message: error.error.error.message}
+          });
+        }
+      )
     });
   }
   trackByFn(index:any, item:any){
@@ -151,15 +162,6 @@ export class DialogDeleteModel {
 
   onNoClick(): void {
     this.dialogRef.close();
-    const dialogError = this.dialog.open(DialogError, {
-      width: '500px',
-      restoreFocus:false,
-      data: {title: "Error", message: "Error message"}
-    });
-    
-    dialogError.afterClosed().subscribe(result => {
-
-    });
 
   }
 }
