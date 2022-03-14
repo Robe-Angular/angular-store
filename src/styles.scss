@@ -27,7 +27,7 @@ $unicode-close-color: #A3ABB8;
 
 $background-menus: #EEEEEE;
 $access-buttons-color: #db7b1c;
-$access-buttons-color-hover: #FD9A3A;
+$access-buttons-color-hover: #fd8f21;
 $logo-color: #DB7A1B;
 $access-margin-left: 30px;
 $field-login-margin-top: 15px;
@@ -36,6 +36,8 @@ $default-background: #00A3E2;
 $default-color: #ffffff;
 $default-background-hover: #9ac0cf;
 $default-color-hover: #074f6e;
+
+$success-color: #2e8d61;
 
 $danger-color: #E73E33;
 
@@ -177,10 +179,10 @@ body{
 
     }
     .success{
-        background-color: #2e8d61;
+        background-color: $success-color;
     }
     .fail{
-        background-color: #d63547;
+        background-color: $danger-color;
     }
     .symbol{
         @include remove-input-default();
@@ -506,7 +508,10 @@ body{
                 }
             }
             li:hover{
-                color: $access-buttons-color-hover;
+                a{
+                    color: $access-buttons-color-hover;
+                }
+                
             }
 
             @include custom-media(0px,$tablet){

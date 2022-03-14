@@ -3,7 +3,7 @@ import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { global } from 'src/app/services/global';
 import { Component, OnInit, Inject,OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogError } from '../dialog-success-error/dialog-success-error.component';
+import { DialogError, DialogSuccess } from '../dialog-success-error/dialog-success-error.component';
 
 
 export interface DialogData {
@@ -128,20 +128,6 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
       data: {model_id: modelBoot_id, modelBootTitle: modelBoot_title}
     });
     
-    dialogRef.afterClosed().subscribe(result => {
-      this._modelBootService.deleteModel(result).subscribe(
-        response => {
-          console.log(response);
-        },error => {
-          console.log(error.error.error);
-          const dialogError = this.dialog.open(DialogError, {
-            width: '500px',
-            restoreFocus:false,
-            data: {title: "Error", message: error.error.error.message}
-          });
-        }
-      )
-    });
   }
   trackByFn(index:any, item:any){
     return index;
@@ -157,11 +143,31 @@ export class DialogDeleteModel {
   constructor(
     public dialogRef: MatDialogRef<DialogDeleteModel>,
     public dialog: MatDialog,
+    private _modelBootService:ModelBootService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
-
   }
+
+  delete(model_id:string): void {
+    this.dialogRef.close();
+    this._modelBootService.deleteModel(model_id).subscribe(
+      response => {
+        const dialogSuccess = this.dialog.open(DialogSuccess, {
+          width: '500px',
+          restoreFocus:false,
+          data: {title: "Eliminado", message: "Se ha eliminado con éxito"}
+        });
+      },error => {
+        const dialogError = this.dialog.open(DialogError, {
+          width: '500px',
+          restoreFocus:false,
+          data: {title: "Error", message: error.error.error.message}
+        });
+      }
+    )
+  }
+
 }

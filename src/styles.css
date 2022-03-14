@@ -69,7 +69,7 @@ body .success {
   background-color: #2e8d61;
 }
 body .fail {
-  background-color: #d63547;
+  background-color: #E73E33;
 }
 body .symbol {
   border: none;
@@ -152,7 +152,7 @@ body .supplement {
   margin-bottom: 30px;
 }
 body .supplement:hover {
-  color: #FD9A3A;
+  color: #fd8f21;
   cursor: pointer;
 }
 body .consumerForm, body .consumerInfo {
@@ -234,7 +234,7 @@ body .consumerForm input[type=submit], body .consumerInfo input[type=submit] {
   margin-bottom: 30px;
 }
 body .consumerForm input[type=submit]:hover, body .consumerInfo input[type=submit]:hover {
-  background: #FD9A3A;
+  background: #fd8f21;
   box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
 }
 body .consumerForm input[type=submit]:disabled, body .consumerInfo input[type=submit]:disabled {
@@ -386,8 +386,8 @@ body #header #admin-wrapper li a {
   width: 100%;
   height: 100%;
 }
-body #header #admin-wrapper li:hover {
-  color: #FD9A3A;
+body #header #admin-wrapper li:hover a {
+  color: #fd8f21;
 }
 @media (min-width: 0px) and (max-width: 960px) {
   body #header #admin-wrapper {
@@ -438,7 +438,7 @@ body main .unique-wrapper #admin-models-boot li a {
   color: #545454;
 }
 body main .unique-wrapper #admin-models-boot li a:hover {
-  color: #FD9A3A;
+  color: #fd8f21;
 }
 body main .unique-wrapper #list-users {
   text-align: left;
