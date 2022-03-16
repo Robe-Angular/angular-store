@@ -44,6 +44,13 @@ body #delete-model-dialog .delete-confirm:hover {
   color: #E73E33;
   background-color: inherit;
 }
+body #dialog-success .symbol {
+  color: #2e8d61;
+  font-weight: 400;
+  line-height: 34px;
+  font-size: 34px;
+  text-align: center;
+}
 body .mat-progress-spinner circle, body .mat-spinner circle {
   stroke: #db7b1c !important;
 }

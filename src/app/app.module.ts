@@ -35,6 +35,7 @@ import { UserService } from './services/user.service';
 import { ModelBootService } from './services/modelBoot.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ImageNamePipe } from './pipes/image-name.pipe';
+import { EditModelBootComponent } from './components/edit-model-boot/edit-model-boot.component';
 
 
 
@@ -57,7 +58,8 @@ import { ImageNamePipe } from './pipes/image-name.pipe';
     DialogOverviewExampleDialog,
     DialogDeleteModel,
     DialogSuccess,
-    DialogError
+    DialogError,
+    EditModelBootComponent
   ],
   imports: [
     routing,

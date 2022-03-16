@@ -156,6 +156,15 @@ body{
             }
         }
     }
+    #dialog-success{
+        .symbol{
+            color:$success-color;
+            font-weight:400;
+            line-height: 34px;
+            font-size: 34px;
+            text-align: center;
+        }
+    }
     .mat-progress-spinner circle, .mat-spinner circle {
         stroke: $access-buttons-color !important;
     }
