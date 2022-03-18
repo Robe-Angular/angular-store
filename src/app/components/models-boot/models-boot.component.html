@@ -32,7 +32,7 @@
                         </div>
                         
                         <div class="admin-models-options">
-                            <button type="button" class="edit-model-boot">Editar</button>
+                            <a class="edit-model-boot" [routerLink]="['/edit-model-boot']">Editar</a>
                             <button type="button" class="delete-model-boot" (click)="openDialogDelete(modelBoot._id,modelBoot.title)">Eliminar</button>
                             
                         </div>

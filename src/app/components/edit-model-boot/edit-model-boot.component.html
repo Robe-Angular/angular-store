@@ -1,1 +1,54 @@
-<p>edit-model-boot works!</p>
+<div class="unique-wrapper">
+	<div id="register" class="unique consumerForm">
+		<h2>Editar Modelo</h2>
+		<form #createModel="ngForm" (ngSubmit)="onSubmit(createModel)" id="createModel">
+			
+			<label for="title">Título</label>
+			<input type="text" name="title" class="form-control" #title="ngModel" [(ngModel)]="newModel.title" required>
+
+			<small *ngIf="!title.valid && title.touched" class="invalid-field">
+				El título no es válido, favor de usar minúsculas
+            </small>
+
+			<label for="description">Descripción</label>
+			<input type="text" name="description" class="form-control" #description="ngModel" [(ngModel)]="newModel.description" required>
+
+			<small *ngIf="!description.valid && description.touched " class="invalid-field">
+				La descripción no es válida
+			</small>		
+			
+			<label for="color">Color</label>
+			<input type="text" name="color" class="form-control" #color="ngModel" [(ngModel)]="newModel.color" required>
+
+			<small *ngIf="!color.valid && color.touched" class="invalid-field">
+				El color no es válido
+			</small>			
+
+			<label for="price">Precio</label>
+			<input type="text" name="price" class="form-control" #price="ngModel" [(ngModel)]="newModel.price" required>
+
+			<small *ngIf="!price.valid && price.touched" class="invalid-field">
+				El precio no es válido
+            </small>
+
+			<label for="minSize">Talla mínima</label>
+			<input type="number" name="minSize" class="form-control" #minSize="ngModel" [(ngModel)]="newModel.minSize" required>
+
+			<small *ngIf="!minSize.valid && minSize.touched || newModel.minSize < 0 || newModel.maxSize < newModel.minSize" class="invalid-field">
+				La talla mínima no es válida
+            </small>
+
+			<label for="maxSize">Talla máxima</label>
+			<input type="number" name="maxSize" class="form-control" #maxSize="ngModel" [(ngModel)]="newModel.maxSize" required>
+
+			<small *ngIf="!maxSize.valid && maxSize.touched || newModel.maxSize < 0 || newModel.maxSize < newModel.minSize" class="invalid-field">
+				La talla máxima no es válida
+            </small>
+
+			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || newModel.maxSize < 0 || newModel.minSize < 0 || maxSize < minSize">
+
+		</form>
+
+
+	</div>
+</div>
