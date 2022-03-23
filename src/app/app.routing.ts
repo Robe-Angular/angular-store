@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     {path: 'create-model-boot', component: CreateModelBootComponent,canActivate:[AdminGuard]},
     {path: 'models-boot', component: ModelsBootComponent},
     {path: 'model-boot-buy', component: ModelBootBuyComponent},
-    {path: 'edit-model-boot', component: EditModelBootComponent}
+    {path: 'edit-model-boot/:modelBootId', component: EditModelBootComponent}
 ];
 
 //Export configuration

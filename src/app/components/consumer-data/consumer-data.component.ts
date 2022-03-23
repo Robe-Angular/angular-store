@@ -3,6 +3,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { UserService } from '../../services/user.service';
 import{ User } from '../../models/user'
 import{ ConfirmationCodeUpdate } from '../../models/confirmationCodeUpdate'
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-consumer-data',
@@ -19,9 +20,10 @@ export class ConsumerDataComponent implements OnInit {
   public isEdit: boolean;
 
   constructor(
+    private _snackBar: MatSnackBar,
     private _userService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute    
+    private _route: ActivatedRoute   
   ) {
     this.consumer = new User('', '', '', '', '', '', 'ROLE-USER','','',null);
     this.confirmationCode = new ConfirmationCodeUpdate('', '');
@@ -32,7 +34,6 @@ export class ConsumerDataComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getParamsId();    
-    console.log(this.identity.user)
   }
 
   getConsumerData(){
@@ -40,7 +41,6 @@ export class ConsumerDataComponent implements OnInit {
       response => {
         //identity
         if(response.status != Error){
-          console.log(response);
           this.consumer = response.user;
           this.status = 'dataSuccess';
         }else{
@@ -101,4 +101,14 @@ export class ConsumerDataComponent implements OnInit {
       }
     )
   }
+
+  showSnackBar(snackBarText:string, status:string){
+    if(status == 'error'){
+      this._snackBar.open("Invalid Login Credentials", "Try again!", {
+        duration: 3000,
+        panelClass: ['red-snackbar'],
+        });
+    }
+  }
+  
 }

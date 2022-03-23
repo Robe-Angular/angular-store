@@ -21,6 +21,24 @@ body .error-img-wrapper #error-img {
   display: inline-block;
   width: 30%;
 }
+body .green-snackbar {
+  background: #41fc86;
+  color: white;
+}
+body .green-snackbar button {
+  background-color: #41fc86;
+  color: white;
+  border: none;
+}
+body .red-snackbar {
+  background: #F44336;
+  color: white;
+}
+body .red-snackbar button {
+  background-color: #F44336;
+  color: white !important;
+  border: none;
+}
 body #delete-model-dialog .model-delete-title {
   color: #DB7A1B;
 }

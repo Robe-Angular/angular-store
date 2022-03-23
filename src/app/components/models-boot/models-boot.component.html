@@ -30,9 +30,8 @@
                                 <p>No hay tallas disponibles</p>
                             </ng-template>
                         </div>
-                        
-                        <div class="admin-models-options">
-                            <a class="edit-model-boot" [routerLink]="['/edit-model-boot']">Editar</a>
+                        <div class="admin-models-options" *ngIf="user && user.role == 'ROLE_ADMIN'">
+                            <a class="edit-model-boot" [routerLink]="['/edit-model-boot',modelBoot._id]">Editar</a>
                             <button type="button" class="delete-model-boot" (click)="openDialogDelete(modelBoot._id,modelBoot.title)">Eliminar</button>
                             
                         </div>

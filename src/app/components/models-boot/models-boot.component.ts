@@ -1,14 +1,16 @@
 import { ModelBoot } from 'src/app/models/modelBoot';
+import { User } from 'src/app/models/user';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
+import { UserService } from 'src/app/services/user.service';
 import { global } from 'src/app/services/global';
-import { Component, OnInit, Inject,OnDestroy } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogError, DialogSuccess } from '../dialog-success-error/dialog-success-error.component';
 
 
 export interface DialogData {
-  model_id:string;
-  modelBootTitle:string;
+  model_id: string;
+  modelBootTitle: string;
 }
 
 /**
@@ -20,10 +22,11 @@ export interface DialogData {
   templateUrl: './models-boot.component.html',
   styleUrls: ['./models-boot.component.css']
 })
-export class ModelsBootComponent implements OnInit,OnDestroy {
-  
+export class ModelsBootComponent implements OnInit, OnDestroy {
+
+  public user: User;
   public createModelStatus: string;
-  public modelsBoot : Array<ModelBoot>;
+  public modelsBoot: Array<ModelBoot>;
   public url: string;
   public page: number;
   public total: number;
@@ -37,9 +40,10 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
 
 
   constructor(
+    private _userService: UserService,
     private _modelBootService: ModelBootService,
     public dialog: MatDialog
-  ) { 
+  ) {
     this.createModelStatus = '';
     this.modelsBoot = [];
     this.url = global.url;
@@ -52,20 +56,22 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
     this.status = '';
     this.totalSizes = [];
     this.capableSizesOfListModels = [];
+    this.user = this._userService.getIdentity().user;
   }
 
   ngOnInit(): void {
     this.goPage(this.page);
+    ;
   }
 
   ngOnDestroy(): void {
     console.log("models-boot-destroy");
   }
-  getPage(page:number){
+  getPage(page: number) {
     this.goPage(page);
   }
 
-  goPage(page:number){
+  goPage(page: number) {
     this._modelBootService.getModels(page, this.sort).subscribe(
       response => {
         this.capableSizesOfListModels = [];
@@ -73,11 +79,11 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
         this.total = response.total;
         this.page = parseInt(response.page);
         this.pagesParent = response.pages;
-        this.pageInitHalf = Math.ceil(this.page/2);
-        this.pageFinalHalf = Math.ceil(this.page + (this.pagesParent - this.page)/2);
+        this.pageInitHalf = Math.ceil(this.page / 2);
+        this.pageFinalHalf = Math.ceil(this.page + (this.pagesParent - this.page) / 2);
 
         this.getModelBootSizes();//Get sizes for Models Boot
-        
+
         console.log(this.totalSizes);
         console.log(this.capableSizesOfListModels);
         //this.checkSequence();
@@ -88,26 +94,26 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
     );
   }
 
-  getModelBootSizes(){
-    this.modelsBoot.forEach( modelBoot => {
+  getModelBootSizes() {
+    this.modelsBoot.forEach(modelBoot => {
       this._modelBootService.getModelBootSizes(modelBoot._id).subscribe(
-        response=>{
+        response => {
           let modelSizes = response.sizes;
-          let capableSizesModel:any = [];
+          let capableSizesModel: any = [];
 
           this.totalSizes.push(modelSizes);
-          
-          modelSizes.forEach( (modelSize:any) => {
-            if(modelSize.quantity > 0){
+
+          modelSizes.forEach((modelSize: any) => {
+            if (modelSize.quantity > 0) {
               capableSizesModel.push(modelSize.size);
             }
           });
           this.capableSizesOfListModels.push(capableSizesModel);
-          this.capableSizesOfListModels.forEach( (capableSizesModel:any) => {
+          this.capableSizesOfListModels.forEach((capableSizesModel: any) => {
             capableSizesModel.sort();
           });//Sort for correct visualization
-          
-        },error => {
+
+        }, error => {
           this.totalSizes.push([]);
           this.capableSizesOfListModels.push([]);
           console.log(error)
@@ -115,21 +121,22 @@ export class ModelsBootComponent implements OnInit,OnDestroy {
       );
     });
   }
-  parentFeedback(feedback: string){
-    if(feedback == 'create-model-boot-success'){
+  parentFeedback(feedback: string) {
+    if (feedback == 'create-model-boot-success') {
       this.createModelStatus = 'success';
     }
   }
 
-  openDialogDelete(modelBoot_id:string,modelBoot_title:string): void {
+  openDialogDelete(modelBoot_id: string, modelBoot_title: string): void {
     const dialogRef = this.dialog.open(DialogDeleteModel, {
-      width: '30%',
-      restoreFocus:false,
-      data: {model_id: modelBoot_id, modelBootTitle: modelBoot_title}
+      width: '80%',
+      maxWidth: '300px',
+      restoreFocus: false,
+      data: { model_id: modelBoot_id, modelBootTitle: modelBoot_title }
     });
-    
+
   }
-  trackByFn(index:any, item:any){
+  trackByFn(index: any, item: any) {
     return index;
   }
 }
@@ -143,28 +150,30 @@ export class DialogDeleteModel {
   constructor(
     public dialogRef: MatDialogRef<DialogDeleteModel>,
     public dialog: MatDialog,
-    private _modelBootService:ModelBootService,
+    private _modelBootService: ModelBootService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  delete(model_id:string): void {
+  delete(model_id: string): void {
     this.dialogRef.close();
     this._modelBootService.deleteModel(model_id).subscribe(
       response => {
         const dialogSuccess = this.dialog.open(DialogSuccess, {
-          width: '500px',
-          restoreFocus:false,
-          data: {title: "Eliminado", message: "Se ha eliminado con éxito"}
+          width: '80%',
+          maxWidth: '300px',
+          restoreFocus: false,
+          data: { title: "Eliminado", message: "Se ha eliminado con éxito" }
         });
-      },error => {
+      }, error => {
         const dialogError = this.dialog.open(DialogError, {
-          width: '500px',
-          restoreFocus:false,
-          data: {title: "Error", message: error.error.error.message}
+          width: '80%',
+          maxWidth: '300px',
+          restoreFocus: false,
+          data: { title: "Error", message: error.error.error.message }
         });
       }
     )
