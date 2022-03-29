@@ -138,11 +138,11 @@ body{
     }
     
     .green-snackbar {
-        background: rgb(65, 252, 134);
+        background: rgb(2, 114, 43);
         color: white;
     }
     .green-snackbar button {
-        background-color: rgb(65, 252, 134);
+        background-color: rgb(5, 161, 62);
         color: white;
         border: none;
     }
@@ -351,7 +351,8 @@ body{
     
         input[type="text"],
         input[type="email"],
-        input[type="password"]{
+        input[type="password"],
+        input[type="number"]{
             font-family: 'Calibri',Verdana, Geneva, Tahoma, sans-serif;
             font-size: 16px;
             color:#333333;
@@ -364,7 +365,8 @@ body{
         }
         input[type="text"]:focus,
         input[type="email"]:focus,
-        input[type="password"]:focus{
+        input[type="password"]:focus,
+        input[type="number"]:focus{
             border: 3px solid #cccccc;
         }
     

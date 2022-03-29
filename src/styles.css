@@ -22,11 +22,11 @@ body .error-img-wrapper #error-img {
   width: 30%;
 }
 body .green-snackbar {
-  background: #41fc86;
+  background: #02722b;
   color: white;
 }
 body .green-snackbar button {
-  background-color: #41fc86;
+  background-color: #05a13e;
   color: white;
   border: none;
 }
@@ -225,9 +225,11 @@ body .consumerForm .invalid-field, body .consumerInfo .invalid-field {
 }
 body .consumerForm input[type=text],
 body .consumerForm input[type=email],
-body .consumerForm input[type=password], body .consumerInfo input[type=text],
+body .consumerForm input[type=password],
+body .consumerForm input[type=number], body .consumerInfo input[type=text],
 body .consumerInfo input[type=email],
-body .consumerInfo input[type=password] {
+body .consumerInfo input[type=password],
+body .consumerInfo input[type=number] {
   font-family: "Calibri", Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   color: #333333;
@@ -239,9 +241,11 @@ body .consumerInfo input[type=password] {
 }
 body .consumerForm input[type=text]:focus,
 body .consumerForm input[type=email]:focus,
-body .consumerForm input[type=password]:focus, body .consumerInfo input[type=text]:focus,
+body .consumerForm input[type=password]:focus,
+body .consumerForm input[type=number]:focus, body .consumerInfo input[type=text]:focus,
 body .consumerInfo input[type=email]:focus,
-body .consumerInfo input[type=password]:focus {
+body .consumerInfo input[type=password]:focus,
+body .consumerInfo input[type=number]:focus {
   border: 3px solid #cccccc;
 }
 body .consumerForm input[type=submit], body .consumerInfo input[type=submit] {

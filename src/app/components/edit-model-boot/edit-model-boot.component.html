@@ -32,23 +32,24 @@
             </small>
 
 			<label for="minSize">Talla mínima</label>
-			<input type="number" name="minSize" class="form-control" #minSize="ngModel" [(ngModel)]="editModelBoot.minSize" required>
+			<input type="number" name="minSize" class="form-control" #minSizeForm="ngModel" [(ngModel)]="minSize" required>
 
-			<small *ngIf="!minSize.valid && minSize.touched || editModelBoot.minSize < 0 || editModelBoot.maxSize < editModelBoot.minSize" class="invalid-field">
+			<small *ngIf="!minSizeForm.valid && minSizeForm.touched || minSize < 0 || maxSize < minSize" class="invalid-field">
 				La talla mínima no es válida
             </small>
 
 			<label for="maxSize">Talla máxima</label>
-			<input type="number" name="maxSize" class="form-control" #maxSize="ngModel" [(ngModel)]="editModelBoot.maxSize" required>
+			<input type="number" name="maxSize" class="form-control" #maxSizeForm="ngModel" [(ngModel)]="maxSize" required>
 
-			<small *ngIf="!maxSize.valid && maxSize.touched || editModelBoot.maxSize < 0 || editModelBoot.maxSize < editModelBoot.minSize" class="invalid-field">
+			<small *ngIf="!maxSizeForm.valid && maxSizeForm.touched || maxSize < 0 || maxSize < minSize" class="invalid-field">
 				La talla máxima no es válida
             </small>
+			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || maxSize < 0 || minSize < 0 || maxSize < minSize">
 
-			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || editModelBoot.maxSize < 0 || editModelBoot.minSize < 0 || maxSize < minSize">
 
 		</form>
-
-
+		<div class="image-wrapper">
+			<img alt="{{editModelBoot.description}}{{'i'}}" src="{{url + 'getImageModelBoot/' + editModelBoot.mainImage + '/' + editModelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+		</div>
 	</div>
 </div>

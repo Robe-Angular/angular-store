@@ -76,18 +76,17 @@ export class ConsumerDataComponent implements OnInit {
    this._userService.update(this.token.token, this.consumer, this.consumer._id).subscribe(
      response =>{
       if(response.confirmationUpdateEmailStored){
-        this.status = "emailSuccess";
+        this.showSnackBar('se ha enviado un email','success');
+        this.status = 'emailSuccess';
       }else{
         this.consumerUpdated(response);
+        this.showSnackBar('se ha actualizado correctamente','success');
       }
       
       
      },
      error => {
-      this.status = 'errorUserTaken'
-      if(error.error.status != 409){
-        this.status = 'error';
-      }
+      this.showSnackBar(error.error.message , 'error' );
     }
    );
   }
@@ -96,17 +95,25 @@ export class ConsumerDataComponent implements OnInit {
     this._userService.confirmEmailUpdate(this.token.token, this.confirmationCode).subscribe(
       response => {
         this.consumerUpdated(response);
+        this.showSnackBar('se ha actualizado correctamente','success');
       }, err => {
-        this.status = "noMatchCodeError"
+        
+        this.showSnackBar(err.error.message , 'error' );
       }
     )
   }
 
   showSnackBar(snackBarText:string, status:string){
     if(status == 'error'){
-      this._snackBar.open("Invalid Login Credentials", "Try again!", {
+      this._snackBar.open(snackBarText, ":)", {
         duration: 3000,
         panelClass: ['red-snackbar'],
+        });
+    }
+    if(status == 'success'){
+      this._snackBar.open(snackBarText, "ok", {
+        
+        panelClass: ['green-snackbar']
         });
     }
   }

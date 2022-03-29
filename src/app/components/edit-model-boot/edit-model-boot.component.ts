@@ -2,6 +2,7 @@ import { Component, OnInit, Output ,EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, RouterState} from '@angular/router';
 import { ModelBoot } from '../../models/modelBoot';
 import { ModelBootService } from '../../services/modelBoot.service';
+import { global } from 'src/app/services/global';
 
 @Component({
   selector: 'app-edit-model-boot',
@@ -13,6 +14,9 @@ export class EditModelBootComponent implements OnInit {
   messageEvent = new EventEmitter<string>();
   public editModelBoot: ModelBoot;
   public status:string;
+  public maxSize: number;
+  public minSize: number;
+  public url: string;
   constructor(
     private _modelBootService: ModelBootService,
     private _router: Router,
@@ -21,6 +25,9 @@ export class EditModelBootComponent implements OnInit {
   ) { 
     this.status = '';
     this.editModelBoot = new ModelBoot();
+    this.maxSize = 0;
+    this.minSize = 0;
+    this.url = global.url;
   }
 
   ngOnInit(): void {
@@ -30,7 +37,13 @@ export class EditModelBootComponent implements OnInit {
 
       this._modelBootService.getModelBootSizes(this.editModelBoot._id).subscribe(
         response => {
-          console.log(response);
+          this.editModelBoot = response.modelBoot;
+          let sizes = response.sizes;
+          sizes.sort((s1:any,s2:any) => s2.size > s1.size);
+          let lastOnSizes = sizes.length - 1;
+          this.maxSize = sizes[lastOnSizes].size;
+          this.minSize = sizes[0].size;
+
         },error => {
           console.log(error);
         }
