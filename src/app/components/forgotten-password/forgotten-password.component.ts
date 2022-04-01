@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {UserService} from '../../services/user.service';
 import { ForgottenPassword } from '../../models/forgottenPassword'
+import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ForgottenPasswordComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _snackbarService:SnackbarAdviceService
 
   ) { 
     this.status = '';
@@ -35,18 +37,15 @@ export class ForgottenPasswordComponent implements OnInit {
       this._userService.resetPassword(this.forgottenPassword).subscribe(
         response => {
           if(response.status != Error){
-            console.log(response.status);
+            this._snackbarService.showSnackBar("Se ha reseteado la contraseña", "success");
             this._router.navigate(['/login','reset-success']);
           }else{
+            this._snackbarService.showSnackBar(response.error.message,'error');
             this.status = 'errorResetting';
           }
           
         },error => {
-          if(error.error.status == 500){
-            this.status = 'serverErrorResetting';
-          }else{
-            this.status = 'errorResetting';
-          }
+          this._snackbarService.showSnackBar(error.error.message, 'error');
         }
       );
     }else{
@@ -61,12 +60,7 @@ export class ForgottenPasswordComponent implements OnInit {
         this.resetActivated = response.status != Error ? true:false;
       },
       error => {
-        if(error.error.status == 500){
-          this.status = 'serverError';
-        }else{
-          this.status = 'error';
-        }
-        
+        this._snackbarService.showSnackBar(error.error.message, 'error');       
       }
     );
   }

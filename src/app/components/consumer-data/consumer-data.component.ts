@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { SnackbarAdviceService } from '../../services/snackbar-advice.service';
 import{ User } from '../../models/user'
 import{ ConfirmationCodeUpdate } from '../../models/confirmationCodeUpdate'
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -21,6 +22,7 @@ export class ConsumerDataComponent implements OnInit {
 
   constructor(
     private _snackBar: MatSnackBar,
+    private _snackbarService: SnackbarAdviceService,
     private _userService: UserService,
     private _router: Router,
     private _route: ActivatedRoute   
@@ -47,8 +49,9 @@ export class ConsumerDataComponent implements OnInit {
           this.status = 'dataError';
         }
       },
-      error => {
-        console.log(error);
+      err => {
+        console.log(err);
+        this._snackbarService.showSnackBar(err.error.message,'error');
         this.status = 'error';
       }
     );
@@ -76,17 +79,19 @@ export class ConsumerDataComponent implements OnInit {
    this._userService.update(this.token.token, this.consumer, this.consumer._id).subscribe(
      response =>{
       if(response.confirmationUpdateEmailStored){
-        this.showSnackBar('se ha enviado un email','success');
+        this._snackbarService.showSnackBar('se ha enviado un email','success');
         this.status = 'emailSuccess';
       }else{
         this.consumerUpdated(response);
-        this.showSnackBar('se ha actualizado correctamente','success');
+        this._snackbarService.showSnackBar('Se ha actualizado correctamente ','success');
+        
       }
       
       
      },
-     error => {
-      this.showSnackBar(error.error.message , 'error' );
+     err => {
+      this._snackbarService.showSnackBar(err.error.message,'error');
+      
     }
    );
   }
@@ -95,14 +100,15 @@ export class ConsumerDataComponent implements OnInit {
     this._userService.confirmEmailUpdate(this.token.token, this.confirmationCode).subscribe(
       response => {
         this.consumerUpdated(response);
-        this.showSnackBar('se ha actualizado correctamente','success');
+        this._snackbarService.showSnackBar('Se ha actualizado correctamente ','success');
       }, err => {
         
-        this.showSnackBar(err.error.message , 'error' );
+        this._snackbarService.showSnackBar(err.error.message,'error');
       }
     )
   }
 
+  /*
   showSnackBar(snackBarText:string, status:string){
     if(status == 'error'){
       this._snackBar.open(snackBarText, ":)", {
@@ -116,6 +122,6 @@ export class ConsumerDataComponent implements OnInit {
         panelClass: ['green-snackbar']
         });
     }
-  }
+  }*/ //Now is on snackbarService
   
 }

@@ -1,9 +1,11 @@
-<div *ngIf="status == ''; else message"></div>
-<ng-template #message>
-    <div class="fail feedback" *ngIf="status == 'createError'">Error al intentar crear el modelo</div>
-	<div class="fail feedback" *ngIf="status == 'createInvalid'">Datos incorrectos</div>
+<!--
+	<div *ngIf="status == ''; else message"></div>
+	<ng-template #message>
+		<div class="fail feedback" *ngIf="status == 'createError'">Error al intentar crear el modelo</div>
+		<div class="fail feedback" *ngIf="status == 'createInvalid'">Datos incorrectos</div>
 
-</ng-template>
+	</ng-template>
+-->
 <div class="unique-wrapper">
 	<div id="register" class="unique consumerForm">
 		<h2>Crear Modelo</h2>

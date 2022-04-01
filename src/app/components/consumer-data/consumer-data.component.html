@@ -1,12 +1,13 @@
 <div *ngIf="status == ''; else message"></div>
 <ng-template #message>
-    <!--<div class="fail feedback" *ngIf="status == 'error'">Error al actualizar al usuario</div>-->
-    <div class="fail feedback" *ngIf="status == 'dataError'">Error al cargar datos</div>
-    <div class="fail feedback" *ngIf="status == 'errorUserTaken'">El usuario ya existe</div>
-    <div class="fail feedback" *ngIf="status == 'noMatchCodeError'">Los datos son incorrectos</div>
-    <div class="success feedback" *ngIf="status == 'success'">Se ha actualizado al usuario</div>
-    <div class="success feedback" *ngIf="status == 'emailSuccess'">Se ha enviado un correo de confirmación de email</div>
-
+    <!--
+        <div class="fail feedback" *ngIf="status == 'error'">Error al actualizar al usuario</div>
+        <div class="fail feedback" *ngIf="status == 'dataError'">Error al cargar datos</div>
+        <div class="fail feedback" *ngIf="status == 'errorUserTaken'">El usuario ya existe</div>
+        <div class="fail feedback" *ngIf="status == 'noMatchCodeError'">Los datos son incorrectos</div>
+        <div class="success feedback" *ngIf="status == 'success'">Se ha actualizado al usuario</div>
+        <div class="success feedback" *ngIf="status == 'emailSuccess'">Se ha enviado un correo de confirmación de email</div>
+    -->
 </ng-template>
 
 <div class="wrapper unique-wrapper">
