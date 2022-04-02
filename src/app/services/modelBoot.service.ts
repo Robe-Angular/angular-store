@@ -50,4 +50,13 @@ export class ModelBootService{
 		return this._http.delete(this.url+ 'deleteModel/' + modelId , {headers: headers});
 	}
 
+	updateModel(modelBoot:ModelBoot):Observable<any>{
+		let params = JSON.stringify(modelBoot);
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+            .set('Authorization', this.token.token);
+
+		return this._http.post(this.url+'updateModel/' + modelBoot._id , params, {headers: headers});
+	}
+
 }

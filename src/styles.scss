@@ -691,9 +691,11 @@ body{
                     }
                     
                     .modelBootContent{
-                        margin-left: 20px;
+                        margin-left: 10px;
                         margin-top: 20px;
                         width: 38%;
+                        max-width: 400px;
+                        overflow: hidden;
                         & {
                             display: block;
                             float: left;

@@ -560,9 +560,11 @@ body main #list-models-wrapper #list-models .model-element .image-model .image-w
   }
 }
 body main #list-models-wrapper #list-models .model-element .modelBootContent {
-  margin-left: 20px;
+  margin-left: 10px;
   margin-top: 20px;
   width: 38%;
+  max-width: 400px;
+  overflow: hidden;
 }
 body main #list-models-wrapper #list-models .model-element .modelBootContent {
   display: block;
