@@ -12,8 +12,8 @@
                         </div>
                     </a>
                     <div class="modelBootContent">
-                        <h1 class="title">{{modelBoot.title}}</h1><br>
-                        <p class="description">{{modelBoot.description}}</p>
+                        <h1 class="title">{{modelBoot.title | dotdotdot:40}}</h1><br>
+                        <p class="description">{{modelBoot.description | dotdotdot:90}}</p>
                         <p class="price" >&#36;{{modelBoot.price}}</p>
                         <div class="disponibility">
                             <p *ngIf="capableSizesOfListModels[i] && capableSizesOfListModels[i].length > 0;">

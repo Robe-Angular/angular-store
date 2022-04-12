@@ -104,7 +104,8 @@ export class LoginComponent implements OnInit{
       if(params['action'] == 'logout'){
         localStorage.removeItem('identity');
         localStorage.removeItem('token');
-
+        this._userService.getIdentity();
+        this._userService.getToken();
         this.identity = null;
         this.token = null;
       }else if(params['action'] == 'resetSuccess'){
@@ -118,4 +119,5 @@ export class LoginComponent implements OnInit{
   }
 
 }
+
 

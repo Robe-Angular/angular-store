@@ -41,7 +41,10 @@ export class EditModelBootComponent implements OnInit {
         response => {
           this.editModelBoot = response.modelBoot;
           let sizes = response.sizes;
-          sizes.sort((s1:any,s2:any) => s2.size > s1.size);
+          console.log(sizes);
+          sizes.sort((s1:any,s2:any) => {return s1.size - s2.size});
+          console.log(sizes[0].size);
+          console.log(sizes);
           let lastOnSizes = sizes.length - 1;
           this.maxSize = sizes[lastOnSizes].size;
           this.minSize = sizes[0].size;
@@ -57,7 +60,8 @@ export class EditModelBootComponent implements OnInit {
   }
 
   onSubmit(form:any):void{ 
-    
+    this.editModelBoot.maxSize = this.maxSize;
+    this.editModelBoot.minSize = this.minSize;
     this._modelBootService.updateModel(this.editModelBoot).subscribe(
       response => {
         //identity        

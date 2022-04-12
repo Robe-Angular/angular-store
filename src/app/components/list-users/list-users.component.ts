@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import{ User } from '../../models/user'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
@@ -21,7 +22,8 @@ export class ListUsersComponent implements OnInit{
 
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _router: Router
   ) { 
     this.consumers = [];
     this.page = 1;
@@ -56,7 +58,9 @@ export class ListUsersComponent implements OnInit{
         //this.checkSequence();
         this.status = 'success'
       }, error => {
-        this.status = 'error'
+        this.status = 'error';
+        this._router.navigate(['/models-boot']);
+
       }
     );
   }
