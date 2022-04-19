@@ -2,6 +2,7 @@ import { Component, OnInit, Output ,EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, RouterState} from '@angular/router';
 import { ModelBoot } from '../../models/modelBoot';
 import { ModelBootService } from '../../services/modelBoot.service';
+import { UserService } from 'src/app/services/user.service';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 import { global } from 'src/app/services/global';
 
@@ -18,18 +19,20 @@ export class EditModelBootComponent implements OnInit {
   public maxSize: number;
   public minSize: number;
   public url: string;
+  public token: string;
   constructor(
     private _snackbarService: SnackbarAdviceService,
     private _modelBootService: ModelBootService,
     private _router: Router,
-    private _route: ActivatedRoute
-
+    private _route: ActivatedRoute,
+    private _userService: UserService
   ) { 
     this.status = '';
     this.editModelBoot = new ModelBoot();
     this.maxSize = 0;
     this.minSize = 0;
     this.url = global.url;
+    this.token = this._userService.getToken().token;
   }
 
   ngOnInit(): void {
@@ -43,8 +46,6 @@ export class EditModelBootComponent implements OnInit {
           let sizes = response.sizes;
           console.log(sizes);
           sizes.sort((s1:any,s2:any) => {return s1.size - s2.size});
-          console.log(sizes[0].size);
-          console.log(sizes);
           let lastOnSizes = sizes.length - 1;
           this.maxSize = sizes[lastOnSizes].size;
           this.minSize = sizes[0].size;
@@ -62,7 +63,7 @@ export class EditModelBootComponent implements OnInit {
   onSubmit(form:any):void{ 
     this.editModelBoot.maxSize = this.maxSize;
     this.editModelBoot.minSize = this.minSize;
-    this._modelBootService.updateModel(this.editModelBoot).subscribe(
+    this._modelBootService.updateModel(this.editModelBoot, this.token).subscribe(
       response => {
         //identity        
         if(response.status != Error){

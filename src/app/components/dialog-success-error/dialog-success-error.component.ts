@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 export interface DialogAdvice {
   message:string;
   title:string;
+  action:string;
 }
 
 @Component({
@@ -17,8 +18,10 @@ export class DialogSuccess {
     @Inject(MAT_DIALOG_DATA) public data: DialogAdvice
   ) {}
 
-  onNoClick(): void {
+  okClick(): void {
     this.dialogRef.close();
+    if(this.data.action="reloadOnDelete")
+    window.location.reload();
   }
 }
 

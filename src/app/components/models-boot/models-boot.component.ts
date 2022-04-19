@@ -3,9 +3,10 @@ import { User } from 'src/app/models/user';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { UserService } from 'src/app/services/user.service';
 import { global } from 'src/app/services/global';
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogError, DialogSuccess } from '../dialog-success-error/dialog-success-error.component';
+import { ResourceLoader } from '@angular/compiler';
 
 
 export interface DialogData {
@@ -22,9 +23,10 @@ export interface DialogData {
   templateUrl: './models-boot.component.html',
   styleUrls: ['./models-boot.component.css']
 })
-export class ModelsBootComponent implements OnInit, OnDestroy {
+export class ModelsBootComponent implements OnInit {
 
   public user: User;
+  public token: string;
   public createModelStatus: string;
   public modelsBoot: Array<ModelBoot>;
   public url: string;
@@ -57,6 +59,7 @@ export class ModelsBootComponent implements OnInit, OnDestroy {
     this.totalSizes = [];
     this.capableSizesOfListModels = [];
     this.user = this._userService.getIdentity().user;
+    this.token = this._userService.getToken().token;
   }
 
   ngOnInit(): void {
@@ -64,9 +67,7 @@ export class ModelsBootComponent implements OnInit, OnDestroy {
     ;
   }
 
-  ngOnDestroy(): void {
-    console.log("models-boot-destroy");
-  }
+  
   getPage(page: number) {
     this.goPage(page);
   }
@@ -115,8 +116,7 @@ export class ModelsBootComponent implements OnInit, OnDestroy {
 
         }, error => {
           this.totalSizes.push([]);
-          this.capableSizesOfListModels.push([]);
-          console.log(error)
+          this.capableSizesOfListModels.push([]);          
         }
       );
     });
@@ -147,12 +147,16 @@ export class ModelsBootComponent implements OnInit, OnDestroy {
 })
 
 export class DialogDeleteModel {
+  public token:string;
   constructor(
     public dialogRef: MatDialogRef<DialogDeleteModel>,
     public dialog: MatDialog,
     private _modelBootService: ModelBootService,
+    private _userService: UserService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) { }
+  ) { 
+    this.token = this._userService.getToken().token;
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -160,20 +164,21 @@ export class DialogDeleteModel {
 
   delete(model_id: string): void {
     this.dialogRef.close();
-    this._modelBootService.deleteModel(model_id).subscribe(
+    this._modelBootService.deleteModel(model_id, this.token).subscribe(
       response => {
         const dialogSuccess = this.dialog.open(DialogSuccess, {
           width: '80%',
           maxWidth: '300px',
           restoreFocus: false,
-          data: { title: "Eliminado", message: "Se ha eliminado con éxito" }
+          data: { title: "Eliminado", message: "Se ha eliminado con éxito", action:"reloadOnDelete" }
         });
+        
       }, error => {
         const dialogError = this.dialog.open(DialogError, {
           width: '80%',
           maxWidth: '300px',
           restoreFocus: false,
-          data: { title: "Error", message: error.error.error.message }
+          data: { title: "Error", message: error.error.message, action:""}
         });
       }
     )

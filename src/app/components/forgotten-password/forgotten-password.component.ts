@@ -57,6 +57,7 @@ export class ForgottenPasswordComponent implements OnInit {
     this._userService.sendEmailForgotten(this.forgottenPassword).subscribe(
       response => {
         this.status = response.status != Error ? 'sendingSuccess':'error';
+        this._snackbarService.showSnackBar('Se ha enviado el email','success');
         this.resetActivated = response.status != Error ? true:false;
       },
       error => {

@@ -7,8 +7,6 @@ import { global } from './global';
 @Injectable()
 export class ModelBootService{
 	public url: string;
-	public identity:any;
-	public token:any;
 
 	constructor(
 		public _http: HttpClient,
@@ -38,21 +36,19 @@ export class ModelBootService{
 		return this._http.get(this.url + 'getModel/' + modelBootId , {headers: headers});
 	}
 
-	deleteModel(modelId:string):Observable<any>{
-		
+	deleteModel(modelId:string, token:string):Observable<any>{	
 
 		let headers = new HttpHeaders().set('content-Type', 'application/json')
-            .set('Authorization', this.token.token);
+            .set('Authorization', token);
 
 		return this._http.delete(this.url+ 'deleteModel/' + modelId , {headers: headers});
 	}
 
-	updateModel(modelBoot:ModelBoot):Observable<any>{
+	updateModel(modelBoot:ModelBoot, token:string):Observable<any>{
 		let params = JSON.stringify(modelBoot);
 
 		let headers = new HttpHeaders().set('content-Type', 'application/json')
-            .set('Authorization', this.token.token);
-		console.log(this.token.token);
+            .set('Authorization', token);
 
 		return this._http.post(this.url+'updateModel/' + modelBoot._id , params, {headers: headers});
 	}
