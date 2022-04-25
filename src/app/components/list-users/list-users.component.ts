@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import{ User } from '../../models/user'
 import { Router } from '@angular/router';
+import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 
 @Component({
   selector: 'app-list-users',
@@ -23,7 +24,8 @@ export class ListUsersComponent implements OnInit{
 
   constructor(
     private _userService: UserService,
-    private _router: Router
+    private _router: Router,
+    private _snackBarService: SnackbarAdviceService
   ) { 
     this.consumers = [];
     this.page = 1;
@@ -57,8 +59,10 @@ export class ListUsersComponent implements OnInit{
         this.pageFinalHalf = Math.ceil(this.page + (this.pagesParent - this.page)/2);
         //this.checkSequence();
         this.status = 'success'
+        this._snackBarService.showSnackBar('Elementos cargados','success')
       }, error => {
         this.status = 'error';
+        this._snackBarService.showSnackBar(error.error.message,'error')
         this._router.navigate(['/models-boot']);
 
       }

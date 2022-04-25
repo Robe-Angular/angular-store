@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { User } from '../../models/user';
 import {UserService} from '../../services/user.service';
-
+import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 
 @Component({
   selector: 'login',
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit{
   constructor(
     private _userService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _snackbarService: SnackbarAdviceService
 
   ) { 
     this.status = '';
@@ -57,21 +58,23 @@ export class LoginComponent implements OnInit{
               localStorage.setItem('token',JSON.stringify(this.token));
               localStorage.setItem('identity',JSON.stringify(this.identity));
               
+              
               //Redirección
               this._router.navigate(['/consumer',this.identity.user._id]);
             },
             error => {              
               this.status = 'loginError';
-
+              this._snackbarService.showSnackBar(error.error.message, "error");
             }
         );
         }else{
           this.status = 'loginError';
+          this._snackbarService.showSnackBar(response.error.message, "error");
         }
       },
       error => {
         this.status = 'loginError';
-        
+        this._snackbarService.showSnackBar(error.error.message, "error");        
       }
     );
   }
@@ -83,6 +86,7 @@ export class LoginComponent implements OnInit{
         //identity        
         if(response.status != Error){
           this.status = 'success';
+          this._snackbarService.showSnackBar("Hemos enviado un correo de confirmación", "success",-1);
           this._router.navigate(['verify-email','0']);
         }else{
           this.status = 'error';
@@ -90,7 +94,7 @@ export class LoginComponent implements OnInit{
       },
       error => {
         this.status = error.error.status == 300 ? 'registerInvalid':'registerError'       
-
+        this._snackbarService.showSnackBar(error.error.message,'error');
         if(error.error.userStored){
           this._router.navigate(['verify-email','1']);
         }        
@@ -110,6 +114,7 @@ export class LoginComponent implements OnInit{
         this.token = null;
       }else if(params['action'] == 'resetSuccess'){
         this.status = 'resetSuccess';
+        this._snackbarService.showSnackBar('Se ha reseteado la contraseña',"success");
       }
     });
   }

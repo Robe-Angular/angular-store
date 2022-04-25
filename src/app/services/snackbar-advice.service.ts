@@ -10,16 +10,16 @@ export class SnackbarAdviceService {
     private _snackBar: MatSnackBar,
   ) {}
 
-  showSnackBar(snackBarText:string, status:string){
+  showSnackBar(snackBarText:string, status:string, durationSnackbar:number = 2000){
     if(status == 'error'){
       this._snackBar.open(snackBarText, ":)", {
-        duration: 3000,
+        duration: durationSnackbar,
         panelClass: ['red-snackbar'],
         });
     }
     if(status == 'success'){
       this._snackBar.open(snackBarText, "ok", {
-        
+        duration: durationSnackbar,
         panelClass: ['green-snackbar']
         });
     }
