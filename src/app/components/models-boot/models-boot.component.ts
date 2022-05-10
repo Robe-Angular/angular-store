@@ -6,7 +6,7 @@ import { global } from 'src/app/services/global';
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogError, DialogSuccess } from '../dialog-success-error/dialog-success-error.component';
-import { ResourceLoader } from '@angular/compiler';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 export interface DialogData {
@@ -39,11 +39,14 @@ export class ModelsBootComponent implements OnInit {
   public status: string;
   public totalSizes: Array<any>;
   public capableSizesOfListModels: Array<Array<any>>;
+  public descriptionToURL: Array<string>;
 
 
   constructor(
     private _userService: UserService,
     private _modelBootService: ModelBootService,
+    private _route: ActivatedRoute,
+    private _router: Router,
     public dialog: MatDialog
   ) {
     this.createModelStatus = '';
@@ -60,33 +63,49 @@ export class ModelsBootComponent implements OnInit {
     this.capableSizesOfListModels = [];
     this.user = this._userService.getIdentity().user;
     this.token = this._userService.getToken().token;
+    this.descriptionToURL = [];
+    this._router.routeReuseStrategy.shouldReuseRoute = function() {
+        return false;
+    };
   }
 
   ngOnInit(): void {
+    this.getPageFromURL();
     this.goPage(this.page);
-    ;
+    
   }
 
-  
+  getPageFromURL(): void {
+    this._route.params.subscribe(params => {
+      this.page = params["page"];
+    });
+  }
+
   getPage(page: number) {
-    this.goPage(page);
+    this._router.navigate(["models-boot",page]);
   }
 
   goPage(page: number) {
     this._modelBootService.getModels(page, this.sort).subscribe(
       response => {
         this.capableSizesOfListModels = [];
+        this.descriptionToURL = [];        
         this.modelsBoot = response.modelBoots;//modelsBoot --> modelBoots on api :P Sorry
         this.total = response.total;
         this.page = parseInt(response.page);
         this.pagesParent = response.pages;
         this.pageInitHalf = Math.ceil(this.page / 2);
         this.pageFinalHalf = Math.ceil(this.page + (this.pagesParent - this.page) / 2);
-
         this.getModelBootSizes();//Get sizes for Models Boot
 
-        console.log(this.totalSizes);
-        console.log(this.capableSizesOfListModels);
+        this.modelsBoot.forEach( modelBoot => {
+          let descriptionOptimized = "";
+          descriptionOptimized = modelBoot.description.replaceAll(" ","-");
+          this.descriptionToURL.push(descriptionOptimized);
+        });//human-read to description on url
+
+        //console.log(this.totalSizes);
+        //console.log(this.capableSizesOfListModels);
         //this.checkSequence();
         this.status = 'success'
       }, error => {

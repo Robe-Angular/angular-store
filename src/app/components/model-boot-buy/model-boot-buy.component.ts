@@ -1,6 +1,10 @@
-import { Component, OnInit, Inject,OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import { ActivatedRoute } from '@angular/router';
+import { ModelBoot } from 'src/app/models/modelBoot';
+import { ModelBootService } from 'src/app/services/modelBoot.service';
+import { global } from 'src/app/services/global';
+import {NgxImageCompressService} from "ngx-image-compress";
 
 export interface DialogData {
   animal: string;
@@ -15,20 +19,49 @@ export interface DialogData {
   templateUrl: './model-boot-buy.component.html',
   styleUrls: ['./model-boot-buy.component.css']
 })
-export class ModelBootBuyComponent implements OnInit,OnDestroy{
-  animal: string;
-  name: string;
+export class ModelBootBuyComponent implements OnInit{
 
-  constructor(public dialog: MatDialog) {
+  public animal: string;
+  public name: string;
+  public url:string;
+  public modelToBuy: ModelBoot;
+  public mainImagePos: number;
+
+  constructor(
+      public dialog: MatDialog,
+      private _route:ActivatedRoute,
+      private _modelBootService: ModelBootService
+    ) {
     this.animal = "";
     this.name = "";
+    this.modelToBuy = new ModelBoot("","","","",0,"",[],[],0,0);
+    this.url = global.url;
+    this.mainImagePos = 0;
   }
   ngOnInit(): void {
-    console.log("on init");
+    this._route.params.subscribe( params => {
+      this.modelToBuy._id = params["modelBootId"];
+      this._modelBootService.getModelBootSizes(this.modelToBuy._id).subscribe(
+        response => {
+          console.log(response);
+          this.modelToBuy = response.modelBoot;
+          this.modelToBuy.images.every( imageName => {
+            if(this.modelToBuy.mainImage == imageName){
+              return false;
+            }
+            this.mainImagePos += 1;
+            return true;
+          });
+
+        },
+        error => {
+          console.log(error);
+        }
+      );
+
+    })
   }
-  ngOnDestroy(): void {
-    console.log("modelBootbuy destroy");
-  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',

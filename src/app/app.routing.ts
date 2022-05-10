@@ -30,8 +30,9 @@ const appRoutes: Routes = [
     {path: 'users', component: ListUsersComponent,canActivate:[AdminGuard]},
     {path: 'models-boot-admin', component: ModelsBootAdminComponent,canActivate:[AdminGuard]},
     {path: 'create-model-boot', component: CreateModelBootComponent,canActivate:[AdminGuard]},
+    {path: 'models-boot/:page', component: ModelsBootComponent},
     {path: 'models-boot', component: ModelsBootComponent},
-    {path: 'model-boot-buy', component: ModelBootBuyComponent},
+    {path: 'model-boot-buy/:modelBootId/:modelBootDescription', component: ModelBootBuyComponent},
     {path: 'edit-model-boot/:modelBootId', component: EditModelBootComponent}
 ];
 

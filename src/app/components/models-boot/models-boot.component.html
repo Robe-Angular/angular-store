@@ -6,7 +6,7 @@
             
             <div id="list-models">
                 <article class="model-element" *ngFor="let modelBoot of modelsBoot; index as i; trackBy: trackByFn ">
-                    <a class="image-model" [routerLink]="['/inicio']" >
+                    <a class="image-model" [routerLink]="['/model-boot-buy',modelBoot._id, descriptionToURL[i]]" >
                         <div class="image-wrapper">
                             <img alt="{{modelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + modelBoot.mainImage + '/' + modelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
                         </div>
