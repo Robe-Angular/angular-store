@@ -1,12 +1,30 @@
 <section id="modelToBuy">
   <div id="thumbnails">
-    <img class="thumbnail" alt="">
+    <div class="thumbnail" *ngFor="let image of images; index as i">
+      <img class="thumbnail-img" alt="{{modelToBuy.description + i}}" [src]="
+      url + 'getImageModelBoot/' + modelToBuy.images[i] + '/' + modelToBuy.description | imageName">
+    </div>
   </div>
-  <img class="scopedImage" alt="{{modelToBuy.description}}" src="{{url + 'getImageModelBoot/' + modelToBuy.images[mainImagePos] + '/' + modelToBuy.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+  <div class="clear-fix"></div>
+  <section id="scopedImageWrapper">
+    <img class="scopedImage" alt="{{modelToBuy.description}}" src="{{url + 'getImageModelBoot/' + modelToBuy.images[mainImagePos] + '/' + modelToBuy.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+  </section>
+
+  <section id="modelData">
+    <h1 id="modelTitle">{{modelToBuy.title}} </h1>
+    <p id="modelDescription">{{modelToBuy.description}}</p>
+    <p id="modelColor">{{modelToBuy.color}}</p>
+    <p id="modelPrice">	&#36;{{modelToBuy.price}}<span>mxn</span></p>
+    
+    
+    
+    
+  </section>
+  
   
 </section>
 
-
+<!--
 <ol>
     <li>
       <mat-form-field appearance="fill">
@@ -21,3 +39,4 @@
       You chose: <i>{{animal}}</i>
     </li>
   </ol>
+-->

@@ -29,6 +29,7 @@ $background-menus: #EEEEEE;
 $access-buttons-color: #db7b1c;
 $access-buttons-color-hover: #fd8f21;
 $logo-color: #DB7A1B;
+$border-thumbnail-color: #E2C08D;
 $access-margin-left: 30px;
 $field-login-margin-top: 15px;
 
@@ -41,7 +42,10 @@ $success-color: #2e8d61;
 
 $danger-color: #E73E33;
 
+$price-color: #029651;
+
 $border-main: 2px solid #d3d3d3;
+
 
 
 
@@ -776,6 +780,69 @@ body{
                 @include custom-media(0px, $desktop){
                     width: 270px;
     
+                }
+            }
+        }
+
+        #modelToBuy{
+            margin-left: 17px;
+            #thumbnails{
+                display: block;
+                float: left;
+                text-align: left;
+                margin-top: 5px;
+                .thumbnail{
+                    display: inline-block;                    
+                    width: 45px;
+                    height: 45px;
+                    overflow: hidden;
+                    border: 2px solid $border-thumbnail-color;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            #scopedImageWrapper{
+                display: block;
+                float: left;
+                width: 40%;
+                height: 350px;
+                overflow: hidden;
+                @include custom-media(0px, $desktop ){
+                    width: 90%;
+                }
+                .scopedImage{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            #modelData{
+                display: block;
+                float: left;
+                width: 50%;
+                margin-left: 20px;
+                text-align: left;
+                @include custom-media(0px,$desktop){
+                    margin-left: 0px;
+                }
+                
+                #modelTitle{
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                }
+                p{
+                 margin: 0px 0px 0px;
+                }
+                #modelColor{
+                    font-style: italic;
+                }
+                #modelPrice{
+                    color: $price-color;
+                    font:800 larger Arial;
+                    span{
+                        font: 100 smaller Arial;
+                    }
                 }
             }
         }

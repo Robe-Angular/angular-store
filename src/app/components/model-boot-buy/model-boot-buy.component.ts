@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ModelBoot } from 'src/app/models/modelBoot';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { global } from 'src/app/services/global';
-import {NgxImageCompressService} from "ngx-image-compress";
 
 export interface DialogData {
   animal: string;
@@ -26,6 +25,7 @@ export class ModelBootBuyComponent implements OnInit{
   public url:string;
   public modelToBuy: ModelBoot;
   public mainImagePos: number;
+  public images: Array<string>;
 
   constructor(
       public dialog: MatDialog,
@@ -37,6 +37,7 @@ export class ModelBootBuyComponent implements OnInit{
     this.modelToBuy = new ModelBoot("","","","",0,"",[],[],0,0);
     this.url = global.url;
     this.mainImagePos = 0;
+    this.images = [];
   }
   ngOnInit(): void {
     this._route.params.subscribe( params => {
@@ -45,13 +46,15 @@ export class ModelBootBuyComponent implements OnInit{
         response => {
           console.log(response);
           this.modelToBuy = response.modelBoot;
+          this.images = this.modelToBuy.images;
+          console.log(this.images);
           this.modelToBuy.images.every( imageName => {
             if(this.modelToBuy.mainImage == imageName){
               return false;
             }
             this.mainImagePos += 1;
             return true;
-          });
+          });//Find position of the main image in the array
 
         },
         error => {
