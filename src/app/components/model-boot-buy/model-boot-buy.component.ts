@@ -26,6 +26,7 @@ export class ModelBootBuyComponent implements OnInit{
   public modelToBuy: ModelBoot;
   public mainImagePos: number;
   public images: Array<string>;
+  public sizes: Array<any>;
 
   constructor(
       public dialog: MatDialog,
@@ -38,6 +39,7 @@ export class ModelBootBuyComponent implements OnInit{
     this.url = global.url;
     this.mainImagePos = 0;
     this.images = [];
+    this.sizes = [];
   }
   ngOnInit(): void {
     this._route.params.subscribe( params => {
@@ -47,6 +49,7 @@ export class ModelBootBuyComponent implements OnInit{
           console.log(response);
           this.modelToBuy = response.modelBoot;
           this.images = this.modelToBuy.images;
+          this.sizes = response.sizes;
           console.log(this.images);
           this.modelToBuy.images.every( imageName => {
             if(this.modelToBuy.mainImage == imageName){
@@ -55,6 +58,9 @@ export class ModelBootBuyComponent implements OnInit{
             this.mainImagePos += 1;
             return true;
           });//Find position of the main image in the array
+          console.log("sizes");
+          console.log(this.sizes);
+          this.sortSizesAndShow();
 
         },
         error => {
@@ -63,6 +69,13 @@ export class ModelBootBuyComponent implements OnInit{
       );
 
     })
+  }
+
+  sortSizesAndShow(){
+    this.sizes = this.sizes.sort((a:any,b:any) =>
+      a.size - b.size
+    )
+    console.log(this.sizes);
   }
 
   openDialog(): void {
