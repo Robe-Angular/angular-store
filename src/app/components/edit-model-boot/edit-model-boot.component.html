@@ -44,6 +44,8 @@
 			<small *ngIf="!maxSizeForm.valid && maxSizeForm.touched || maxSize < 0 || maxSize < minSize" class="invalid-field">
 				La talla máxima no es válida
             </small>
+
+			<input type="file" name="imageFiles" class="form-control" (change)="fileChangeEvent($event)" name="file0" multiple/>
 			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || maxSize < 0 || minSize < 0 || maxSize < minSize">
 
 

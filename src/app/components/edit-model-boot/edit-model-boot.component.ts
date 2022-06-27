@@ -5,6 +5,7 @@ import { ModelBootService } from '../../services/modelBoot.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 import { global } from 'src/app/services/global';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Component({
   selector: 'app-edit-model-boot',
@@ -33,6 +34,7 @@ export class EditModelBootComponent implements OnInit {
     this.minSize = 0;
     this.url = global.url;
     this.token = this._userService.getToken().token;
+    this.filesToUpload = [];
   }
 
   ngOnInit(): void {
@@ -70,10 +72,13 @@ export class EditModelBootComponent implements OnInit {
           this.status = 'success';
           this.messageEvent.emit('create-model-boot-success');
           this._snackbarService.showSnackBar('Modelo actualizado con éxito', 'success');
+          this.uploadImages();
           this._router.navigate(['/models-boot']);
+          
         }else{
           this.status = 'error';
           this._snackbarService.showSnackBar(response.error.message, 'error');
+
         }
       },
       error => {
@@ -81,6 +86,15 @@ export class EditModelBootComponent implements OnInit {
         this.status = error.error && error.error.status == 300 ? 'createInvalid':'createError'       
       }
     );
+  }
+
+  public filesToUpload: File[];
+  fileChangeEvent(fileInput: any){
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  uploadImages(){
+    this._userService.uploadModelImage(this.filesToUpload,this.token,this.editModelBoot._id);
   }
 }
 
