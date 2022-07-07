@@ -45,8 +45,12 @@
 				La talla máxima no es válida
             </small>
 
-			<input type="file" name="imageFiles" class="form-control" (change)="fileChangeEvent($event)" name="file0" multiple/>
-			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || maxSize < 0 || minSize < 0 || maxSize < minSize">
+			<input type="file" id="upload" for="subir imágenes" name="imageFiles" class="form-control" (change)="fileChangeEvent($event)" name="file0" multiple/>
+			
+			<button onclick="document.getElementById('upload').click(); return false;">Click me</button>
+			<!--Prevent default submit with return false... Why not put on a funtion(?)-->
+
+			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || maxSize < 0 || minSize < 0 || maxSize < minSize"/>
 
 
 		</form>

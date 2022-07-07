@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ActivatedRoute } from '@angular/router';
 import { ModelBoot } from 'src/app/models/modelBoot';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
+import { SizesService } from 'src/app/services/sizes.service';
 import { global } from 'src/app/services/global';
 
 export interface DialogData {
@@ -25,21 +26,27 @@ export class ModelBootBuyComponent implements OnInit{
   public url:string;
   public modelToBuy: ModelBoot;
   public mainImagePos: number;
+  public bigImagePos: number;//Image on big screen}
   public images: Array<string>;
   public sizes: Array<any>;
+  public capableSizes: Array<any>;
+  
 
   constructor(
       public dialog: MatDialog,
       private _route:ActivatedRoute,
-      private _modelBootService: ModelBootService
+      private _modelBootService: ModelBootService,
+      private _sizesService: SizesService
     ) {
     this.animal = "";
     this.name = "";
     this.modelToBuy = new ModelBoot("","","","",0,"",[],[],0,0);
     this.url = global.url;
     this.mainImagePos = 0;
+    this.bigImagePos = 0;
     this.images = [];
     this.sizes = [];
+    this.capableSizes = [];
   }
   ngOnInit(): void {
     this._route.params.subscribe( params => {
@@ -58,9 +65,10 @@ export class ModelBootBuyComponent implements OnInit{
             this.mainImagePos += 1;
             return true;
           });//Find position of the main image in the array
+          this.bigImagePos = this.mainImagePos;
           console.log("sizes");
           console.log(this.sizes);
-          this.sortSizesAndShow();
+          this.sortSizesAndShow(this.sizes);
 
         },
         error => {
@@ -71,11 +79,9 @@ export class ModelBootBuyComponent implements OnInit{
     })
   }
 
-  sortSizesAndShow(){
-    this.sizes = this.sizes.sort((a:any,b:any) =>
-      a.size - b.size
-    )
-    console.log(this.sizes);
+  sortSizesAndShow(sizesModelBoot:any){
+    this.capableSizes = this._sizesService.getCapableSizes(sizesModelBoot)
+    console.log(this.capableSizes);
   }
 
   openDialog(): void {
@@ -88,6 +94,10 @@ export class ModelBootBuyComponent implements OnInit{
       console.log('The dialog was closed');
       this.animal = result;
     });
+  }
+
+  showBigImage(i:number){
+    this.bigImagePos = i;
   }
 }
 

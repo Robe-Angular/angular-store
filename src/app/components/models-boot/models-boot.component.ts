@@ -2,11 +2,14 @@ import { ModelBoot } from 'src/app/models/modelBoot';
 import { User } from 'src/app/models/user';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { UserService } from 'src/app/services/user.service';
+
 import { global } from 'src/app/services/global';
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogError, DialogSuccess } from '../dialog-success-error/dialog-success-error.component';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { SizesService } from 'src/app/services/sizes.service';
 
 
 export interface DialogData {
@@ -47,6 +50,7 @@ export class ModelsBootComponent implements OnInit {
     private _modelBootService: ModelBootService,
     private _route: ActivatedRoute,
     private _router: Router,
+    private _sizesService: SizesService,
     public dialog: MatDialog
   ) {
     this.createModelStatus = '';
@@ -119,19 +123,14 @@ export class ModelsBootComponent implements OnInit {
       this._modelBootService.getModelBootSizes(modelBoot._id).subscribe(
         response => {
           let modelSizes = response.sizes;
-          let capableSizesModel: any = [];
+          let capableSizesModel: any = this._sizesService.getCapableSizes(modelSizes);
 
-          this.totalSizes.push(modelSizes);
+          this.totalSizes.push(modelSizes);         
 
-          modelSizes.forEach((modelSize: any) => {
-            if (modelSize.quantity > 0) {
-              capableSizesModel.push(modelSize.size);
-            }
-          });
           this.capableSizesOfListModels.push(capableSizesModel);
-          this.capableSizesOfListModels.forEach((capableSizesModel: any) => {
+          /*this.capableSizesOfListModels.forEach((capableSizesModel: any) => {
             capableSizesModel.sort();
-          });//Sort for correct visualization
+          });//Sort for correct visualization*///--replaced with service
 
         }, error => {
           this.totalSizes.push([]);

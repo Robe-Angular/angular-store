@@ -2,12 +2,12 @@
   <div id="thumbnails">
     <div class="thumbnail" *ngFor="let image of images; index as i">
       <img class="thumbnail-img" alt="{{modelToBuy.description + i}}" [src]="
-      url + 'getImageModelBoot/' + modelToBuy.images[i] + '/' + modelToBuy.description | imageName">
+      url + 'getImageModelBoot/' + modelToBuy.images[i] + '/' + modelToBuy.description | imageName" (click)="showBigImage(i)">
     </div>
   </div>
   <div class="clear-fix"></div>
   <section id="scopedImageWrapper">
-    <img class="scopedImage" alt="{{modelToBuy.description}}" src="{{url + 'getImageModelBoot/' + modelToBuy.images[mainImagePos] + '/' + modelToBuy.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+    <img class="scopedImage" alt="{{modelToBuy.description}}" src="{{url + 'getImageModelBoot/' + modelToBuy.images[bigImagePos] + '/' + modelToBuy.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
   </section>
 
   <section id="modelData">
@@ -17,10 +17,12 @@
     <p id="modelPrice">	&#36;{{modelToBuy.price}}<span>mxn</span></p>
 
     <h1>Tallas disponibles</h1>
-    <p id="capableSizesModelBoot">
-      
+    <p id="capableSizesModelBoot" *ngIf="capableSizes && capableSizes.length > 0; else noCapableSizes">
+      <span *ngFor="let capableSize of capableSizes">
+        {{capableSize}}
+      </span>
     </p>
-    <ng-template #noSizesOnModelBoot>
+    <ng-template #noCapableSizes>
       No hay tallas disponibles
     </ng-template>
     

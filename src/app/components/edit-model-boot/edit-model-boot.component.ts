@@ -66,13 +66,13 @@ export class EditModelBootComponent implements OnInit {
     this.editModelBoot.maxSize = this.maxSize;
     this.editModelBoot.minSize = this.minSize;
     this._modelBootService.updateModel(this.editModelBoot, this.token).subscribe(
-      response => {
+      async response => {
         //identity        
         if(response.status != Error){
           this.status = 'success';
           this.messageEvent.emit('create-model-boot-success');
           this._snackbarService.showSnackBar('Modelo actualizado con éxito', 'success');
-          this.uploadImages();
+          await this.uploadImages();
           this._router.navigate(['/models-boot']);
           
         }else{
