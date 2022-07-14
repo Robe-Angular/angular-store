@@ -5,7 +5,6 @@ import { ModelBootService } from '../../services/modelBoot.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 import { global } from 'src/app/services/global';
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Component({
   selector: 'app-edit-model-boot',
@@ -21,6 +20,12 @@ export class EditModelBootComponent implements OnInit {
   public minSize: number;
   public url: string;
   public token: string;
+  public filesSelected: File[];
+  public filesToUpload: File[];
+  public urlsOnLocal: string[];
+  //public filesNon: File[];
+  //public filesPar: File[];
+
   constructor(
     private _snackbarService: SnackbarAdviceService,
     private _modelBootService: ModelBootService,
@@ -34,7 +39,12 @@ export class EditModelBootComponent implements OnInit {
     this.minSize = 0;
     this.url = global.url;
     this.token = this._userService.getToken().token;
+    this.filesSelected = [];
     this.filesToUpload = [];
+    this.urlsOnLocal = [];
+    
+    //this.filesNon = [];
+    //this.filesPar = [];
   }
 
   ngOnInit(): void {
@@ -46,7 +56,6 @@ export class EditModelBootComponent implements OnInit {
         response => {
           this.editModelBoot = response.modelBoot;
           let sizes = response.sizes;
-          console.log(sizes);
           sizes.sort((s1:any,s2:any) => {return s1.size - s2.size});
           let lastOnSizes = sizes.length - 1;
           this.maxSize = sizes[lastOnSizes].size;
@@ -88,9 +97,43 @@ export class EditModelBootComponent implements OnInit {
     );
   }
 
-  public filesToUpload: File[];
+  
+
   fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+    this.urlsOnLocal = [];
+    this.filesSelected = <Array<File>>fileInput.target.files;
+
+    Array.from(this.filesSelected).forEach((element:any) => {
+      this.filesToUpload.push(element);
+    });
+    if(this.filesToUpload){
+      for(let file of this.filesToUpload){
+        let reader = new FileReader();
+        reader.onload = (e:any) => {
+          this.urlsOnLocal.push(e.target.result)
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+    console.log("here uploading...");
+    console.log(this.filesToUpload);
+
+    /*
+    console.log(this.filesToUpload);
+    let counter = 0
+    Array.from(this.filesToUpload).forEach((element:any) => {
+      if(counter % 2 != 0){
+        this.filesNon.push(element);
+        console.log("true");
+      }else{
+        this.filesPar.push(element);
+      }
+      counter += 1;
+    })
+    counter = 0;
+    console.log(this.filesNon);
+    console.log(this.filesPar);
+    */
   }
 
   uploadImages(){

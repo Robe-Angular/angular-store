@@ -47,8 +47,15 @@
 
 			<input type="file" id="upload" for="subir imágenes" name="imageFiles" class="form-control" (change)="fileChangeEvent($event)" name="file0" multiple/>
 			
-			<button onclick="document.getElementById('upload').click(); return false;">Click me</button>
+			<button class="button" id="upload-visible" onclick="document.getElementById('upload').click(); return false;">Selecciona los archivos de imagen</button>
 			<!--Prevent default submit with return false... Why not put on a funtion(?)-->
+
+			<div class="preUploadedImage-wrapper" *ngFor="let url of urlsOnLocal">
+				<img  [src]="url" class="preUploadedImage">
+				<button class="symbol discard">	&#215;</button>
+			</div>
+			<div class="clear-fix"></div>
+			
 
 			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || maxSize < 0 || minSize < 0 || maxSize < minSize"/>
 
