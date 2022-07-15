@@ -309,9 +309,24 @@ body .consumerForm .preUploadedImage, body .consumerInfo .preUploadedImage {
 }
 body .consumerForm .discard, body .consumerInfo .discard {
   position: absolute;
-  background-color: #E73E33;
+  background-color: #ffffff;
+  color: #E73E33;
+  margin-top: 3px;
+  margin-left: 3px;
+  padding: 0px;
+  border-radius: 20px;
+  font-size: 20px;
+  line-height: 15px;
   left: 0px;
   top: 0px;
+  transition: all 100ms;
+}
+body .consumerForm .discard:hover, body .consumerInfo .discard:hover {
+  cursor: pointer;
+  color: #fd8f21;
+}
+body #contentDialogDiscard {
+  display: none;
 }
 body #content {
   display: grid;

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content id="contentDialogDiscard" >
+  <p>What's your favorite animal?</p>
+  <mat-form-field appearance="fill" hidden>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.discard" hidden="true"/>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.discard" cdkFocusInitial>Ok</button>
+</div>

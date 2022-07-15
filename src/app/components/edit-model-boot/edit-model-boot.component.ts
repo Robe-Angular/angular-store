@@ -1,10 +1,17 @@
-import { Component, OnInit, Output ,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output ,EventEmitter,Inject } from '@angular/core';
+
 import { Router, ActivatedRoute, RouterState} from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ModelBoot } from '../../models/modelBoot';
 import { ModelBootService } from '../../services/modelBoot.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 import { global } from 'src/app/services/global';
+
+export interface DialogData {
+  discard: boolean;
+  index: number;
+}
 
 @Component({
   selector: 'app-edit-model-boot',
@@ -27,6 +34,7 @@ export class EditModelBootComponent implements OnInit {
   //public filesPar: File[];
 
   constructor(
+    public dialog: MatDialog,
     private _snackbarService: SnackbarAdviceService,
     private _modelBootService: ModelBootService,
     private _router: Router,
@@ -66,8 +74,7 @@ export class EditModelBootComponent implements OnInit {
           console.log(error);
         }
       );
-    });
-    
+    });   
         
   }
 
@@ -106,15 +113,7 @@ export class EditModelBootComponent implements OnInit {
     Array.from(this.filesSelected).forEach((element:any) => {
       this.filesToUpload.push(element);
     });
-    if(this.filesToUpload){
-      for(let file of this.filesToUpload){
-        let reader = new FileReader();
-        reader.onload = (e:any) => {
-          this.urlsOnLocal.push(e.target.result)
-        }
-        reader.readAsDataURL(file);
-      }
-    }
+    this.setUrlsOfFilesToUpload();
     console.log("here uploading...");
     console.log(this.filesToUpload);
 
@@ -136,8 +135,59 @@ export class EditModelBootComponent implements OnInit {
     */
   }
 
+  setUrlsOfFilesToUpload(){
+    this.urlsOnLocal = [];
+    if(this.filesToUpload){
+      for(let file of this.filesToUpload){
+        let reader = new FileReader();
+        reader.onload = (e:any) => {
+          this.urlsOnLocal.push(e.target.result)
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
   uploadImages(){
-    this._userService.uploadModelImage(this.filesToUpload,this.token,this.editModelBoot._id);
+    this._modelBootService.uploadModelImage(this.filesToUpload,this.token,this.editModelBoot._id);
+  }
+
+  activateUpload(){
+    document.getElementById('upload')!.click(); 
+  }
+
+  discardPreUpload(preUploadPos:number){
+    this.filesToUpload.splice(preUploadPos, 1);
+    this.setUrlsOfFilesToUpload();
+  }
+
+  dialogDiscardFile(preUploadPos:number){
+    const dialogRef = this.dialog.open(DialogDiscardFile, {
+      width: '250px',
+      data: {discard: true, index: preUploadPos},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.discardPreUpload(preUploadPos);
+      }
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-discard-file',
+  templateUrl: 'dialog-discard-file.html',
+})
+
+export class DialogDiscardFile {
+  constructor(
+    public dialogRef: MatDialogRef<DialogDiscardFile>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
 

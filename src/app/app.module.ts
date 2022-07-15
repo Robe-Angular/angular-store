@@ -27,7 +27,9 @@ import { ModelsBootComponent,DialogDeleteModel } from './components/models-boot/
 import { ModelsBootAdminComponent } from './components/models-boot-admin/models-boot-admin.component';
 import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
 import { ModelBootBuyComponent, DialogOverviewExampleDialog } from './components/model-boot-buy/model-boot-buy.component';
-import { DialogSuccess,DialogError } from './components/dialog-success-error/dialog-success-error.component';
+import { EditModelBootComponent,DialogDiscardFile } from './components/edit-model-boot/edit-model-boot.component';
+
+
 
 import { UserGuard } from './services/user.guard';
 import { NoUserGuard } from './services/no-user.guard';
@@ -36,7 +38,8 @@ import { UserService } from './services/user.service';
 import { ModelBootService } from './services/modelBoot.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ImageNamePipe } from './pipes/image-name.pipe';
-import { EditModelBootComponent } from './components/edit-model-boot/edit-model-boot.component';
+import { DialogSuccess,DialogError } from './components/dialog-success-error/dialog-success-error.component';
+
 
 
 
@@ -60,7 +63,8 @@ import { EditModelBootComponent } from './components/edit-model-boot/edit-model-
     DialogDeleteModel,
     DialogSuccess,
     DialogError,
-    EditModelBootComponent
+    EditModelBootComponent,
+    DialogDiscardFile
   ],
   imports: [
     routing,

@@ -438,10 +438,25 @@ body{
         }
         .discard{
             position: absolute;
-            background-color: $danger-color;
+            background-color: $default-color;
+            color: $danger-color;
+            margin-top: 3px;
+            margin-left: 3px;
+            padding: 0px;
+            border-radius: 20px;
+            font-size: 20px;
+            line-height: 15px;
             left: 0px;
             top:0px;
-        }
+            transition: all 100ms;
+            &:hover{
+                cursor: pointer;
+                color: $access-buttons-color-hover;
+            }
+        }        
+    }
+    #contentDialogDiscard{
+        display: none;
     }
     #content{
         display: grid;
