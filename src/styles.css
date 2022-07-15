@@ -309,6 +309,7 @@ body .consumerForm .preUploadedImage, body .consumerInfo .preUploadedImage {
 }
 body .consumerForm .discard, body .consumerInfo .discard {
   position: absolute;
+  background-color: #E73E33;
   left: 0px;
   top: 0px;
 }
