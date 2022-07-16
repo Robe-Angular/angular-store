@@ -1,5 +1,5 @@
 <div class="unique-wrapper">
-	<div id="register" class="unique consumerForm">
+	<div id="edit-model" class="unique consumerForm">
 		<h2>Editar Modelo</h2>
 		<form #createModel="ngForm" (ngSubmit)="onSubmit(createModel)" id="createModel">
 			
@@ -49,20 +49,24 @@
 			
 			<button type="button" class="button" id="upload-visible" (click)="activateUpload()">Selecciona los archivos de imagen</button>
 			<!--Prevent default submit with return false... Why not put on a funtion(?)-->
-
-			<div class="preUploadedImage-wrapper" *ngFor="let url of urlsOnLocal; index as i">
-				<img  [src]="url" class="preUploadedImage">
-				<button type="button" class="symbol discard" (click)="dialogDiscardFile(i)">&#215;</button>
-			</div>
-			<div class="clear-fix"></div>
+			<div id="preUploadedImages">
+				<div class="preUploadedImage-wrapper" *ngFor="let url of urlsOnLocal; index as i">
+					<img  [src]="url" class="preUploadedImage">
+					<button type="button" class="symbol discard" (click)="dialogDiscardFile(i)">&#215;</button>
+				</div>
+				<div class="clear-fix"></div>
+			</div>		
 			
 
 			<input type="submit" value="Editar" class="button" [disabled]="createModel.invalid || maxSize < 0 || minSize < 0 || maxSize < minSize"/>
 
 
 		</form>
-		<div class="image-wrapper">
-			<img alt="{{editModelBoot.description}}{{'i'}}" src="{{url + 'getImageModelBoot/' + editModelBoot.mainImage + '/' + editModelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+		<div id="imagesUploaded">
+			<div class="uploadedImage-wrapper" *ngFor="let urlImage of imagesUploaded; index as i">
+				<img [class.main]="urlImage==mainImage" class="uploadedImage" alt="{{editModelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + urlImage+ '/' + editModelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+			</div>
+			
 		</div>
 	</div>
 </div>

@@ -30,6 +30,9 @@ export class EditModelBootComponent implements OnInit {
   public filesSelected: File[];
   public filesToUpload: File[];
   public urlsOnLocal: string[];
+  public imagesUploaded: string[];
+  public mainImage: string;
+  
   //public filesNon: File[];
   //public filesPar: File[];
 
@@ -50,6 +53,9 @@ export class EditModelBootComponent implements OnInit {
     this.filesSelected = [];
     this.filesToUpload = [];
     this.urlsOnLocal = [];
+    this.imagesUploaded = [];
+    this.mainImage = "";
+    
     
     //this.filesNon = [];
     //this.filesPar = [];
@@ -68,6 +74,9 @@ export class EditModelBootComponent implements OnInit {
           let lastOnSizes = sizes.length - 1;
           this.maxSize = sizes[lastOnSizes].size;
           this.minSize = sizes[0].size;
+
+          this.imagesUploaded = this.editModelBoot.images;
+          this.mainImage = this.editModelBoot.mainImage;
 
         },error => {
           this._snackbarService.showSnackBar(error.error.message,'error');
