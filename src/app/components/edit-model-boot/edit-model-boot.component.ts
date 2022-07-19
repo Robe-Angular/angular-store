@@ -9,6 +9,7 @@ import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service'
 import { global } from 'src/app/services/global';
 
 export interface DialogData {
+  deleteFile: boolean;
   discard: boolean;
   index: number;
 }
@@ -65,24 +66,7 @@ export class EditModelBootComponent implements OnInit {
     this._route.params.subscribe( params => {
       
       this.editModelBoot._id = params['modelBootId'];
-
-      this._modelBootService.getModelBootSizes(this.editModelBoot._id).subscribe(
-        response => {
-          this.editModelBoot = response.modelBoot;
-          let sizes = response.sizes;
-          sizes.sort((s1:any,s2:any) => {return s1.size - s2.size});
-          let lastOnSizes = sizes.length - 1;
-          this.maxSize = sizes[lastOnSizes].size;
-          this.minSize = sizes[0].size;
-
-          this.imagesUploaded = this.editModelBoot.images;
-          this.mainImage = this.editModelBoot.mainImage;
-
-        },error => {
-          this._snackbarService.showSnackBar(error.error.message,'error');
-          console.log(error);
-        }
-      );
+      this.loadData();
     });   
         
   }
@@ -170,15 +154,67 @@ export class EditModelBootComponent implements OnInit {
     this.setUrlsOfFilesToUpload();
   }
 
-  dialogDiscardFile(preUploadPos:number){
+  deleteUploaded(posToDelete:number){
+    let deleteFileCommandString :string = this.editModelBoot._id + '/' + this.imagesUploaded[posToDelete];
+    this._modelBootService.deleteFile(deleteFileCommandString,this.token).subscribe( 
+      response => {
+        this._snackbarService.showSnackBar('Imagen eliminada con éxito', 'success');
+        this.loadData();
+      },
+      error => {
+        this._snackbarService.showSnackBar(error.error.message, 'error');
+      }
+    );
+  }
+
+  setMainImage(posToSetMain:number){
+    let urlNewMainImage = this.imagesUploaded[posToSetMain];
+    let mainImageCommandString = this.editModelBoot._id + '/' + urlNewMainImage;
+
+    this._modelBootService.setMainImage(mainImageCommandString,this.token).subscribe(
+      response => {
+        this._snackbarService.showSnackBar('Se ha cambiado la imagen principal', 'success');
+        this.loadData();
+      },
+      error => {
+        this._snackbarService.showSnackBar(error.error.message, 'error');
+      }
+    );
+  }
+
+  loadData(){
+    this._modelBootService.getModelBootSizes(this.editModelBoot._id).subscribe(
+      response => {
+        this.editModelBoot = response.modelBoot;
+        let sizes = response.sizes;
+        sizes.sort((s1:any,s2:any) => {return s1.size - s2.size});
+        let lastOnSizes = sizes.length - 1;
+        this.maxSize = sizes[lastOnSizes].size;
+        this.minSize = sizes[0].size;
+        this.imagesUploaded = this.editModelBoot.images;
+        this.mainImage = this.editModelBoot.mainImage;
+
+      },error => {
+        this._snackbarService.showSnackBar(error.error.message,'error');
+        console.log(error);
+      }
+    );
+  }
+
+  dialogDiscardFile(disallowedFile:number,deleteFile: boolean){
     const dialogRef = this.dialog.open(DialogDiscardFile, {
       width: '250px',
-      data: {discard: true, index: preUploadPos},
+      data: {deleteFile: deleteFile ,discard: true, index: disallowedFile},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.discardPreUpload(preUploadPos);
+        if(deleteFile){
+          this.deleteUploaded(disallowedFile);
+        }else{
+          this.discardPreUpload(disallowedFile);
+        }
+        
       }
     });
   }
@@ -190,11 +226,15 @@ export class EditModelBootComponent implements OnInit {
 })
 
 export class DialogDiscardFile {
+  public deleteFile: boolean;
   constructor(
+
     public dialogRef: MatDialogRef<DialogDiscardFile>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
+  ) {
+    this.deleteFile = data.deleteFile;
+  }
+  
   onNoClick(): void {
     this.dialogRef.close();
   }

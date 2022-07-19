@@ -52,7 +52,7 @@
 			<div id="preUploadedImages">
 				<div class="preUploadedImage-wrapper" *ngFor="let url of urlsOnLocal; index as i">
 					<img  [src]="url" class="preUploadedImage">
-					<button type="button" class="symbol discard" (click)="dialogDiscardFile(i)">&#215;</button>
+					<button type="button" class="symbol discard" (click)="dialogDiscardFile(i,false)">&#215;</button>
 				</div>
 				<div class="clear-fix"></div>
 			</div>		
@@ -64,7 +64,10 @@
 		</form>
 		<div id="imagesUploaded">
 			<div class="uploadedImage-wrapper" *ngFor="let urlImage of imagesUploaded; index as i">
-				<img [class.main]="urlImage==mainImage" class="uploadedImage" alt="{{editModelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + urlImage+ '/' + editModelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+				<img  class="uploadedImage" alt="{{editModelBoot.description}}{{i}}" src="{{url + 'getImageModelBoot/' + urlImage+ '/' + editModelBoot.description | imageName}}" onerror="this.src='assets/images/imageDefault.jpg'"/>
+				<button type="button" class="symbol discard" (click)="dialogDiscardFile(i,true)">&#215;</button>
+				<button type="button" [class.main]="urlImage==mainImage" class="symbol new-main" (click)="setMainImage(i)">R</button>
+				<div class="clear-fix"></div>
 			</div>
 			
 		</div>

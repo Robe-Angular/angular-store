@@ -1,12 +1,20 @@
-<h1 mat-dialog-title>¿Quieres descartar esta imagen?</h1>
-<div mat-dialog-content id="contentDialogDiscard" >
-  <p>What's your favorite animal?</p>
-  <mat-form-field appearance="fill" hidden>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.discard" hidden="true"/>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No, gracias</button>
-  <button mat-button [mat-dialog-close]="data.discard" cdkFocusInitial>Sí</button>
+<div id="dialog-discard-file">
+  <div *ngIf="deleteFile == false; else deleteTitle ">
+    <h1 mat-dialog-title>¿Quieres descartar esta imagen?</h1>
+  </div>
+  <ng-template #deleteTitle>
+    <h1 mat-dialog-title>¿Quieres eliminar esta imagen?</h1>
+  </ng-template>
+
+  <div mat-dialog-content id="contentDialogDiscard" >
+    <p></p>
+    <mat-form-field appearance="fill" hidden>
+      <mat-label></mat-label>
+      <input matInput [(ngModel)]="data.discard" hidden="true"/>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="no-thanks" (click)="onNoClick()">No, gracias</button>
+    <button mat-button class="delete-confirm" [mat-dialog-close]="data.discard" cdkFocusInitial>Sí</button>
+  </div>
 </div>

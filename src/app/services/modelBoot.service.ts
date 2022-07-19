@@ -108,4 +108,20 @@ export class ModelBootService{
 		requestXH.send(formData);
 	}
 
+	deleteFile(deleteFileCommandString:string, token:string):Observable<any>{
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+            .set('Authorization', token);
+		
+		return this._http.delete(this.url+'deleteUploadImage/' + deleteFileCommandString, {headers: headers});
+	}
+
+	setMainImage(mainImageCommandString:string, token:string):Observable<any>{
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+            .set('Authorization', token);
+		
+		return this._http.put(this.url+'setMainImage/' + mainImageCommandString,{} , {headers: headers});
+	}
+
 }
