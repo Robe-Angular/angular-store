@@ -187,6 +187,7 @@ export class EditModelBootComponent implements OnInit {
       response => {
         this.editModelBoot = response.modelBoot;
         let sizes = response.sizes;
+        console.log(response);
         sizes.sort((s1:any,s2:any) => {return s1.size - s2.size});
         let lastOnSizes = sizes.length - 1;
         this.maxSize = sizes[lastOnSizes].size;

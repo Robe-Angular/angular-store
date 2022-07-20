@@ -759,8 +759,13 @@ body main #modelToBuy #scopedImageWrapper {
   }
 }
 body main #modelToBuy #scopedImageWrapper .scopedImage {
-  width: 100%;
+  width: 69%;
   height: 100%;
+}
+@media (min-width: 0px) and (max-width: 1320px) {
+  body main #modelToBuy #scopedImageWrapper .scopedImage {
+    width: 100%;
+  }
 }
 body main #modelToBuy #modelData {
   display: block;

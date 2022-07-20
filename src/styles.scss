@@ -896,8 +896,11 @@ body{
                     width: 90%;
                 }
                 .scopedImage{
-                    width: 100%;
+                    width: 69%;
                     height: 100%;
+                    @include custom-media(0px, $desktop ){
+                        width: 100%;
+                    }
                 }
             }
             #modelData{
