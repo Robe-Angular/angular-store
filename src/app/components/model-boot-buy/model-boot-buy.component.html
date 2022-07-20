@@ -16,14 +16,17 @@
     <p id="modelColor">{{modelToBuy.color}}</p>
     <p id="modelPrice">	&#36;{{modelToBuy.price}}<span>mxn</span></p>
 
-    <h1>Tallas disponibles</h1>
+    <h2 id="capableSizesTitle">Tallas disponibles</h2>
     <p id="capableSizesModelBoot" *ngIf="capableSizes && capableSizes.length > 0; else noCapableSizes">
       <span *ngFor="let capableSize of capableSizes">
         {{capableSize}}
       </span>
     </p>
     <ng-template #noCapableSizes>
-      No hay tallas disponibles
+      <span>
+        No hay tallas disponibles
+      </span>
+      
     </ng-template>
     
     

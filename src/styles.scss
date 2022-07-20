@@ -899,7 +899,7 @@ body{
                     width: 69%;
                     height: 100%;
                     @include custom-media(0px, $desktop ){
-                        width: 100%;
+                        width: 368px;
                     }
                 }
             }
@@ -916,6 +916,7 @@ body{
                 #modelTitle{
                     margin-top: 10px;
                     margin-bottom: 5px;
+                    font-size: 50px;
                 }
                 p{
                  margin: 0px 0px 0px;
@@ -930,6 +931,15 @@ body{
                         font: 100 smaller Arial;
                     }
                 }
+                #capableSizesTitle{
+                    margin-top: 0px;
+                    margin-bottom: -3px;
+                    font-size: 20px;
+                }
+                span{
+                    margin-left: 3px;
+                }
+                
             }
         }
         

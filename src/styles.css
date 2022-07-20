@@ -764,7 +764,7 @@ body main #modelToBuy #scopedImageWrapper .scopedImage {
 }
 @media (min-width: 0px) and (max-width: 1320px) {
   body main #modelToBuy #scopedImageWrapper .scopedImage {
-    width: 100%;
+    width: 368px;
   }
 }
 body main #modelToBuy #modelData {
@@ -782,6 +782,7 @@ body main #modelToBuy #modelData {
 body main #modelToBuy #modelData #modelTitle {
   margin-top: 10px;
   margin-bottom: 5px;
+  font-size: 50px;
 }
 body main #modelToBuy #modelData p {
   margin: 0px 0px 0px;
@@ -795,6 +796,14 @@ body main #modelToBuy #modelData #modelPrice {
 }
 body main #modelToBuy #modelData #modelPrice span {
   font: 100 smaller Arial;
+}
+body main #modelToBuy #modelData #capableSizesTitle {
+  margin-top: 0px;
+  margin-bottom: -3px;
+  font-size: 20px;
+}
+body main #modelToBuy #modelData span {
+  margin-left: 3px;
 }
 body main .pagination {
   display: inline-block;
