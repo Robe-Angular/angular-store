@@ -153,7 +153,12 @@ export class ModelsBootComponent implements OnInit {
       data: { model_id: modelBoot_id, modelBootTitle: modelBoot_title }
     });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.goPage(this.page);
+    });
+
   }
+
   trackByFn(index: any, item: any) {
     return index;
   }
@@ -181,16 +186,18 @@ export class DialogDeleteModel {
   }
 
   delete(model_id: string): void {
-    this.dialogRef.close();
+    
     this._modelBootService.deleteModel(model_id, this.token).subscribe(
       response => {
         const dialogSuccess = this.dialog.open(DialogSuccess, {
           width: '80%',
           maxWidth: '300px',
           restoreFocus: false,
-          data: { title: "Eliminado", message: "Se ha eliminado con éxito", action:"reloadOnDelete" }
+          data: { title: "Eliminado", message: "Se ha eliminado con éxito", action:"toModelsComponentReloadOnDelete" }
         });
-        
+        dialogSuccess.afterClosed().subscribe( result => {
+          this.dialogRef.close();
+        } );
       }, error => {
         const dialogError = this.dialog.open(DialogError, {
           width: '80%',

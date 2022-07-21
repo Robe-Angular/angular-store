@@ -1,5 +1,6 @@
 import { Component,Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 export interface DialogAdvice {
   message:string;
@@ -15,13 +16,15 @@ export interface DialogAdvice {
 export class DialogSuccess {
   constructor(
     public dialogRef: MatDialogRef<DialogSuccess>,
+    private _router: Router,
     @Inject(MAT_DIALOG_DATA) public data: DialogAdvice
   ) {}
 
   okClick(): void {
     this.dialogRef.close();
-    if(this.data.action="reloadOnDelete")
-    window.location.reload();
+    if(this.data.action="toModelsComponentReloadOnDelete"){
+      this._router.navigate(['models-boot']);
+    }   
   }
 }
 

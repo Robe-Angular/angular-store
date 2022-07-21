@@ -4,7 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ModelBoot } from 'src/app/models/modelBoot';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { SizesService } from 'src/app/services/sizes.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 import { global } from 'src/app/services/global';
+import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
+import { DialogDeleteModel } from '../models-boot/models-boot.component';
 
 export interface DialogData {
   animal: string;
@@ -30,13 +34,17 @@ export class ModelBootBuyComponent implements OnInit{
   public images: Array<string>;
   public sizes: Array<any>;
   public capableSizes: Array<any>;
+  public loggedCostumer:User;
+  public token:string;
   
 
   constructor(
       public dialog: MatDialog,
       private _route:ActivatedRoute,
       private _modelBootService: ModelBootService,
-      private _sizesService: SizesService
+      private _sizesService: SizesService,
+      private _userService: UserService,
+      private _advicesService: SnackbarAdviceService
     ) {
     this.animal = "";
     this.name = "";
@@ -47,6 +55,8 @@ export class ModelBootBuyComponent implements OnInit{
     this.images = [];
     this.sizes = [];
     this.capableSizes = [];
+    this.loggedCostumer = this._userService.getIdentity().user;
+    this.token = this._userService.getToken();
   }
   ngOnInit(): void {
     this._route.params.subscribe( params => {
@@ -58,6 +68,12 @@ export class ModelBootBuyComponent implements OnInit{
           this.images = this.modelToBuy.images;
           this.sizes = response.sizes;
           console.log(this.images);
+          console.log(this.loggedCostumer.role=="ROLE_ADMIN");
+          console.log(this.loggedCostumer.role=="ROLE_ADMIN");
+          console.log(this.loggedCostumer.role);
+          console.log(this.loggedCostumer);
+          console.log(this.modelToBuy);
+
           this.modelToBuy.images.every( imageName => {
             if(this.modelToBuy.mainImage == imageName){
               return false;
@@ -98,6 +114,10 @@ export class ModelBootBuyComponent implements OnInit{
 
   showBigImage(i:number){
     this.bigImagePos = i;
+  }
+
+  openDialogDeleteModel(modelToBuyId:string,modelTitle:string){
+    this._advicesService.openDialogDeleteModel(modelToBuyId,modelTitle);
   }
 }
 
