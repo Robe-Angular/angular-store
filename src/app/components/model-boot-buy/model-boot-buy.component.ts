@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModelBoot } from 'src/app/models/modelBoot';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { SizesService } from 'src/app/services/sizes.service';
@@ -44,7 +44,8 @@ export class ModelBootBuyComponent implements OnInit{
       private _modelBootService: ModelBootService,
       private _sizesService: SizesService,
       private _userService: UserService,
-      private _advicesService: SnackbarAdviceService
+      private _advicesService: SnackbarAdviceService,
+      private _router: Router
     ) {
     this.animal = "";
     this.name = "";
@@ -117,7 +118,10 @@ export class ModelBootBuyComponent implements OnInit{
   }
 
   openDialogDeleteModel(modelToBuyId:string,modelTitle:string){
-    this._advicesService.openDialogDeleteModel(modelToBuyId,modelTitle);
+    let modelBoot_id_title = [modelToBuyId,modelTitle];
+    this._advicesService.openDialogDeleteModel(modelBoot_id_title, (result:any) => {
+      this._router.navigate(['models-boot']);
+    });
   }
 }
 

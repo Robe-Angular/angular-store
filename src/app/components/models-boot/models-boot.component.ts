@@ -8,13 +8,13 @@ import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogError, DialogSuccess } from '../dialog-success-error/dialog-success-error.component';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 import { SizesService } from 'src/app/services/sizes.service';
 
 
 export interface DialogData {
   model_id: string;
-  modelBootTitle: string;
+  model_title: string;
 }
 
 /**
@@ -51,6 +51,7 @@ export class ModelsBootComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _sizesService: SizesService,
+    private _advicesService: SnackbarAdviceService,
     public dialog: MatDialog
   ) {
     this.createModelStatus = '';
@@ -145,16 +146,10 @@ export class ModelsBootComponent implements OnInit {
     }
   }
 
-  openDialogDelete(modelBoot_id: string, modelBoot_title: string): void {
-    const dialogRef = this.dialog.open(DialogDeleteModel, {
-      width: '80%',
-      maxWidth: '300px',
-      restoreFocus: false,
-      data: { model_id: modelBoot_id, modelBootTitle: modelBoot_title }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.goPage(this.page);
+  openDialogDelete(modelBoot_id: string, model_title : string): void {
+    let modelBoot_id_title = [modelBoot_id, model_title];
+    this._advicesService.openDialogDeleteModel(modelBoot_id_title, (result:any) => {
+      this.goPage(this.page)
     });
 
   }

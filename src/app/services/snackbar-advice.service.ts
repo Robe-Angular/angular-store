@@ -6,7 +6,7 @@ import { DialogDeleteModel } from '../components/models-boot/models-boot.compone
 
 export interface DialogData {
   model_id: string;
-  modelBootTitle: string;
+  model_title: string;
 }
 
 @Injectable({
@@ -34,12 +34,16 @@ export class SnackbarAdviceService {
     }
   }
 
-  openDialogDeleteModel(modelBoot_id: string, modelBoot_title: string): void {
+  openDialogDeleteModel(modelBoot_id_title: string[], functionCallbackAfterClosed: any ): void {
     const dialogRef = this.dialog.open(DialogDeleteModel, {
       width: '80%',
       maxWidth: '300px',
       restoreFocus: false,
-      data: { model_id: modelBoot_id, modelBootTitle: modelBoot_title }
+      data: { model_id: modelBoot_id_title[0], modelBoot_id_title: [1]}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      functionCallbackAfterClosed(result);
     });
 
   }
