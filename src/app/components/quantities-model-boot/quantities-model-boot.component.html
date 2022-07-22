@@ -1,0 +1,28 @@
+<div id="quantities-model-boot">
+    <div id="mainButtons">
+        <button type="button" class="delete-model-boot" (click)="setParamAdd('add')">Sumar</button>
+        <button type="button" class="delete-model-boot" (click)="setParamAdd('subtract')">Restar</button>
+    </div>
+    <div id="content-quantities-edit">
+        <div id="title">
+            <h1 *ngIf="paramAdd == 'add'; else subtractTitle">Sumar</h1>
+            <ng-template #subtractTitle>
+                <h1>Restar</h1> 
+            </ng-template>
+        
+            <span>catidades</span>
+        </div>
+        
+        <div id="button">
+            <button type="button" class="delete-model-boot" *ngIf="paramAdd == 'add'; else subtractButton">Sumar cantidades</button>
+            <ng-template #subtractButton>
+                <button type="button" class="delete-model-boot" >Restar cantidades</button>
+            </ng-template>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+

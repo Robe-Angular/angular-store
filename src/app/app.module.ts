@@ -39,7 +39,7 @@ import { ModelBootService } from './services/modelBoot.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ImageNamePipe } from './pipes/image-name.pipe';
 import { DialogSuccess,DialogError } from './components/dialog-success-error/dialog-success-error.component';
-import { QuantitiesModelsBootComponent } from './components/quantities-models-boot/quantities-models-boot.component';
+import { QuantitiesModelBootComponent } from './components/quantities-model-boot/quantities-model-boot.component';
 
 
 
@@ -66,7 +66,7 @@ import { QuantitiesModelsBootComponent } from './components/quantities-models-bo
     DialogError,
     EditModelBootComponent,
     DialogDiscardFile,
-    QuantitiesModelsBootComponent
+    QuantitiesModelBootComponent
   ],
   imports: [
     routing,
