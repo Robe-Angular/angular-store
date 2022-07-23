@@ -12,7 +12,6 @@ import { ModelsBootAdminComponent } from './components/models-boot-admin/models-
 import { CreateModelBootComponent } from './components/create-model-boot/create-model-boot.component';
 import { ModelBootBuyComponent } from './components/model-boot-buy/model-boot-buy.component';
 import { EditModelBootComponent } from './components/edit-model-boot/edit-model-boot.component';
-import { QuantitiesModelBootComponent } from './components/quantities-model-boot/quantities-model-boot.component';
 
 import { UserGuard } from './services/user.guard';
 import { NoUserGuard } from './services/no-user.guard';
@@ -34,8 +33,7 @@ const appRoutes: Routes = [
     {path: 'models-boot/:page', component: ModelsBootComponent},
     {path: 'models-boot', component: ModelsBootComponent},
     {path: 'model-boot-buy/:modelBootId/:modelBootDescription', component: ModelBootBuyComponent},
-    {path: 'edit-model-boot/:modelBootId', component: EditModelBootComponent},
-    {path: 'quantities-model-boot/:modelBootId/:add', component: QuantitiesModelBootComponent}
+    {path: 'edit-model-boot/:modelBootId', component: EditModelBootComponent}
 
 ];
 

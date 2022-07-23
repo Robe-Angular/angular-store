@@ -120,7 +120,11 @@ export class ModelBootBuyComponent implements OnInit{
   openDialogDeleteModel(modelToBuyId:string,modelTitle:string){
     let modelBoot_id_title = [modelToBuyId,modelTitle];
     this._advicesService.openDialogDeleteModel(modelBoot_id_title, (result:any) => {
-      this._router.navigate(['models-boot']);
+      if(result){
+        console.log(result);
+        this._router.navigate(['models-boot']);
+      }
+      
     });
   }
 }
