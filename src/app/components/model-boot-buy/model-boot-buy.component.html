@@ -28,9 +28,10 @@
       </span>
       
     </ng-template>
-    <div class="admin-models-options" *ngIf="loggedCostumer && loggedCostumer.role == 'ROLE_ADMIN'">
-      <a class="edit-model-boot" [routerLink]="['/quantities-model-boot',modelToBuy._id,'add']">Sumar cantidades</a>
-      <a class="edit-model-boot" [routerLink]="['/quantities-model-boot',modelToBuy._id,'subtract']">Restar cantidades</a>
+    <div class="admin-models-options" *ngIf="loggedCostumer && loggedCostumer.role == 'ROLE_ADMIN'">  
+      <button class="edit-model-boot" (click)="openDialogQuantities(true)" > Sumar cantidades </button>
+      <button class="edit-model-boot" (click)="openDialogQuantities(false)"> Restar cantidades</button>
+
       <a class="edit-model-boot" [routerLink]="['/edit-model-boot',modelToBuy._id]">Editar</a>
       <button type="button" class="delete-model-boot" (click)="openDialogDeleteModel(modelToBuy._id,modelToBuy.title)">Eliminar</button>
     </div>   

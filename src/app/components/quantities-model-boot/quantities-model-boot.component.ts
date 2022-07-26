@@ -7,7 +7,7 @@ import { ModelBoot } from 'src/app/models/modelBoot';
 import { UserService } from 'src/app/services/user.service';
 
 interface DialogData{
-  addrSubtract: boolean;
+  addOrSubtract: boolean;
   modelBootId: string;
 }
 
@@ -20,6 +20,7 @@ export class QuantitiesModelBootComponent implements OnInit {
   
   public token: string;
   public sizes:any[];
+  public isAdd:boolean;
 
   constructor(
     public dialogRef: MatDialogRef<QuantitiesModelBootComponent>,
@@ -32,10 +33,11 @@ export class QuantitiesModelBootComponent implements OnInit {
   ) { 
     this.token = '';
     this.sizes = [];
+    this.isAdd = true;
   }
 
   ngOnInit(): void {
-
+    this.setIsAdd(this.data.addOrSubtract);
   }
 
   getModel(){
@@ -46,5 +48,9 @@ export class QuantitiesModelBootComponent implements OnInit {
         this._advicesService.showSnackBar("error loading data","error");
       }
     )
+  }
+
+  setIsAdd(isAdd:boolean){
+    this.isAdd = isAdd;
   }
 }

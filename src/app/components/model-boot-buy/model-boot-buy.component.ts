@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { global } from 'src/app/services/global';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
+import { QuantitiesModelBootComponent } from '../quantities-model-boot/quantities-model-boot.component';
 import { DialogDeleteModel } from '../models-boot/models-boot.component';
 
 export interface DialogData {
@@ -101,15 +102,16 @@ export class ModelBootBuyComponent implements OnInit{
     console.log(this.capableSizes);
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal},
+  openDialogQuantities(isAdd:boolean){
+    const dialogRef = this.dialog.open(QuantitiesModelBootComponent, {
+      width: '80%',
+      maxWidth: '300px',
+      restoreFocus: false,
+      data: { addOrSubtract:isAdd, modelBootId: this.modelToBuy._id}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      
     });
   }
 
