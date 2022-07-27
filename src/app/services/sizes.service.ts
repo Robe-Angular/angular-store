@@ -9,12 +9,17 @@ export class SizesService {
 
   }
 
-  getCapableSizes(modelSizes:Array<any>): any[]{
-    let capableSizesModel: any[] = [];
+  sortSizes(modelSizes:Array<any>){
     modelSizes.sort((a:any,b:any) =>
       a.size - b.size
     );    
-    modelSizes.forEach((modelSize: any) => {
+    return modelSizes;
+  }
+
+  getCapableSizes(modelSizes:Array<any>): any[]{
+    let capableSizesModel: any[] = [];
+    let modelSizesSorted = this.sortSizes(modelSizes);
+    modelSizesSorted.forEach((modelSize: any) => {
       if (modelSize.quantity > 0) {
         capableSizesModel.push(modelSize.size);              
       }

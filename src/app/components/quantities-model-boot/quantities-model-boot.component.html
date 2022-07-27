@@ -1,7 +1,7 @@
 <div id="quantities-model-boot">
     <div id="mainButtons">
-        <button type="button" class="delete-model-boot" (click)="setIsAdd(true)">Sumar</button>
-        <button type="button" class="delete-model-boot" (click)="setIsAdd(false)">Restar</button>
+        <button type="button" id="add-main-button" (click)="setIsAdd(true)">Sumar</button>
+        <button type="button" id="subtract-main-button" (click)="setIsAdd(false)">Restar</button>
     </div>
     <div id="content-quantities-edit">
         <div id="title">
@@ -10,14 +10,22 @@
             <ng-template #subtractTitle>
                 <h1>Restar</h1> 
             </ng-template>
-        
             <span>catidades</span>
         </div>
+
+        <div class="size-quantitie-wrapper" *ngFor="let size of sizes; index as i">
+            <span class="size-number">
+                {{size.size}}
+            </span>
+            
+
+        </div>
+        <div class="clear-fix"></div>
         
-        <div id="button">
-            <button type="button" class="delete-model-boot" *ngIf="isAdd; else subtractButton">Sumar cantidades</button>
+        <div id="executor">
+            <button type="button" id="exec-add" *ngIf="isAdd; else subtractButton">Sumar cantidades</button>
             <ng-template #subtractButton>
-                <button type="button" class="delete-model-boot" >Restar cantidades</button>
+                <button type="button" id="exec-subtract" >Restar cantidades</button>
             </ng-template>
         </div>
         

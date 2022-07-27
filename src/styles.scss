@@ -169,6 +169,42 @@ body{
         color: white !important;
         border: none;
     }
+    //Dialogs
+    #quantities-model-boot{
+        #mainButtons{
+            button{
+                color: $background-menus;
+                border:none;
+            }
+            #add-main-button{
+                background-color: $success-color;
+            }
+            #subtract-main-button{
+                background-color: $danger-color;
+            }
+        }
+        #content-quantities-edit{
+            .size-quantitie-wrapper{
+                display: block;
+                float: left;
+            }
+            #executor{
+                button{
+                    color: $background-menus;
+                }
+                
+                #exec-add{
+                    background-color: $success-color;
+                }
+                #exec-subtract{
+                    background-color: $danger-color;
+                }
+            }
+        }
+        
+        
+
+    }
     
     #delete-model-dialog,#dialog-discard-file{
         .model-delete-title{
@@ -189,6 +225,7 @@ body{
             }
         }
     }
+
     #dialog-success{
         .symbol{
             color:$success-color;
@@ -198,6 +235,7 @@ body{
             text-align: center;
         }
     }
+    
     .mat-progress-spinner circle, .mat-spinner circle {
         stroke: $access-buttons-color !important;
     }

@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { ModelBootService } from 'src/app/services/modelBoot.service';
 import { ModelBoot } from 'src/app/models/modelBoot';
 import { UserService } from 'src/app/services/user.service';
+import { SizesService } from 'src/app/services/sizes.service';
 
 interface DialogData{
   addOrSubtract: boolean;
@@ -29,6 +30,7 @@ export class QuantitiesModelBootComponent implements OnInit {
     private _advicesService: SnackbarAdviceService,
     private _userService: UserService,
     private _modelBootService: ModelBootService,
+    private _sizesService:SizesService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { 
     this.token = '';
@@ -38,12 +40,14 @@ export class QuantitiesModelBootComponent implements OnInit {
 
   ngOnInit(): void {
     this.setIsAdd(this.data.addOrSubtract);
+    this.getModel();
   }
 
   getModel(){
     this._modelBootService.getModelBootSizes(this.data.modelBootId).subscribe(
       response => {
-        this.sizes = response.sizes;
+        
+        this.sizes = this._sizesService.sortSizes(response.sizes);
       },error => {
         this._advicesService.showSnackBar("error loading data","error");
       }

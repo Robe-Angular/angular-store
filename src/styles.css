@@ -39,6 +39,29 @@ body .red-snackbar button {
   color: white !important;
   border: none;
 }
+body #quantities-model-boot #mainButtons button {
+  color: #EEEEEE;
+  border: none;
+}
+body #quantities-model-boot #mainButtons #add-main-button {
+  background-color: #2e8d61;
+}
+body #quantities-model-boot #mainButtons #subtract-main-button {
+  background-color: #E73E33;
+}
+body #quantities-model-boot #content-quantities-edit .size-quantitie-wrapper {
+  display: block;
+  float: left;
+}
+body #quantities-model-boot #content-quantities-edit #executor button {
+  color: #EEEEEE;
+}
+body #quantities-model-boot #content-quantities-edit #executor #exec-add {
+  background-color: #2e8d61;
+}
+body #quantities-model-boot #content-quantities-edit #executor #exec-subtract {
+  background-color: #E73E33;
+}
 body #delete-model-dialog .model-delete-title, body #dialog-discard-file .model-delete-title {
   color: #DB7A1B;
 }
