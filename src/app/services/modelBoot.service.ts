@@ -124,4 +124,21 @@ export class ModelBootService{
 		return this._http.put(this.url+'setMainImage/' + mainImageCommandString,{} , {headers: headers});
 	}
 
+	addQuantity(modelId:string, sizesBodyReq:any,token:string):Observable<any>{
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+            .set('Authorization', token);
+		
+		return this._http.post(this.url+'addQuantity/' + modelId, sizesBodyReq , {headers: headers});
+	}
+
+	
+	subtractQuantity(modelId:string, sizesBodyReq:any,token:string):Observable<any>{
+
+		let headers = new HttpHeaders().set('content-Type', 'application/json')
+            .set('Authorization', token);
+		
+		return this._http.post(this.url+'subtractQuantity/' + modelId, sizesBodyReq , {headers: headers});
+	}
+
 }

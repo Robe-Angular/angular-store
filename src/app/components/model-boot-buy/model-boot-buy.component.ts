@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModelBoot } from 'src/app/models/modelBoot';
@@ -24,7 +24,7 @@ export interface DialogData {
   templateUrl: './model-boot-buy.component.html',
   styleUrls: ['./model-boot-buy.component.css']
 })
-export class ModelBootBuyComponent implements OnInit{
+export class ModelBootBuyComponent implements OnInit, AfterViewChecked{
 
   public animal: string;
   public name: string;
@@ -46,7 +46,8 @@ export class ModelBootBuyComponent implements OnInit{
       private _sizesService: SizesService,
       private _userService: UserService,
       private _advicesService: SnackbarAdviceService,
-      private _router: Router
+      private _router: Router,
+      private _cdr: ChangeDetectorRef
     ) {
     this.animal = "";
     this.name = "";
@@ -60,21 +61,21 @@ export class ModelBootBuyComponent implements OnInit{
     this.loggedCostumer = this._userService.getIdentity().user;
     this.token = this._userService.getToken();
   }
+
+  ngAfterViewChecked(): void {
+    this._cdr.detectChanges();
+  }
+
   ngOnInit(): void {
     this._route.params.subscribe( params => {
       this.modelToBuy._id = params["modelBootId"];
       this._modelBootService.getModelBootSizes(this.modelToBuy._id).subscribe(
         response => {
-          console.log(response);
+          
           this.modelToBuy = response.modelBoot;
           this.images = this.modelToBuy.images;
           this.sizes = response.sizes;
-          console.log(this.images);
-          console.log(this.loggedCostumer.role=="ROLE_ADMIN");
-          console.log(this.loggedCostumer.role=="ROLE_ADMIN");
-          console.log(this.loggedCostumer.role);
-          console.log(this.loggedCostumer);
-          console.log(this.modelToBuy);
+          
 
           this.modelToBuy.images.every( imageName => {
             if(this.modelToBuy.mainImage == imageName){
@@ -84,8 +85,7 @@ export class ModelBootBuyComponent implements OnInit{
             return true;
           });//Find position of the main image in the array
           this.bigImagePos = this.mainImagePos;
-          console.log("sizes");
-          console.log(this.sizes);
+          
           this.sortSizesAndShow(this.sizes);
 
         },
@@ -98,8 +98,7 @@ export class ModelBootBuyComponent implements OnInit{
   }
 
   sortSizesAndShow(sizesModelBoot:any){
-    this.capableSizes = this._sizesService.getCapableSizes(sizesModelBoot)
-    console.log(this.capableSizes);
+    this.capableSizes = this._sizesService.getCapableSizes(sizesModelBoot);
   }
 
   openDialogQuantities(isAdd:boolean){
@@ -111,7 +110,7 @@ export class ModelBootBuyComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+      this.ngOnInit();
     });
   }
 
@@ -123,7 +122,6 @@ export class ModelBootBuyComponent implements OnInit{
     let modelBoot_id_title = [modelToBuyId,modelTitle];
     this._advicesService.openDialogDeleteModel(modelBoot_id_title, (result:any) => {
       if(result){
-        console.log(result);
         this._router.navigate(['models-boot']);
       }
       
