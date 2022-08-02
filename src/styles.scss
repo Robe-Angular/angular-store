@@ -38,9 +38,12 @@ $default-color: #ffffff;
 $default-background-hover: #9ac0cf;
 $default-color-hover: #074f6e;
 
-$success-color: #2e8d61;
+//$success-color: #2e8d61;
+$success-color:#f18246;
 
-$danger-color: #E73E33;
+//$danger-color: #E73E33;
+$danger-color: #e4d7c7;
+$danger-text: #412106;
 
 $price-color: #029651;
 
@@ -59,13 +62,23 @@ $border-main: 2px solid #d3d3d3;
     outline: inherit;
 }
 
-@mixin default-button(){
-    background-color:$default-background;
+@mixin success-button(){
+    background-color:$success-color;
     color: $default-color;
     transition: all 300ms;
     &:hover{
         background-color: $default-background-hover;
         color: $default-color-hover;
+    }
+}
+
+@mixin danger-button(){
+    margin-left: 5px;
+    background: $danger-color;
+    color: $danger-text;
+    &:hover{                                    
+        background: #864c48;
+        color: #1b4953;
     }
 }
 
@@ -152,52 +165,88 @@ body{
     }
     
     .green-snackbar {
-        background: rgb(2, 114, 43);
+        background: $success-color;
         color: white;
+        font-weight: bold;
     }
     .green-snackbar button {
-        background-color: rgb(5, 161, 62);
+        background-color: $access-buttons-color-hover;
         color: white;
         border: none;
     }
     .red-snackbar {
-        background: #F44336;
-        color: white;
+        background: $danger-color;
+        color: $danger-text;
+        font-weight: bold;
     }
     .red-snackbar button {
-        background-color: #F44336;
-        color: white !important;
+        background-color: white;
+        color:$danger-text !important;
         border: none;
     }
     //Dialogs
     #quantities-model-boot{
-        #mainButtons{
-            button{
-                color: $background-menus;
-                border:none;
+        button{
+            font: bold 20px/20px Roboto, "Helvetica Neue", sans-serif;
+            padding: 5px;
+            border:none;
+            border-radius: 5px;
+            margin-right: 5px;
+            &:hover{
+                cursor: pointer;                
             }
+        }
+        #mainButtons{
+            
             #add-main-button{
-                background-color: $success-color;
+                @include success-button();
             }
             #subtract-main-button{
-                background-color: $danger-color;
+                @include danger-button();
             }
         }
         #content-quantities-edit{
-            .size-quantitie-wrapper{
+            .size-quantity-wrapper{
                 display: block;
                 float: left;
+                margin-bottom: 2px;
+                .size-number{
+                    display: block;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    background: $logo-color;
+                    color: $default-color;
+                    font: bold 14px/14px Roboto, "Helvetica Neue", sans-serif;
+                }
+                .size-quantity{
+                    display: block;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    font: 400 14px/14px Roboto, "Helvetica Neue", sans-serif;
+                }
+                .input-quantity{
+                    display: block;
+                    width: 22px;
+                    background-color: $unicode-close-color;
+                    border: none;
+                    transition: all 500ms;
+                    &:focus{
+                        background-color: $default-background-hover;
+                    }
+                }   
             }
             #executor{
                 button{
                     color: $background-menus;
+                    margin-top: 23px;
+                    font-size: 16px;
                 }
                 
                 #exec-add{
-                    background-color: $success-color;
+                    @include success-button();
                 }
                 #exec-subtract{
-                    background-color: $danger-color;
+                    @include danger-button();
                 }
             }
         }
@@ -214,7 +263,7 @@ body{
             color: $logo-color;
         }
         .no-thanks{
-            @include default-button();
+            @include success-button();
         }
         .delete-confirm{
             color: #939393;
@@ -428,6 +477,8 @@ body{
             color: $default-color;
             @include remove-input-default();
             @include buttons-on-form();
+            font-weight: bold;
+            transition: all 500ms;
         }
         input[type="submit"]:hover{
             background: $access-buttons-color-hover;
@@ -469,8 +520,8 @@ body{
                 
                 .discard,.new-main{
                     position: absolute;
-                    background-color: $default-color;
-                    color: $danger-color;
+                    background-color: $danger-text;
+                    color: $access-buttons-color-hover;
                     margin-top: 3px;
                     margin-left: 3px;
                     padding: 0px;
@@ -479,10 +530,10 @@ body{
                     line-height: 15px;
                     left: 0px;
                     top:0px;
-                    transition: all 100ms;
+                    transition: all 200ms;
                     &:hover{
                         cursor: pointer;
-                        color: $access-buttons-color-hover;                        
+                        color: $access-buttons-color-hover;
                     }            
                 }        
                 $set-main-color: #cf976a;
@@ -492,6 +543,14 @@ body{
                     margin-left: 41px;
                     margin-top: 77px;
                     background-color: transparent;
+                }
+                .discard{
+                    color: $set-main-color;
+                    background: white;
+                    &:hover{
+                        color: $danger-color;
+                        background: $danger-text;
+                    }
                 }
                 .main{
                     color: $access-buttons-color;
@@ -704,7 +763,7 @@ body{
                 }
             }
             .edit-model-boot{
-                @include default-button();
+                @include success-button();
                 font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
                 padding: 5px;
                 border: none;
@@ -715,7 +774,7 @@ body{
             .delete-model-boot{
                 margin-left: 5px;
                 background: $danger-color;
-                color: #DFEDF3;
+                color: $danger-text;
                 &:hover{                                    
                     background: #864c48;
                     color: #1b4953;

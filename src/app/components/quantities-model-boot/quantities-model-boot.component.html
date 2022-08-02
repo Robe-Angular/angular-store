@@ -13,7 +13,7 @@
             <span>catidades</span>
         </div>
 
-        <div class="size-quantitie-wrapper" *ngFor="let size of sizes; index as i">
+        <div class="size-quantity-wrapper" *ngFor="let size of sizes; index as i">
 
             <span class="size-number">
                 {{size.size}}
@@ -21,14 +21,15 @@
             <span class="size-quantity">
                 {{size.quantity}}
             </span>
-            <input type="text" (change)="change($event,i)" value="0"/>
-            
+            <input class="input-quantity" type="text" (change)="change($event,i)" value="0"/>
+            <div class="clear-fix"></div>
             
 
         </div>
         <div class="clear-fix"></div>
         
         <div id="executor">
+            
             <button type="button" id="exec-add" *ngIf="isAdd; else subtractButton" (click)="submit()">Sumar cantidades</button>
             <ng-template #subtractButton>
                 <button type="button" id="exec-subtract" (click)="submit()">Restar cantidades</button>

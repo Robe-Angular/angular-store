@@ -22,45 +22,104 @@ body .error-img-wrapper #error-img {
   width: 30%;
 }
 body .green-snackbar {
-  background: #02722b;
+  background: #f18246;
   color: white;
+  font-weight: bold;
 }
 body .green-snackbar button {
-  background-color: #05a13e;
+  background-color: #fd8f21;
   color: white;
   border: none;
 }
 body .red-snackbar {
-  background: #F44336;
-  color: white;
+  background: #e4d7c7;
+  color: #412106;
+  font-weight: bold;
 }
 body .red-snackbar button {
-  background-color: #F44336;
-  color: white !important;
+  background-color: white;
+  color: #412106 !important;
   border: none;
 }
-body #quantities-model-boot #mainButtons button {
-  color: #EEEEEE;
+body #quantities-model-boot button {
+  font: bold 20px/20px Roboto, "Helvetica Neue", sans-serif;
+  padding: 5px;
   border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+body #quantities-model-boot button:hover {
+  cursor: pointer;
 }
 body #quantities-model-boot #mainButtons #add-main-button {
-  background-color: #2e8d61;
+  background-color: #f18246;
+  color: #ffffff;
+  transition: all 300ms;
+}
+body #quantities-model-boot #mainButtons #add-main-button:hover {
+  background-color: #9ac0cf;
+  color: #074f6e;
 }
 body #quantities-model-boot #mainButtons #subtract-main-button {
-  background-color: #E73E33;
+  margin-left: 5px;
+  background: #e4d7c7;
+  color: #412106;
 }
-body #quantities-model-boot #content-quantities-edit .size-quantitie-wrapper {
+body #quantities-model-boot #mainButtons #subtract-main-button:hover {
+  background: #864c48;
+  color: #1b4953;
+}
+body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper {
   display: block;
   float: left;
+  margin-bottom: 2px;
+}
+body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper .size-number {
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background: #DB7A1B;
+  color: #ffffff;
+  font: bold 14px/14px Roboto, "Helvetica Neue", sans-serif;
+}
+body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper .size-quantity {
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font: 400 14px/14px Roboto, "Helvetica Neue", sans-serif;
+}
+body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper .input-quantity {
+  display: block;
+  width: 22px;
+  background-color: #A3ABB8;
+  border: none;
+  transition: all 500ms;
+}
+body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper .input-quantity:focus {
+  background-color: #9ac0cf;
 }
 body #quantities-model-boot #content-quantities-edit #executor button {
   color: #EEEEEE;
+  margin-top: 23px;
+  font-size: 16px;
 }
 body #quantities-model-boot #content-quantities-edit #executor #exec-add {
-  background-color: #2e8d61;
+  background-color: #f18246;
+  color: #ffffff;
+  transition: all 300ms;
+}
+body #quantities-model-boot #content-quantities-edit #executor #exec-add:hover {
+  background-color: #9ac0cf;
+  color: #074f6e;
 }
 body #quantities-model-boot #content-quantities-edit #executor #exec-subtract {
-  background-color: #E73E33;
+  margin-left: 5px;
+  background: #e4d7c7;
+  color: #412106;
+}
+body #quantities-model-boot #content-quantities-edit #executor #exec-subtract:hover {
+  background: #864c48;
+  color: #1b4953;
 }
 body #delete-model-dialog .model-delete-title, body #dialog-discard-file .model-delete-title {
   color: #DB7A1B;
@@ -69,7 +128,7 @@ body #delete-model-dialog .model-title-question, body #dialog-discard-file .mode
   color: #DB7A1B;
 }
 body #delete-model-dialog .no-thanks, body #dialog-discard-file .no-thanks {
-  background-color: #00A3E2;
+  background-color: #f18246;
   color: #ffffff;
   transition: all 300ms;
 }
@@ -82,11 +141,11 @@ body #delete-model-dialog .delete-confirm, body #dialog-discard-file .delete-con
   transition: all 300ms;
 }
 body #delete-model-dialog .delete-confirm:hover, body #dialog-discard-file .delete-confirm:hover {
-  color: #E73E33;
+  color: #e4d7c7;
   background-color: inherit;
 }
 body #dialog-success .symbol {
-  color: #2e8d61;
+  color: #f18246;
   font-weight: 400;
   line-height: 34px;
   font-size: 34px;
@@ -114,10 +173,10 @@ body .feedback .link {
   text-decoration: underline;
 }
 body .success {
-  background-color: #2e8d61;
+  background-color: #f18246;
 }
 body .fail {
-  background-color: #E73E33;
+  background-color: #e4d7c7;
 }
 body .symbol {
   border: none;
@@ -284,6 +343,8 @@ body .consumerForm input[type=submit], body .consumerInfo input[type=submit] {
   line-height: 38px;
   border-radius: 5px;
   margin-bottom: 30px;
+  font-weight: bold;
+  transition: all 500ms;
 }
 body .consumerForm input[type=submit]:hover, body .consumerInfo input[type=submit]:hover {
   background: #fd8f21;
@@ -328,8 +389,8 @@ body .consumerForm #preUploadedImages .preUploadedImage-wrapper, body .consumerF
 }
 body .consumerForm #preUploadedImages .preUploadedImage-wrapper .discard, body .consumerForm #preUploadedImages .preUploadedImage-wrapper .new-main, body .consumerForm #preUploadedImages .uploadedImage-wrapper .discard, body .consumerForm #preUploadedImages .uploadedImage-wrapper .new-main, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .discard, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .new-main, body .consumerForm #imagesUploaded .uploadedImage-wrapper .discard, body .consumerForm #imagesUploaded .uploadedImage-wrapper .new-main, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .discard, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .new-main, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .discard, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .new-main, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .discard, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .new-main, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .discard, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .new-main {
   position: absolute;
-  background-color: #ffffff;
-  color: #E73E33;
+  background-color: #412106;
+  color: #fd8f21;
   margin-top: 3px;
   margin-left: 3px;
   padding: 0px;
@@ -338,7 +399,7 @@ body .consumerForm #preUploadedImages .preUploadedImage-wrapper .discard, body .
   line-height: 15px;
   left: 0px;
   top: 0px;
-  transition: all 100ms;
+  transition: all 200ms;
 }
 body .consumerForm #preUploadedImages .preUploadedImage-wrapper .discard:hover, body .consumerForm #preUploadedImages .preUploadedImage-wrapper .new-main:hover, body .consumerForm #preUploadedImages .uploadedImage-wrapper .discard:hover, body .consumerForm #preUploadedImages .uploadedImage-wrapper .new-main:hover, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .discard:hover, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .new-main:hover, body .consumerForm #imagesUploaded .uploadedImage-wrapper .discard:hover, body .consumerForm #imagesUploaded .uploadedImage-wrapper .new-main:hover, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .discard:hover, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .new-main:hover, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .discard:hover, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .new-main:hover, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .discard:hover, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .new-main:hover, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .discard:hover, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .new-main:hover {
   cursor: pointer;
@@ -349,6 +410,14 @@ body .consumerForm #preUploadedImages .preUploadedImage-wrapper .new-main, body 
   margin-left: 41px;
   margin-top: 77px;
   background-color: transparent;
+}
+body .consumerForm #preUploadedImages .preUploadedImage-wrapper .discard, body .consumerForm #preUploadedImages .uploadedImage-wrapper .discard, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .discard, body .consumerForm #imagesUploaded .uploadedImage-wrapper .discard, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .discard, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .discard, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .discard, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .discard {
+  color: #cf976a;
+  background: white;
+}
+body .consumerForm #preUploadedImages .preUploadedImage-wrapper .discard:hover, body .consumerForm #preUploadedImages .uploadedImage-wrapper .discard:hover, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .discard:hover, body .consumerForm #imagesUploaded .uploadedImage-wrapper .discard:hover, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .discard:hover, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .discard:hover, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .discard:hover, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .discard:hover {
+  color: #e4d7c7;
+  background: #412106;
 }
 body .consumerForm #preUploadedImages .preUploadedImage-wrapper .main, body .consumerForm #preUploadedImages .uploadedImage-wrapper .main, body .consumerForm #imagesUploaded .preUploadedImage-wrapper .main, body .consumerForm #imagesUploaded .uploadedImage-wrapper .main, body .consumerInfo #preUploadedImages .preUploadedImage-wrapper .main, body .consumerInfo #preUploadedImages .uploadedImage-wrapper .main, body .consumerInfo #imagesUploaded .preUploadedImage-wrapper .main, body .consumerInfo #imagesUploaded .uploadedImage-wrapper .main {
   color: #db7b1c;
@@ -542,7 +611,7 @@ body main .admin-models-options > button:hover {
   cursor: pointer;
 }
 body main .admin-models-options .edit-model-boot {
-  background-color: #00A3E2;
+  background-color: #f18246;
   color: #ffffff;
   transition: all 300ms;
   font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
@@ -557,8 +626,8 @@ body main .admin-models-options .edit-model-boot:hover {
 }
 body main .admin-models-options .delete-model-boot {
   margin-left: 5px;
-  background: #E73E33;
-  color: #DFEDF3;
+  background: #e4d7c7;
+  color: #412106;
 }
 body main .admin-models-options .delete-model-boot:hover {
   background: #864c48;
