@@ -15,13 +15,17 @@
     <p id="modelDescription">{{modelToBuy.description}}</p>
     <p id="modelColor">{{modelToBuy.color}}</p>
     <p id="modelPrice">	&#36;{{modelToBuy.price}}<span>mxn</span></p>
+    <div class="clear-fix"></div>
 
     <h2 id="capableSizesTitle">Tallas disponibles</h2>
     <p id="capableSizesModelBoot" *ngIf="capableSizes && capableSizes.length > 0; else noCapableSizes">
-      <span *ngFor="let capableSize of capableSizes">
-        {{capableSize}}
-      </span>
+    <span *ngFor="let capableSize of capableSizes" class="capable-size">
+      {{capableSize}}
+    </span>
+      
     </p>
+    <div class="clear-fix" *ngIf="capableSizes && capableSizes.length > 0"></div>
+    
     <ng-template #noCapableSizes>
       <span>
         No hay tallas disponibles

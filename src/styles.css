@@ -900,6 +900,13 @@ body main #modelToBuy #modelData #capableSizesTitle {
 body main #modelToBuy #modelData span {
   margin-left: 3px;
   margin-bottom: 12px;
+  float: left;
+  display: block;
+}
+body main #modelToBuy #modelData .capable-size {
+  margin-right: 10px;
+  margin-bottom: 12px;
+  float: left;
   display: block;
 }
 body main .pagination {

@@ -66,7 +66,8 @@ export class VerifyEmailComponent implements OnInit {
         this._router.navigate(['verify-email', '0']);
       },
       error => {
-        this._snackbarService.showSnackBar('Error al enviar el email', 'error');
+        this._snackbarService.showSnackBar(error.error.message, 'error');
+        console.log(error);
         this.status = 'errorSending';
       }
     )
