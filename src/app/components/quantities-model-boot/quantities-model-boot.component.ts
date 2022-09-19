@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModelBootService } from 'src/app/services/modelBoot.service';
-import { ModelBoot } from 'src/app/models/modelBoot';
 import { UserService } from 'src/app/services/user.service';
 import { SizesService } from 'src/app/services/sizes.service';
 
@@ -126,5 +125,9 @@ export class QuantitiesModelBootComponent implements OnInit,AfterViewChecked {
 
   setIsAdd(isAdd:boolean){
     this.isAdd = isAdd;
+  }
+
+  closeThisDialog(){
+    this.dialogRef.close();
   }
 }

@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 import { AppComponent } from './app.component';
@@ -40,6 +41,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { ImageNamePipe } from './pipes/image-name.pipe';
 import { DialogSuccess,DialogError } from './components/dialog-success-error/dialog-success-error.component';
 import { QuantitiesModelBootComponent } from './components/quantities-model-boot/quantities-model-boot.component';
+import { KeyWordListComponent } from './components/key-word-list/key-word-list.component';
+import { NewCategoryKeyWordDialogComponent } from './components/new-category-key-word-dialog/new-category-key-word-dialog.component';
+
 
 
 
@@ -66,7 +70,9 @@ import { QuantitiesModelBootComponent } from './components/quantities-model-boot
     DialogError,
     EditModelBootComponent,
     DialogDiscardFile,
-    QuantitiesModelBootComponent
+    QuantitiesModelBootComponent,
+    KeyWordListComponent,
+    NewCategoryKeyWordDialogComponent
   ],
   imports: [
     routing,
@@ -82,6 +88,7 @@ import { QuantitiesModelBootComponent } from './components/quantities-model-boot
     MatInputModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatExpansionModule,
     HttpClientModule
   ],
   providers: [

@@ -23,15 +23,14 @@
       {{capableSize}}
     </span>
       
-    </p>
-    <div class="clear-fix" *ngIf="capableSizes && capableSizes.length > 0"></div>
-    
+    </p>    
     <ng-template #noCapableSizes>
-      <span>
+      <p>
         No hay tallas disponibles
-      </span>
+      </p>
       
     </ng-template>
+    <div class="clear-fix" *ngIf="capableSizes && capableSizes.length > 0"></div>
     <div class="admin-models-options" *ngIf="loggedCostumer && loggedCostumer.role == 'ROLE_ADMIN'">  
       <div id="edit-quantities">
         <button class="add-quantities" (click)="openDialogQuantities(true)" > Sumar cantidades </button>

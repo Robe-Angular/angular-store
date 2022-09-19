@@ -41,6 +41,23 @@ body .red-snackbar button {
   color: #412106 !important;
   border: none;
 }
+body .close-button {
+  font: bold 20px/20px Roboto, "Helvetica Neue", sans-serif;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  display: block;
+  cursor: pointer;
+  color: #323232;
+  background-color: #ffffff;
+  float: right;
+  margin: 23px;
+  transition: all 500ms;
+}
+body .close-button:hover {
+  color: #545454;
+}
 body #quantities-model-boot button {
   font: bold 20px/20px Roboto, "Helvetica Neue", sans-serif;
   padding: 5px;
@@ -102,6 +119,10 @@ body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper .inp
 body #quantities-model-boot #content-quantities-edit .size-quantity-wrapper .input-quantity:focus {
   background-color: #9ac0cf;
 }
+body #quantities-model-boot #content-quantities-edit #executor {
+  width: auto;
+  float: left;
+}
 body #quantities-model-boot #content-quantities-edit #executor button {
   color: #EEEEEE;
   margin-top: 23px;
@@ -155,7 +176,7 @@ body #dialog-success .symbol {
   font-size: 34px;
   text-align: center;
 }
-body .mat-progress-spinner circle, body .mat-spinner circle {
+body .progress-spinner circle, body .mat-spinner circle {
   stroke: #db7b1c !important;
 }
 body .mat-progress-spinner {
@@ -908,6 +929,17 @@ body main #modelToBuy #modelData .capable-size {
   margin-bottom: 12px;
   float: left;
   display: block;
+}
+body main #keyWordList #openNewCategoryButton {
+  background-color: #EEEEEE;
+  color: #db7b1c;
+  transition: all 300ms;
+  border: none;
+  font: bold 1.5em/1.5em Oswald, sans-serif;
+  cursor: pointer;
+}
+body main #keyWordList #openNewCategoryButton:hover {
+  color: #fd8f21;
 }
 body main .pagination {
   display: inline-block;

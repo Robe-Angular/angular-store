@@ -49,7 +49,7 @@ $price-color: #029651;
 
 $border-main: 2px solid #d3d3d3;
 
-
+$margin-dialog-bottom-button: 23px;
 
 
 @mixin display-block-float($direction: left) {
@@ -185,6 +185,23 @@ body{
         border: none;
     }
     //Dialogs
+    .close-button{
+        font: bold 20px/20px Roboto, "Helvetica Neue", sans-serif;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        display: block;
+        cursor:pointer;
+        color:$primary-color;
+        background-color: $default-color;
+        float: right;
+        margin:$margin-dialog-bottom-button;
+        transition: all 500ms;
+        &:hover{
+            color: $identity-color;
+        }
+    }
     #quantities-model-boot{
         button{
             font: bold 20px/20px Roboto, "Helvetica Neue", sans-serif;
@@ -241,10 +258,12 @@ body{
                 }   
             }
             #executor{
+                width: auto;
+                float: left;
                 button{
                     color: $background-menus;
-                    margin-top: 23px;
-                    font-size: 16px;
+                    margin-top: $margin-dialog-bottom-button;
+                    font-size: 16px;                   
                 }
                 
                 #exec-add{
@@ -290,7 +309,7 @@ body{
         }
     }
     
-    .mat-progress-spinner circle, .mat-spinner circle {
+    .progress-spinner circle, .mat-spinner circle {
         stroke: $access-buttons-color !important;
     }
     .mat-progress-spinner{
@@ -1045,6 +1064,19 @@ body{
                     display: block;
                 }
                 
+            }
+        }
+        #keyWordList{
+            #openNewCategoryButton{
+                background-color: $background-menus;
+                color: $access-buttons-color;
+                transition: all 300ms;
+                border:none;
+                font: bold 1.5em/1.5em Oswald,sans-serif;
+                cursor:pointer;
+                &:hover{
+                    color:$access-buttons-color-hover;
+                }
             }
         }
         

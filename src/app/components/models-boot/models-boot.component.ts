@@ -77,7 +77,6 @@ export class ModelsBootComponent implements OnInit {
   ngOnInit(): void {
     this.getPageFromURL();
     this.goPage(this.page);
-    
   }
 
   getPageFromURL(): void {
