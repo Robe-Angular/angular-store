@@ -471,6 +471,7 @@ body{
     
         .invalid-field{
             color: red;
+            display: block;
             margin-left: $access-margin-left;
         }
     
@@ -1078,13 +1079,21 @@ body{
                     color:$access-buttons-color-hover;
                 }
             }
+            #accordion{
+                margin-top: 2%;
+            }
         }
+        
+        
         
         .pagination{
             display: inline-block;
             margin-top: 24px;
         }
 
+    }
+    #createCategoryKeyWord{
+        width: 100%;
     }
 
     #footer{           

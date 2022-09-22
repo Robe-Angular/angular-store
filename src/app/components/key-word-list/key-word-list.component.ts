@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { KeywordServiceService } from 'src/app/services/keyword-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service';
+import { CategoryKeyWord } from 'src/app/models/categoryKeyWord';
 
 @Component({
   selector: 'app-key-word-list',
@@ -12,14 +13,13 @@ import { SnackbarAdviceService } from 'src/app/services/snackbar-advice.service'
 })
 export class KeyWordListComponent implements OnInit {
   public panelOpenState:boolean;
-  public panelOpenStateArray:Array<boolean>;
   public token: string;
   public page: number;
   public total: number;
   public pagesParent: number;
   public pageInitHalf: number;
   public pageFinalHalf: number;  
-  public categories: Array<any>;
+  public categories: Array<CategoryKeyWord>;
 
   constructor(
     public dialog: MatDialog,
@@ -29,7 +29,6 @@ export class KeyWordListComponent implements OnInit {
 
   ) { 
     this.panelOpenState = false;
-    this.panelOpenStateArray = [false,false];
     this.token = this._userService.getToken().token;
     this.page = 1;
     this.pageInitHalf = 0;
@@ -44,7 +43,7 @@ export class KeyWordListComponent implements OnInit {
   }
 
   goPage(page:number):void{
-    this._keyWordService.getCategories(this.page,this.token).subscribe(
+    this._keyWordService.getCategories(page,this.token).subscribe(
       response => {
        
         this.categories = response.categories;//modelsBoot --> modelBoots on api :P Sorry
@@ -62,8 +61,8 @@ export class KeyWordListComponent implements OnInit {
     );
   }
 
-  setBoolean(index:number){
-    this.panelOpenStateArray[index] = true;
+  categoryOpened(index:number){
+    console.log(index);
   }
 
   newCategoryDialog(){

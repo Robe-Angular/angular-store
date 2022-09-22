@@ -1,2 +1,17 @@
+<form #createCategoryKeyWord="ngForm" (ngSubmit)="onSubmit(createCategoryKeyWord)" id="createCategoryKeyWord" class="consumerForm">
+			
+    <label for="keyWordName">Nombre de la categoría</label>
+    <input type="text" name="keyWordName" class="form-control" #keyWordName="ngModel" [(ngModel)]="newCategoryKeyWord.name" required>
+
+    <small *ngIf="!keyWordName.valid && keyWordName.touched" class="invalid-field">
+        El título no es válido, favor de usar minúsculas
+    </small>
+
+    
+
+    <input type="submit" value="Crear categoría" class="button" [disabled]="createCategoryKeyWord.invalid">
+
+</form>
+
 
 <button class="close-button" type="button" (click)="closeThisDialog()">Cerrar</button>

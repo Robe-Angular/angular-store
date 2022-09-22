@@ -328,6 +328,7 @@ body .consumerForm label, body .consumerInfo label {
 }
 body .consumerForm .invalid-field, body .consumerInfo .invalid-field {
   color: red;
+  display: block;
   margin-left: 30px;
 }
 body .consumerForm input[type=text],
@@ -941,9 +942,15 @@ body main #keyWordList #openNewCategoryButton {
 body main #keyWordList #openNewCategoryButton:hover {
   color: #fd8f21;
 }
+body main #keyWordList #accordion {
+  margin-top: 2%;
+}
 body main .pagination {
   display: inline-block;
   margin-top: 24px;
+}
+body #createCategoryKeyWord {
+  width: 100%;
 }
 body #footer {
   grid-area: 3/auto/4/auto;

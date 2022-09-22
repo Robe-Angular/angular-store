@@ -2,24 +2,27 @@
   <div class="unique-wrapper">
     <div class="unique">
       <button id="openNewCategoryButton" (click)="newCategoryDialog()">Crear nueva categoría</button>
-  
-  
-      <ng-template *ngIf="categories.length > 0">
-        <mat-accordion multi="true">
-          <mat-expansion-panel (opened)="setBoolean(0)">
+      <div class="clear-fix">
+      </div>      
+      <div id="accordion">
+        <mat-accordion multi="false">
+          <div *ngFor="let category of categories;index as indCategory">
+          <mat-expansion-panel (opened)="categoryOpened(indCategory)">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                Self aware panel
+                {{categories[indCategory].name}}
               </mat-panel-title>
               <mat-panel-description>
-                Currently I am {{panelOpenStateArray[0] ? 'open' : 'closed'}}
+                
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open{{0}}</p>
+            <p *ngFor="let keyWord of categories[indCategory].keyWords">
+              {{keyWord}}
+            </p>
           </mat-expansion-panel>
-        </mat-accordion>
-      </ng-template>
-        
+        </div>
+        </mat-accordion>  
+      </div>
       <div class="pagination">
           <app-pagination (pageEmitt)="goPage($event)" [pagesChild]="pagesParent" [pageInitHalfChild]="pageInitHalf" [pageFinalHalfChild]="pageFinalHalf" [page]="page"></app-pagination>
       </div>    
